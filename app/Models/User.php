@@ -26,6 +26,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function surats()
+    {
+        return $this->hasMany(Surats::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

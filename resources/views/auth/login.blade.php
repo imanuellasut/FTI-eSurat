@@ -8,7 +8,7 @@
                 <img class="mb-4 mt-3" src="img/logo/logo-fti.png" alt="" width="120px" height="80">
                 <img class="mb-4 mt-3" src="img/logo/logo-ukdw.png" alt="" width="70px" height="80">
                 <h2 class="h1 font-weight-bold mb-0">WELCOME</h2>
-                <h2 class="h5 font-weight-bold mb-0">Sisem Informasi Surat Menyurat</h2>
+                <h2 class="h5 font-weight-bold mb-0">Sistem Informasi Surat Menyurat</h2>
                 <h2 class="h5 font-weight-bold mb-0">Universitas Kristen Duta Wacana</h2>
                 <h2 class="h5 font-weight-bold mb-0">Fakultas Teknologi Informasi</h2>
             </div>

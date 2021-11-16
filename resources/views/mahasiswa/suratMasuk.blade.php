@@ -113,8 +113,8 @@
                                         </div>
                                         <div>
                                             <a href="" class="badge badge-success">
-                                            <i class='bx bxs-download bx-xs'></i>
-                                        </a>
+                                                <i class='bx bxs-download bx-xs'></i>
+                                            </a>
                                         </div>
                                     </td>
                                     <td> Waktu Pelaksanaan terlalu mepet dengan kegiatan lain </td>

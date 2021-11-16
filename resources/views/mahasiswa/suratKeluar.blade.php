@@ -72,30 +72,37 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>12-01-2022</td>
-                                    <td>Surat Tugas</td>
-                                    <td>Kerja Praktek</td>
-                                    <td>Untuk Memungkinkan bahwa kita dapat</td>
-                                    <td>
-                                        <div class="mb-2">
-                                            <a href="" class="badge badge-secondary">
-                                                <i class='bx bxs-show bx-xs'></i>
-                                            </a>
-                                        </div>
-                                        <div class="mb-2">
-                                            <a href="" class="badge badge-info">
-                                                <i class='bx bxs-edit bx-xs'></i>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <a href="" class="badge badge-danger">
-                                                <i class='bx bxs-trash bx-xs'></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php $no=1; ?>
+                                @foreach ($suratKeluar as $data )
+
+                                @if($data->user->id === Auth::user()->id)
+                                    <tr>
+                                        <th scope="row">{{ $no++}}</th>
+                                        <td>{{ $data->tgl_pelaksanaan }}</td>
+                                        <td>{{ $data->nama_jenis_surat}}</td>
+                                        <td>{{ $data->prihal }}</td>
+                                        <td>{{ $data->keterangan }}</td>
+                                        <td>
+                                            <div class="mb-2">
+                                                <a href="" class="badge badge-secondary">
+                                                    <i class='bx bxs-show bx-xs'></i>
+                                                </a>
+                                            </div>
+                                            <div class="mb-2">
+                                                <a href="" class="badge badge-info">
+                                                    <i class='bx bxs-edit bx-xs'></i>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="" class="badge badge-danger">
+                                                    <i class='bx bxs-trash bx-xs'></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endif
+
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -59,74 +59,53 @@
                 <div class="card-body"><h5 class="card-title">Data surat</h5>
                     <div class="table-responsive">
                         <table class="mb-0 table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>No. Surat</th>
-                                    <th>Pengaju</th>
-                                    <th>Jenis Surat</th>
-                                    <th>Tgl.Pelaksanaan</th>
-                                    <th>Prihal</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                    <th>Pesan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>001/D/FTI/2022</td>
-                                    <td>72190343</td>
-                                    <td>Surat Tugas</td>
-                                    <td>12-01-2022</td>
-                                    <td>Kerja Praktek</td>
-                                    <td>
-                                        <small class="badge badge-pill badge-success">Done</small>
-                                    </td>
-                                    <td>
-                                        <div class="mb-2">
-                                            <a href="" class="badge badge-secondary">
-                                                <i class='bx bxs-show bx-xs'></i>
-                                            </a>
-                                        </div>
-                                        <div class="mb-2">
-                                            <a href="" class="badge badge-danger">
-                                                <i class='bx bxs-trash bx-xs'></i>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <a href="" class="badge badge-success">
+                            <tr>
+                                <th>#</th>
+                                <th>Pengaju</th>
+                                <th>Jenis Surat</th>
+                                <th>Tgl.Pelaksanaan</th>
+                                <th>Prihal</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                <th>Pesan</th>
+                            </tr>
+                        <?php $no=1; ?>
+                        @foreach ($allSurats as $surat )
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $surat->user->id_user}}</td>
+                                <td>{{ $surat->nama_jenis_surat}}</td>
+                                <td>{{ $surat->tgl_pelaksanaan }}</td>
+                                <td>{{ $surat->prihal }}</td>
+                                <td>
+                                    @if($surat->status == 'diterima')
+                                        <small class="badge badge-pill badge-success">diTerima</small>
+                                    @elseif ($surat->status == 'ditolak')
+                                        <small class="badge badge-pill badge-danger">ditolak</small>
+                                    @else
+                                        <small class="badge badge-pill badge-warning">diproses</small>
+                                    @endif
+                                </td>
+                                <td class="row">
+                                    <div class="col-1">
+                                        <a href="surat/edit-surat/id-{{ $surat->id }}" class="badge badge-info">
+                                            <i class='bx bxs-edit bx-xs'></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-2 ml-3 mr-0">
+                                        <a href="surat/cetak-{{ $surat->id}}" class="badge badge-success">
                                             <i class='bx bxs-download bx-xs'></i>
                                         </a>
-                                        </div>
-                                    </td>
-                                    <td> - </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td> - </td>
-                                    <td>72190343</td>
-                                    <td>Surat Tugas</td>
-                                    <td>15-01-2022</td>
-                                    <td>Studi Banding</td>
-                                    <td>
-                                        <small class="badge badge-pill badge-danger">Rejected</small>
-                                    </td>
-                                    <td>
-                                        <div class="mb-2">
-                                            <a href="" class="badge badge-danger">
-                                                <i class='bx bxs-trash bx-xs'></i>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <a href="" class="badge badge-success">
-                                            <i class='bx bxs-download bx-xs'></i>
+                                    </div>
+                                    <div class="col-3">
+                                        <a href="" class="badge badge-danger">
+                                            <i class='bx bxs-trash bx-xs'></i>
                                         </a>
-                                        </div>
-                                    </td>
-                                    <td> Waktu Pelaksanaan terlalu mepet dengan kegiatan lain </td>
-                                </tr>
-                            </tbody>
+                                    </div>
+                                </td>
+                                <td> {{ $surat->pesan_status }}</td>
+                            </tr>
+                        @endforeach
                         </table>
                     </div>
                 </div>
