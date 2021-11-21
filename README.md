@@ -1,4 +1,4 @@
-# SIM SURAT
+# FTI e-Surat
 Aplikasi Sistem Manajemen Surat Sederhana dengan laravel v8.x System requirementsnya liat di sini yah https://laravel.com/docs/8.x/deployment#server-requirements
 
 # Konfigurasi
