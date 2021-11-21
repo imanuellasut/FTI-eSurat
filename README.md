@@ -1,1 +1,1 @@
-Lihat di  branc master
+lihat di master
