@@ -72,54 +72,52 @@
                                     <th>Pesan</th>
                                 </tr>
                             </thead>
+                            <?php $no=1; ?>
+                            @foreach ($suratMasuk as $data )
                             <tbody>
+                            @if($data->user->id === Auth::user()->id && $data->tipe_surat == 'masuk')
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>001/D/FTI/2022</td>
-                                    <td>Surat Tugas</td>
-                                    <td>12-01-2022</td>
-                                    <td>Kerja Praktek</td>
+                                    <th scope="row">{{ $no++ }}</th>
+                                    <td> - </td>
+                                    <td>{{ $data->nama_jenis_surat }}</td>
+                                    <td>{{ $data->tgl_pelaksanaan }}</td>
+                                    <td>{{ $data->prihal }}</td>
                                     <td>
-                                        <small class="badge badge-pill badge-success">Done</small>
+                                        @if($data->status == 'diterima')
+                                            <small class="badge badge-pill badge-success">diTerima</small>
+                                        @elseif ($data->status == 'ditolak')
+                                            <small class="badge badge-pill badge-danger">ditolak</small>
+                                        @else
+                                            <small class="badge badge-pill badge-warning">diproses</small>
+                                        @endif
                                     </td>
                                     <td>
-                                        <div class="mb-2">
-                                            <a href="" class="badge badge-danger">
-                                                <i class='bx bxs-trash bx-xs'></i>
+
+                                        <div class="mb-1">
+                                            <a href="" class="badge badge-secondary">
+                                                <i class='bx bxs-show bx-xs'></i>
                                             </a>
                                         </div>
-                                        <div>
+                                        @if($data->status == 'diterima')
+                                        <div class="mb-1">
                                             <a href="" class="badge badge-success">
                                             <i class='bx bxs-download bx-xs'></i>
-                                        </a>
+                                            </a>
                                         </div>
-                                    </td>
-                                    <td> - </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td> - </td>
-                                    <td>Surat Tugas</td>
-                                    <td>15-01-2022</td>
-                                    <td>Studi Banding</td>
-                                    <td>
-                                        <small class="badge badge-pill badge-danger">Rejected</small>
-                                    </td>
-                                    <td>
+                                        @endif
                                         <div class="mb-2">
                                             <a href="" class="badge badge-danger">
                                                 <i class='bx bxs-trash bx-xs'></i>
                                             </a>
                                         </div>
-                                        <div>
-                                            <a href="" class="badge badge-success">
-                                                <i class='bx bxs-download bx-xs'></i>
-                                            </a>
-                                        </div>
+
                                     </td>
-                                    <td> Waktu Pelaksanaan terlalu mepet dengan kegiatan lain </td>
+                                    <td> - </td>
                                 </tr>
+                            @endif
                             </tbody>
+
+                            @endforeach
                         </table>
                     </div>
                 </div>

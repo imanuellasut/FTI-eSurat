@@ -6,23 +6,32 @@ use App\Models\Surats;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MahasiswaController extends Controller
 {
     public function index()
     {
-        return view('mahasiswa.dashboard');
+        $surat = Surats::with('user')->orderBy('updated_at', 'desc')->Paginate(10);
+        return view('mahasiswa.dashboard', compact('surat'));
     }
 
     public function suratMasuk()
     {
-        return view('mahasiswa.suratMasuk');
+        $suratMasuk = Surats::with('user')->orderBy('updated_at', 'desc')->Paginate(10);
+        return view('mahasiswa.suratMasuk', compact('suratMasuk'));
     }
 
     public function suratKeluar()
     {
-        $suratKeluar = Surats::with('user')->Paginate(10);
-        return view('mahasiswa.suratKeluar', compact('suratKeluar'));
+        $surat = Surats::with('user')->orderBy('created_at', 'desc')->Paginate(10);
+        return view('mahasiswa.suratKeluar', compact('surat'));
+    }
+    public function hapusSurat($id)
+    {
+        Surats::findOrfail($id)->delete();
+        return redirect()->back();
     }
 
     public function suratTugas()
@@ -48,6 +57,13 @@ class MahasiswaController extends Controller
 
         return redirect('mahasiswa/surat-keluar');
     }
+
+    public function editSuratTugas($id)
+    {
+        $surat = Surats::findOrfail($id);
+        return view('mahasiswa.editSurat_tugas', compact('surat'));
+    }
+
     public function simpanSuratKegiatanMahasiswa(Request $request)
     {
         // dd($request->all());
@@ -58,11 +74,26 @@ class MahasiswaController extends Controller
             'prihal' => $request->prihal,
             'nama_mitra' => $request->nama_mitra,
             'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
+            'waktu_pelaksanaan' => $request->waktu_pelaksanaan,
             'lokasi' => $request->lokasi,
             'keterangan' => $request->keterangan,
             'tipe_surat' => $request->tipe_surat,
             'status' => $request->status,
         ]);
+
+        return redirect('mahasiswa/surat-keluar');
+    }
+
+    public function editSuratKegiatan($id)
+    {
+        $surat = Surats::findOrfail($id);
+        return view('mahasiswa.editSuratKegiatan', compact('surat'));
+    }
+
+    public function updatSuratKegiatan($id, Request $request)
+    {
+        $surat = Surats::findOrfail($id);
+        $surat->update($request->all());
 
         return redirect('mahasiswa/surat-keluar');
     }
@@ -73,6 +104,16 @@ class MahasiswaController extends Controller
         return view('mahasiswa.suratKegiatan');
     }
 
+    // public function hapusSurat($id)
+    // {
+    //     Surats::where('id', $id)->delete();
+    //     return redirect('/surat-keluar');
+
+    //     // return redirect()->back();
+    //     // $surat = Surats::find($id)->delete();
+    //     // return Redirect()->back()->with('success', 'Surat Telah di Hapus');
+    // }
+
     public function arsipSurat()
     {
         return view('mahasiswa.arsipSurat');
@@ -82,8 +123,19 @@ class MahasiswaController extends Controller
     {
         $surat = DB::table('users')
             ->where('id', Auth::user())
+            ->orderBy('created_at', 'desc')
             ->get();
 
         dd($surat);
+    }
+
+    public function getSuratMasuk()
+    {
+        $suratMasuk = DB::table('users')
+            ->where('id', Auth::user())
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        dd($suratMasuk);
     }
 }

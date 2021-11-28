@@ -1,91 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style type="text/css">
-        .halaman {
-            width: 800;
-            height: 842px;;
-            background-color: #ffffff;
-        }
-        #h2 {
-            color:black;
-        }
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-        #isi {
-            width: auto;
-            height: auto;
-            padding: 10px;
-            margin-bottom: 10px;
-            margin-right: 40px
-            background-color: #ffffff;
-            font-family: 'Times New Roman', Times, serif;
-            color: black;
-        }
-
-        #coeg {
-            color: black;
-        }
-
-        #td {
-            width: 200;
-        }
-
-        .upper { text-transform: uppercase; }
-        .lower { text-transform: lowercase; }
-        .cap   { text-transform: capitalize; }
-        .small { font-variant:   small-caps; }
-
-        .left    { text-align: left;}
-        .right   { text-align: right;}
-        .center  { text-align: center;}
-        .justify { text-align: justify;}
-
-        #justify { text-align: justify;}
-
-    </style>
 </head>
-<body class="halaman">
-     <div id="isi" style="border-radius: 10px;border: 10px solid #ffffff">
-        <h2 id="h2"  style="text-transform: uppercase;" class="upper center">
-            <b><u>{{ $cetak->nama_jenis_surat}}</u></b>
-        </h2>
-        <br>
-        <br>
-        <p id="justify">
-        Dengan ini Dekan Fakultas Teknologi Informasi Universitas Kristen Duta Wacana Yogyakarta
-        memberikan Tugas kepada para mahasiswa dibawah ini :</p>
-        <?php $no=1; ?>
-        <table id="coeg" align="center" >
-            <tr>
-                <th width="30px">NO</th>
-                <th width="200px">Nama</th>
-                <th width="150px">NIM</th>
-            </tr>
-            <tr>
-                <td>1 </td>
-                <td>{{ $cetak->user->name}}</td>
-                <td>{{ $cetak->user->id_user}}</td>
-            </tr>
-        </table>
-        <p id="justify">
-        Untuk Mengikuti {{ $cetak->prihal }} yang dilakukan PENYELENGARA ke MITRA, Kunjugan akan dilakukan pada
-        Hari [ ], Tanggal [ ].</p>
+<body>
 
-        <p id="justify">
-        Demikian surat tugas ini dibuat untuk dapat dipergunakan sebagaimana perlunya 
-        kepada penerima tugas menyelesaikan tugas dimohon menyampaikan laporan kepada pemberi tugas</p>
+    <img class="logodisp" src="{{ asset('img/logo/logo-fti.png') }}" style="float: left; height:60px">
+    <div style="font-size: 18px">UNIVERSITAS KRISTEN DUTA WACANA</div>
+    <div style="font-size: 18px">FAKULTAS TEKNOLOGI INFORMASI</div>
+    <ul>
+        <ul>
+            <ul>
+                <li>
+                    <div style="font-size: 12px">PROGRAM STUDI INFORMATIKA</div>
+                </li>
+                <li>
+                    <div style="font-size: 12px">PROGRAM STUDI SISTEM INFORMASI</div>
+                </li>
+            </ul>
+        </ul>
+    </ul>
 
-        <br><br>
-        <p>
-            Dekan,
-        </p>
-        <br><br><br>
-        <p><b><u>Restyandito, S.Kom., MSIS, Ph.D.</u></b></p>
-        <p>NIK:400 E 289</p>
+    <hr>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="row" align="center">
+        <h2><u>{{ $cetak->nama_jenis_surat}}</u></h2>
+        <h3>No. : 000/A.00/FTI/2021 </h3>
+        <!--System-->
     </div>
+
+    <br>
+
+    <div class="col-sm; ml-10; mr-10;" align="justify">
+        <div style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Dengan ini Dekan Fakultas Teknologi Informasi Universitas Kristen Duta Wacana memberikan tugas kepada :
+        </div><br>
+        <div class="col-sm">
+            <?php $no = 1; ?>
+            <table border="1" align="center">
+                <tr>
+                    <th width="30px">NO</th>
+                    <th width="200px">Nama</th>
+                    <th width="150px">NIM</th>
+                </tr>
+                <tr style="text-align: center">
+                    <td>{{$no++}}</td>
+                    <td>{{ $cetak->user->name}}</td>
+                    <td>{{ $cetak->user->id_user}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <div class="col-sm">
+            <div style="font-size: 16px;">Untuk mengikuti {{$cetak->perihal}} yang dilaksanakan oleh Mitra {{$cetak->nama_mitra}},
+                yang diselenggarakan oleh LPPM UKDW, pada tanggal {{$cetak->tgl_pelaksanaan}}.</div>
+            <!---->
+            <br>
+            <div style="font-size: 16px;">Demikian surat tugas ini dibuat untuk dapat dipergunakan sebagaimana perlunya.
+                Kepada penerima tugas setelah menyelesaikan tugas dimohon menyampaikan laporan kepada pemberi tugas.</div>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div align="left">
+            <div style="font-size: 16px">24 Januari 2020</div>
+            <div style="font-size: 16px">Dekan,</div><br><br><br><br><br><br>
+            <div style="font-size: 16px"><b><u>Restyandito, S.Kom., MSIS., Ph.D.</u></b></div>
+            <!--Nama Pengirim-->
+            <div style="font-size: 16px">NIK : 004 E 289</div>
+            <!--NIK Pengirim-->
+        </div>
+
 </body>
+
 </html>
+

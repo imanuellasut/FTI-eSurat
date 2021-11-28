@@ -73,7 +73,7 @@
                         @foreach ($allSurats as $surat )
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $surat->user->id_user}}</td>
+                                <td>{{ $surat->user->name}}<br/>{{ $surat->user->id_user}}</td>
                                 <td>{{ $surat->nama_jenis_surat}}</td>
                                 <td>{{ $surat->tgl_pelaksanaan }}</td>
                                 <td>{{ $surat->prihal }}</td>
@@ -86,19 +86,73 @@
                                         <small class="badge badge-pill badge-warning">diproses</small>
                                     @endif
                                 </td>
-                                <td class="row">
-                                    <div class="col-1">
-                                        <a href="surat/edit-surat/id-{{ $surat->id }}" class="badge badge-info">
-                                            <i class='bx bxs-edit bx-xs'></i>
-                                        </a>
-                                    </div>
-                                    <div class="col-2 ml-3 mr-0">
+                                <td>
+                                    <!-- Button Edit -->
+                                        @if ($surat->id_jenis_surats == 'A')
+                                            <div class="">
+                                                <a href="surat/edit-surat/id-{{ $surat->id }}" class="badge badge-info">
+                                                    <i class='bx bxs-edit bx-xs' title="Surat Personalia"></i>
+                                                </a>
+                                            </div>
+                                        @elseif($surat->id_jenis_surats == 'B')
+                                            <div class="">
+                                                <a href="surat/edit-surat-kegiatan/id-{{ $surat->id }}" class="badge badge-info">
+                                                    <i class='bx bxs-edit bx-xs' title="Surat Kegiatan Mahasiswa"></i>
+                                                </a>
+                                            </div>
+                                        @elseif($surat->id_jenis_surats == 'C')
+                                            <div class="">
+                                                <a href="surat/edit-surat-undangan/id-{{ $surat->id }}" class="badge badge-info">
+                                                    <i class='bx bxs-edit bx-xs' title="Surat Undangan"></i>
+                                                </a>
+                                            </div>
+                                        @elseif($surat->id_jenis_surats == 'D')
+                                            <div class="">
+                                                <a href="surat/edit-surat-tugas/id-{{ $surat->id }}" class="badge badge-info">
+                                                    <i class='bx bxs-edit bx-xs' title="Surat Tugas"></i>
+                                                </a>
+                                            </div>
+                                        @elseif($surat->id_jenis_surats == 'E')
+                                            <div class="">
+                                                <a href="surat/edit-surat/id-{{ $surat->id }}" class="badge badge-info">
+                                                    <i class='bx bxs-edit bx-xs' title="Berita Acara"></i>
+                                                </a>
+                                            </div>
+                                        @endif
+                                    <!-- End Button Edit -->
+
+                                    <!-- Button Download -->
+                                        @if ($surat->id_jenis_surats == 'A' && $surat->status == 'diterima' )
+                                            <div class="">
+                                                <a href="surat/cetak-{{ $surat->id}}" class="badge badge-success">
+                                                    <i class='bx bxs-download bx-xs'></i>
+                                                </a>
+                                            </div>
+                                        @elseif($surat->id_jenis_surats == 'B' && $surat->status == 'diterima' )
+
+                                        @elseif($surat->id_jenis_surats == 'C' && $surat->status == 'diterima' )
+
+                                        @elseif($surat->id_jenis_surats == 'D' && $surat->status == 'diterima' )
+                                            <div class="mt-1">
+                                                <a href="surat/cetak-{{ $surat->id}}" class="badge badge-success">
+                                                    <i class='bx bxs-download bx-xs'></i>
+                                                </a>
+                                            </div>
+                                        @elseif($surat->id_jenis_surats == 'E' && $surat->status == 'diterima' )
+
+                                        @endif
+                                    <!-- End Button Download -->
+
+                                    {{-- @if($surat->status == 'diterima')
+                                    <div class="mt-1">
                                         <a href="surat/cetak-{{ $surat->id}}" class="badge badge-success">
                                             <i class='bx bxs-download bx-xs'></i>
                                         </a>
                                     </div>
-                                    <div class="col-3">
-                                        <a href="" class="badge badge-danger">
+                                    @endif --}}
+
+                                    <div class="mt-1">
+                                        <a href="surat/hapus-surat/id-{{ $surat->id }}" class="badge badge-danger" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Surat?')">
                                             <i class='bx bxs-trash bx-xs'></i>
                                         </a>
                                     </div>

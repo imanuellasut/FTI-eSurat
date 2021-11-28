@@ -16,7 +16,7 @@
     @endsection
 
     @section('suratKeluar')
-        <a href="/mahasiswa/surat-keluar">
+        <a href="/mahasiswa/surat-keluar" class="mm-active">
             <i class="metismenu-icon bx bxs-paper-plane"></i>
             Surat Keluar
         </a>
@@ -28,7 +28,7 @@
             Pengajuan Surat
             <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
         </a>
-        <ul class="mm-show">
+        <ul>
             <li>
                 <a href="/mahasiswa/pengajuan-surat/surat-tugas">
                     <i class="metismenu-icon"></i>
@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li>
-                <a href="/mahasiswa/pengajuan-surat/surat-kegiatan" class="mm-active">
+                <a href="/mahasiswa/pengajuan-surat/surat-kegiatan">
                     <i class="metismenu-icon"></i>
                     Surat Kegiatan
                 </a>
@@ -55,33 +55,29 @@
 
 @section('content')
     <div class="main-card mb-3 card">
-        <div class="card-body"><h5 class="card-title">Form Surat kegiatan Mahasiswa</h5>
-            <form class="" action="{{ route('simpan-surat-kegiatan') }}" method="POST">
+        <div class="card-body"><h5 class="card-title">Form Surat Tugas</h5>
+            <form class="" action="{{ route('update-surat-tugas') }}" method="POST">
                 @csrf
                 <!--Hidden Inputan -->
                     <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
-                    <input type="hidden" name="id_jenis_surats" value="B">
-                    <input type="hidden" name="nama_jenis_surat" value="Surat kegiatan Mahasiswa">
+                    <input type="hidden" name="id_jenis_surats" value="D">
+                    <input type="hidden" name="nama_jenis_surat" value="Surat Tugas">
                     <input type="hidden" name="tipe_surat" value="keluar">
                     <input type="hidden" name="status" value="diproses">
                 <!--End Hidden Inputan -->
 
                 <div class="position-relative form-group">
                     <label for="prihal" class="">Prihal Surat</label>
-                    <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control">
-                <div class="position-relative form-group mt-1">
-                    <label for="nama_mitra" class="">Nama Mitra</label>
-                    <input name="nama_mitra" id="nama_mitra" placeholder="Nama Mitra" type="text" class="form-control">
-                </div>
+                    <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control" value="{{ $editSuratTugas->prihal }}">
                 <div class="position-relative form-group">
-                    <label for="lokasi" class="">Tempat</label>
-                    <input name="lokasi" id="lokasi" placeholder="Tempat" type="text" class="form-control">
+                    <label for="nama_mitra" class="">Pelaksana Tugas</label>
+                    <input name="nama_mitra" id="nama_mitra" placeholder="Pelaksana Tugas" type="text" class="form-control">
                 </div>
                 <div class="form-row">
                     <div class="col-md-6">
                         <div class="position-relative form-group">
-                            <label for="waktu_pelaksanaan" class="">Jam Pelaksanaan</label>
-                            <input name="waktu_pelaksanaan" id="waktu_pelaksanaan" placeholder="Jam Pelaksanaan" type="time" class="form-control">
+                            <label for="lokasi" class="">Tempat</label>
+                            <input name="lokasi" id="lokasi" placeholder="Tempat" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -96,9 +92,10 @@
                     <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
                 </div>
                 <button type="submit" class="mt-2 btn btn-primary">Buat</button>
-                <a href="/mahasiswa/surat-keluar" class="mt-2 btn btn-secondary">Back</a>
+                <a href="/mahasiswa/surat-keluar" class="mt-2 btn btn-secondary">Batal</a>
             </form>
         </div>
     </div>
 
 @endsection
+

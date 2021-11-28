@@ -24,19 +24,57 @@ class AdminController extends Controller
     public function getAllSurat()
     {
 
-        $allSurats = Surats::with('user')->paginate(5);
+        $allSurats = Surats::with('user')->orderBy('updated_at', 'desc')->paginate(5);
         return view('admin.surat', compact('allSurats'));
     }
 
-    public function editSurat($id)
+    public function hapusSurat($id)
     {
-        $surat = Surats::findorfail($id);
+        $surat = Surats::findOrfail($id)->delete();
+        return redirect()->back();
+    }
+
+    public function buatSuratTugas()
+    {
+        return view('admin.suratTugas');
+    }
+
+    public function simpanSuratTugas(Request $request)
+    {
+        Surats::create([
+            'id_user' => $request->id_user,
+            'id_jenis_surats' => $request->id_jenis_surats,
+            'nama_jenis_surat' => $request->nama_jenis_surat,
+            'prihal' => $request->prihal,
+            'nama_mitra' => $request->nama_mitra,
+            'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
+            'lokasi' => $request->lokasi,
+            'keterangan' => $request->keterangan,
+            'tipe_surat' => $request->tipe_surat,
+            'status' => $request->status,
+        ]);
+
+        return redirect('admin/surat');
+    }
+
+    public function editSuratTugas($id)
+    {
+        $surat = Surats::findOrfail($id);
         return view('admin.editSurat_tugas', compact('surat'));
     }
 
-    public function cetakSurat($id)
+    public function updateSuratTugas($id, Request $request)
     {
-        $cetak = Surats::with('user')->findorfail($id);
+        $surat = Surats::findOrfail($id);
+        $surat->update($request->all());
+
+        return redirect('admin/surat');
+    }
+
+
+    public function cetakSuratTugas($id)
+    {
+        $cetak = Surats::with('user')->findOrfail($id);
         $html = view('surat.cetakSuratTugas', compact('cetak'));
 
         $dompdf = new Dompdf();
@@ -52,20 +90,6 @@ class AdminController extends Controller
         $dompdf->stream();
 
         //return view('surat.cetaksuratTugas', compact('cetak'));
-    }
-
-    public function suratTugas()
-    {
-        return view('admin.suratTugas');
-    }
-
-    public function CetaksuratTugas()
-    {
-        // $surat = Surats::with('user')->all();
-
-        // $pdf = PDF::loadview(, ['surats' => $surat]);
-
-        // return view('admin.suratTugas');
     }
 
     public function suratKegiatan()

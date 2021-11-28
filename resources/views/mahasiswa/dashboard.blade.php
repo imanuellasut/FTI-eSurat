@@ -101,35 +101,36 @@
                                     <th>No. Surat</th>
                                     <th>Jenis Surat</th>
                                     <th>Tgl.Pelaksanaan</th>
+                                    <th>Jam</th>
                                     <th>Prihal</th>
                                     <th>Status</th>
                                     <th>Pesan</th>
                                 </tr>
                             </thead>
+
+                            @foreach ($surat as $data )
+
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>001/D/FTI/2022</td>
-                                    <td>Surat Tugas</td>
-                                    <td>12-01-2022</td>
-                                    <td>Kerja Praktek</td>
+                                    <td></td>
+                                    <td>{{ $data->nama_jenis_surat }}</td>
+                                    <td>{{ $data->tgl_pelaksanaan }}</td>
+                                    <td>{{ $data->waktu_pelaksanaan }}</td>
+                                    <td>{{ $data->prihal }}</td>
                                     <td>
-                                        <small class="badge badge-pill badge-success">Done</small>
+                                        @if($data->status == 'diterima')
+                                            <small class="badge badge-pill badge-success">diTerima</small>
+                                        @elseif ($data->status == 'ditolak')
+                                            <small class="badge badge-pill badge-danger">ditolak</small>
+                                        @else
+                                            <small class="badge badge-pill badge-warning">diproses</small>
+                                        @endif
                                     </td>
-                                    <td> - </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td> - </td>
-                                    <td>Surat Tugas</td>
-                                    <td>15-01-2022</td>
-                                    <td>Studi Banding</td>
-                                    <td>
-                                        <small class="badge badge-pill badge-danger">Rejected</small>
-                                    </td>
-                                    <td> Waktu Pelaksanaan terlalu mepet dengan kegiatan lain </td>
+                                    <td>{{ $data->pesan }}</td>
                                 </tr>
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>

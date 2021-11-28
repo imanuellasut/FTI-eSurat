@@ -3,40 +3,84 @@
 namespace App\Http\Controllers;
 
 use App\Models\Surats;
-use App\Models\User;
-use App\Models\Jenis_surats;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class SuratController extends Controller
 {
-    public function getAllSurat()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $allSurats = Surats::paginate(2);
-        return view('admin.surat', compact('dataSurat'));
-
-        // $all_surats = DB::table('surats')
-        //     ->join('users', 'users.id', '=', 'surats.id_users')
-        //     ->join('jenis_surats', 'jenis_surats.id_jenis_surat', '=', 'surats.id_jenis_surat')
-        //     ->get();
-        // return view('');
+        //
     }
 
-    // public function simpanSuratTugasMahasiswa(Request $request)
-    // {
-    //     // dd($request->all());
-    //     Surats::create([
-    //         'id_user' => $request->id_user,
-    //         'id_jenis_surats' => $request->id_jenis_surats,
-    //         'prihal' => $request->prihal,
-    //         'nama_mitra' => $request->nama_mitra,
-    //         'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
-    //         'lokasi' => $request->lokasi,
-    //         'keterangan' => $request->keterangan,
-    //         'tipe_surat' => $request->tipe_surat,
-    //         'status' => $request->status,
-    //     ]);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
-    //     return redirect('mahasiswa/surat-keluar');
-    // }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function hapusSuratKeluar($id)
+    {
+        $surat = Surats::where('id', $id)->delete();
+        return redirect('/surat-keluar');
+    }
 }
