@@ -10,29 +10,38 @@
 
 </head>
 <body>
+    <table>
+            <tr>
+                <td width="60px">
+                    <img src="https://www.ukdw.ac.id/wp-content/uploads/2017/10/logo-ukdw.png" width="60" height="80"/>
+                </td>
+                <td>&nbsp;&nbsp;</td>
+                <td>
+                    <font size="2" style="letter-spacing:1.2px">
+                        UNIVERSITAS KRISTEN DUTA WACANA
+                    </font>
+                    <br>
+                    <font size="3">
+                        <b>FAKULTAS TEKNOLOGI INFORMASI</b>
+                    </font>
 
-    <img class="logodisp" src="{{ asset('img/logo/logo-fti.png') }}" style="float: left; height:60px">
-    <div style="font-size: 18px">UNIVERSITAS KRISTEN DUTA WACANA</div>
-    <div style="font-size: 18px">FAKULTAS TEKNOLOGI INFORMASI</div>
-    <ul>
-        <ul>
-            <ul>
-                <li>
-                    <div style="font-size: 12px">PROGRAM STUDI INFORMATIKA</div>
-                </li>
-                <li>
-                    <div style="font-size: 12px">PROGRAM STUDI SISTEM INFORMASI</div>
-                </li>
-            </ul>
-        </ul>
-    </ul>
+                    <br>
+
+                    <font size="3">
+                        <b>FAKULTAS TEKNOLOGI INFORMASI</b>
+                    </font>
+                    <br>
+                    <font size="1">
+                        <li type="square" style="margin-left: 10px;"> PROGRAM STUDI INFORMATIKA
+                        <li type="square" style="margin-left: 10px;"> PROGRAM STUDI SISTEM INFORMASI </li>
+                    </font>
+                </td>
+            </tr>
+        </table>
 
     <hr>
-
+    
     <br>
-    <br>
-    <br>
-
     <div class="row" align="center">
         <h2><u>{{ $cetak->nama_jenis_surat}}</u></h2>
         <h3>No. : 000/A.00/FTI/2021 </h3>

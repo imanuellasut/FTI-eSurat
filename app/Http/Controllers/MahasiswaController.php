@@ -28,6 +28,7 @@ class MahasiswaController extends Controller
         $surat = Surats::with('user')->orderBy('created_at', 'desc')->Paginate(10);
         return view('mahasiswa.suratKeluar', compact('surat'));
     }
+
     public function hapusSurat($id)
     {
         Surats::findOrfail($id)->delete();
@@ -61,7 +62,20 @@ class MahasiswaController extends Controller
     public function editSuratTugas($id)
     {
         $surat = Surats::findOrfail($id);
-        return view('mahasiswa.editSurat_tugas', compact('surat'));
+        return view('mahasiswa.editSuratTugas', compact('surat'));
+    }
+
+    public function updateSuratTugas($id, Request $request)
+    {
+        $surat = Surats::findOrfail($id);
+        $surat->update($request->all());
+
+        return redirect('mahasiswa/surat-keluar');
+    }
+
+    public function suratKegiatan()
+    {
+        return view('mahasiswa.suratKegiatan');
     }
 
     public function simpanSuratKegiatanMahasiswa(Request $request)
@@ -96,12 +110,6 @@ class MahasiswaController extends Controller
         $surat->update($request->all());
 
         return redirect('mahasiswa/surat-keluar');
-    }
-
-
-    public function suratKegiatan()
-    {
-        return view('mahasiswa.suratKegiatan');
     }
 
     // public function hapusSurat($id)

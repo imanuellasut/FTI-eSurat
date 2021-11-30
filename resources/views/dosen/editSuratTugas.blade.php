@@ -54,10 +54,9 @@
 <!-- End Menu SideBar -->
 
 @section('content')
-
     <div class="main-card mb-3 card">
         <div class="card-body"><h5 class="card-title">Form Surat Tugas</h5>
-            <form method="post" action="{{ url('mahasiswa/surat-keluar/update-surat-tugas', $surat->id) }}">
+            <form class="" action="{{ route('update-surat-tugas') }}" method="POST">
                 @csrf
                 <!--Hidden Inputan -->
                     <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
@@ -69,30 +68,30 @@
 
                 <div class="position-relative form-group">
                     <label for="prihal" class="">Prihal Surat</label>
-                    <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control" value="{{ $surat->prihal }}">
-                <div class="position-relative form-group mt-2">
-                    <label for="nama_mitra" class="">Mitra</label>
-                    <input name="nama_mitra" id="nama_mitra" placeholder="Pelaksana Tugas" type="text" class="form-control" value="{{ $surat->nama_mitra }}">
+                    <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control" value="{{ $editSuratTugas->prihal }}">
+                <div class="position-relative form-group">
+                    <label for="nama_mitra" class="">Pelaksana Tugas</label>
+                    <input name="nama_mitra" id="nama_mitra" placeholder="Pelaksana Tugas" type="text" class="form-control">
                 </div>
                 <div class="form-row">
                     <div class="col-md-6">
                         <div class="position-relative form-group">
                             <label for="lokasi" class="">Tempat</label>
-                            <input name="lokasi" id="lokasi" placeholder="Tempat" type="text" class="form-control" value="{{ $surat->lokasi }}">
+                            <input name="lokasi" id="lokasi" placeholder="Tempat" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="position-relative form-group">
                             <label for="tgl_pelaksanaan" class="">Tanggal Pelaksanaan</label>
-                            <input name="tgl_pelaksanaan" id="tgl_pelaksanaan" placeholder="Tanggal Pelaksanaan" type="date" class="form-control" value="{{ $surat->tgl_pelaksanaan }}">
+                            <input name="tgl_pelaksanaan" id="tgl_pelaksanaan" placeholder="Tanggal Pelaksanaan" type="date" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="position-relative form-group">
                     <label for="keterangan" class="">Keterangan</label>
-                    <textarea name="keterangan" id="keterangan" class="form-control">{{ $surat->keterangan }}</textarea>
+                    <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
                 </div>
-                <button type="submit" class="mt-2 btn btn-primary">Update</button>
+                <button type="submit" class="mt-2 btn btn-primary">Buat</button>
                 <a href="/mahasiswa/surat-keluar" class="mt-2 btn btn-secondary">Batal</a>
             </form>
         </div>

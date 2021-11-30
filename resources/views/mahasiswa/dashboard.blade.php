@@ -108,11 +108,13 @@
                                 </tr>
                             </thead>
 
+                            <?php $no=1; ?>
                             @foreach ($surat as $data )
+                            @if($data->user->id === Auth::user()->id)
 
                             <tbody>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">{{ $no++ }}</th>
                                     <td></td>
                                     <td>{{ $data->nama_jenis_surat }}</td>
                                     <td>{{ $data->tgl_pelaksanaan }}</td>
@@ -130,6 +132,8 @@
                                     <td>{{ $data->pesan }}</td>
                                 </tr>
                             </tbody>
+
+                            @endif
                             @endforeach
                         </table>
                     </div>

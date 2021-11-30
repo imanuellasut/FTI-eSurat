@@ -64,9 +64,10 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Tgl.Pelaksanaan</th>
+                                    <th>Tanggal</th>
                                     <th>Jenis Surat</th>
                                     <th>Prihal</th>
+                                    <th>Mitra</th>
                                     <th>Keterangan</th>
                                     <th>Action</th>
                                 </tr>
@@ -75,12 +76,13 @@
                                 <?php $no=1; ?>
                                 @foreach ($surat as $data )
 
-                                @if($data->user->id === Auth::user()->id)
+                                    @if($data->user->id === Auth::user()->id)
                                     <tr>
                                         <th scope="row">{{ $no++}}</th>
                                         <td>{{ $data->tgl_pelaksanaan }}</td>
                                         <td>{{ $data->nama_jenis_surat}}</td>
                                         <td>{{ $data->prihal }}</td>
+                                        <td>{{ $data->nama_mitra }}</td>
                                         <td>{{ $data->keterangan }}</td>
                                         <td>
                                             <div class="mb-1">
@@ -89,51 +91,39 @@
                                                 </button>
                                             </div>
 
-                                            {{-- <div class="mb-1">
-                                                <a href="surat-keluar/lihat-surat/id-{{ $data->id }}" class="badge badge-secondary">
-                                                    <i class='bx bxs-show bx-xs'></i>
-                                                </a>
-                                            </div> --}}
-
-                                            <!-- Button Edit -->
-                                                @if ($data->id_jenis_surats == 'A' && $data->tipe_surat == 'keluar')
-                                                    <div class="">
-                                                        <a href="surat/edit-surat/id-{{ $data->id }}" class="badge badge-info">
-                                                            <i class='bx bxs-edit bx-xs' title="Surat Personalia"></i>
-                                                        </a>
-                                                    </div>
-                                                @elseif($data->id_jenis_surats == 'B' && $data->tipe_surat == 'keluar')
-                                                    <div class="">
-                                                        <a href="surat-keluar/edit-surat-kegiatan/id-{{ $data->id }}" class="badge badge-info">
-                                                            <i class='bx bxs-edit bx-xs' title="Surat Kegiatan Mahasiswa"></i>
-                                                        </a>
-                                                    </div>
-                                                @elseif($data->id_jenis_surats == 'C' && $data->tipe_surat == 'keluar')
-                                                    <div class="">
-                                                        <a href="surat/edit-surat-undangan/id-{{ $data->id }}" class="badge badge-info">
-                                                            <i class='bx bxs-edit bx-xs' title="Surat Undangan"></i>
-                                                        </a>
-                                                    </div>
-                                                @elseif($data->id_jenis_surats == 'D' && $data->tipe_surat == 'keluar')
-                                                    <div class="">
-                                                        <a href="surat/edit-surat-tugas/id-{{ $data->id }}" class="badge badge-info">
-                                                            <i class='bx bxs-edit bx-xs' title="Surat Tugas"></i>
-                                                        </a>
-                                                    </div>
-                                                @elseif($data->id_jenis_surats == 'E' && $data->tipe_surat == 'keluar')
-                                                    <div class="">
-                                                        <a href="surat/edit-surat/id-{{ $data->id }}" class="badge badge-info">
-                                                            <i class='bx bxs-edit bx-xs' title="Berita Acara"></i>
-                                                        </a>
-                                                    </div>
-                                                @endif
-                                            <!-- End Button Edit -->
-
-                                            {{-- <div class="mb-2">
-                                                <a href="surat-keluar/edit/{{ $data->id }}" class="badge badge-info">
-                                                    <i class='bx bxs-edit bx-xs'></i>
-                                                </a>
-                                            </div> --}}
+                                                <!--Button Edit -->
+                                                    @if ($data->id_jenis_surats == 'A' && $data->tipe_surat == 'keluar')
+                                                        <div class="">
+                                                            <a href="surat-keluar/edit-surat/id-{{ $data->id }}" class="badge badge-info">
+                                                                <i class='bx bxs-edit bx-xs' title="Surat Personalia"></i>
+                                                            </a>
+                                                        </div>
+                                                    @elseif($data->id_jenis_surats == 'B' && $data->tipe_surat == 'keluar')
+                                                        <div class="">
+                                                            <a href="surat-keluar/edit-surat-kegiatan/id-{{ $data->id }}" class="badge badge-info">
+                                                                <i class='bx bxs-edit bx-xs' title="Surat Kegiatan Mahasiswa"></i>
+                                                            </a>
+                                                        </div>
+                                                    @elseif($data->id_jenis_surats == 'C' && $data->tipe_surat == 'keluar')
+                                                        <div class="">
+                                                            <a href="surat-keluar/edit-surat-undangan/id-{{ $data->id }}" class="badge badge-info">
+                                                                <i class='bx bxs-edit bx-xs' title="Surat Undangan"></i>
+                                                            </a>
+                                                        </div>
+                                                    @elseif($data->id_jenis_surats == 'D' && $data->tipe_surat == 'keluar')
+                                                        <div class="">
+                                                            <a href="surat-keluar/edit-surat-tugas/id-{{ $data->id }}" class="badge badge-info">
+                                                                <i class='bx bxs-edit bx-xs' title="Surat Tugas"></i>
+                                                            </a>
+                                                        </div>
+                                                    @elseif($data->id_jenis_surats == 'E' && $data->tipe_surat == 'keluar')
+                                                        <div class="">
+                                                            <a href="surat-keluar/edit-surat/id-{{ $data->id }}" class="badge badge-info">
+                                                                <i class='bx bxs-edit bx-xs' title="Berita Acara"></i>
+                                                            </a>
+                                                        </div>
+                                                    @endif
+                                                <!-- End Button Edit -->
 
                                             <div class="mt-1">
                                                 <button type="button" class="btn badge badge-danger border-0" data-toggle="modal" data-target="#exampleModal">
@@ -142,8 +132,8 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endif
 
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>
@@ -154,7 +144,21 @@
     </div>
 @endsection
 
+<!--INI MUNGKIN BISA DI PAKE -->
+                                                {{-- <div class="mb-1">
+                                                    <a href="surat-keluar/lihat-surat/id-{{ $data->id }}" class="badge badge-secondary">
+                                                        <i class='bx bxs-show bx-xs'></i>
+                                                    </a>
+                                                </div> --}}
+                                                {{-- <div class="mb-2">
+                                                    <a href="surat-keluar/edit/{{ $data->id }}" class="badge badge-info">
+                                                        <i class='bx bxs-edit bx-xs'></i>
+                                                    </a>
+                                                </div> --}}
+                                            <!--INI MUNGKIN BISA DI PAKE -->
+
 <!-- Info Hapus Surat Keluar -->
+
     @foreach ($surat as $data )
     @if($data->user->id === Auth::user()->id)
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -194,7 +198,7 @@
                         <p class="mb-2 ml-2">
                             Jenis Surat  : {{ $data->nama_jenis_surat }}
                             <br/>Prihal  : {{ $data->prihal }}
-                            <br/>Jam     : {{ $data->waktu_pelaksanaan }}
+                            <br/>Mitra   : {{ $data->nama_mitra }}
                             <br/>Tanggal : {{ $data->tgl_pelaksanaan }}
                             <br/>Keterangan : {{ $data->keterangan }}
                             </p>

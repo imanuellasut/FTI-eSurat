@@ -81,13 +81,15 @@ class AdminController extends Controller
         $dompdf->loadHtml($html);
 
         // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'portrait');
+        // $dompdf->setPaper('A4', 'portrait');
 
         // Render the HTML as PDF
         $dompdf->render();
 
         // Output the generated PDF to Browser
-        $dompdf->stream();
+        // return $dompdf->stream();
+
+        return $dompdf->stream('Surat Tugas.pdf');
 
         //return view('surat.cetaksuratTugas', compact('cetak'));
     }
@@ -95,6 +97,31 @@ class AdminController extends Controller
     public function suratKegiatan()
     {
         return view('admin.suratKegiatan');
+    }
+
+    public function simpanSuratKegiatan(Request $request)
+    {
+        Surats::create([
+            'id_user' => $request->id_user,
+            'id_jenis_surats' => $request->id_jenis_surats,
+            'nama_jenis_surat' => $request->nama_jenis_surat,
+            'prihal' => $request->prihal,
+            'nama_mitra' => $request->nama_mitra,
+            'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
+            'waktu_pelaksanaan' => $request->waktu_pelaksanaan,
+            'lokasi' => $request->lokasi,
+            'keterangan' => $request->keterangan,
+            'tipe_surat' => $request->tipe_surat,
+            'status' => $request->status,
+        ]);
+
+        return redirect('admin/surat');
+    }
+
+    public function editSuratKegiatan($id)
+    {
+        $surat = Surats::findOrfail($id);
+        return view('admin.editSurat_tugas', compact('surat'));
     }
 
     public function suratSKdekan()

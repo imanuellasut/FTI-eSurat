@@ -93,12 +93,22 @@
                 </div>
                 <div class="position-relative form-group">
                     <label for="status" class="">Validasi Surat</label>
-                    <select name="status" id="status" class="form-control">
+                    <select onchange="checkAlert(event)" name="status" id="status" class="form-control">
                         <option value="">--- Pilih ---</option>
-                        <option value="ditolak" {{ $surat->status == 'ditolak' ? 'selected' : '' }} >ditolak</option>
+                        <option value="ditolak" {{ $surat->status == 'ditolak' ? 'selected' : '' }}>ditolak</option>
                         <option value="diterima" {{ $surat->status == 'diterima' ? 'selected' : '' }} >diterima</option>
                     </select>
                 </div>
+                <div class="position-relative form-group" id="ditolak">
+                    <script>
+                    function checkAlert(evt) {
+                        if (evt.target.value === "ditolak") {
+                            alert('Hello');
+                        }
+                    }
+                </script>
+                </div>
+
                 <button type="submit" class="mt-2 btn btn-primary">Submit</button>
                 <a href="/admin/surat" class="mt-2 btn btn-secondary">Kembali</a>
             </form>

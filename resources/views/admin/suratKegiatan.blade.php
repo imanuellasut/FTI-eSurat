@@ -56,40 +56,54 @@
 @section('content')
     <div class="main-card mb-3 card">
         <div class="card-body"><h5 class="card-title">Form Surat Kegiatan</h5>
-            <form class="">
+            <form class="" action="{{ route('simpan-surat-kegiatan') }}" method="POST">
+                @csrf
+                <!--Hidden Inputan -->
+                    <input type="hidden" name="id_jenis_surats" value="B">
+                    <input type="hidden" name="nama_jenis_surat" value="Surat kegiatan Mahasiswa">
+                    <input type="hidden" name="tipe_surat" value="keluar">
+                    <input type="hidden" name="status" value="diproses">
+                <!--End Hidden Inputan -->
+
                 <div class="position-relative form-group">
                     <label for="prihal" class="">Prihal Surat</label>
-                    <input name="address" id="prihal" placeholder="Prihal Surat" type="text" class="form-control">
+                    <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control">
                 </div>
                 <div class="form-row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="position-relative form-group">
                             <label for="id_user" class="">ID (NIK/NIK)</label>
                             <input name="id_user" id="id_user" placeholder="NIM/NIK" type="text" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="position-relative form-group">
                             <label for="name" class="">Nama</label>
-                            <input name="password" id="examplePassword11" placeholder="Nama" type="text" class="form-control">
+                            <input name="name" id="name" placeholder="Nama" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="position-relative form-group">
-                    <label for="mitra" class="">Pelaksana Tugas</label>
-                    <input name="mitra" id="mitra" placeholder="Pelaksana Tugas" type="text" class="form-control">
+                    <label for="mitra" class="">Mitra</label>
+                    <input name="mitra" id="mitra" placeholder="Mitra" type="text" class="form-control">
                 </div>
                 <div class="form-row">
-                    <div class="col-md-6">
+                    <div class="col-md-2">
                         <div class="position-relative form-group">
-                            <label for="id_user" class="">Tempat</label>
-                            <input name="id_user" id="id_user" placeholder="Tempat" type="email" class="form-control">
+                            <label for="waktu_pelaksanaan" class="">Jam</label>
+                            <input name="waktu_pelaksanaan" id="waktu_pelaksanaan" placeholder="waktu_pelaksanaan" type="time" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-2">
                         <div class="position-relative form-group">
-                            <label for="name" class="">Tanggal Pelaksanaan</label>
-                            <input name="password" id="examplePassword11" placeholder="Nama" type="date" class="form-control">
+                            <label for="tgl_pelaksanaan" class="">Tanggal</label>
+                            <input name="tgl_pelaksanaan" id="tgl_pelaksanaan" placeholder="tgl_pelaksanaana" type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="position-relative form-group">
+                            <label for="lokasi" class="">Tempat</label>
+                            <input name="lokasi" id="id_user" placeholder="Tempat" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -98,7 +112,7 @@
                     <textarea name="text" id="mitra" class="form-control"></textarea>
                 </div>
                 <button class="mt-2 btn btn-primary">Buat</button>
-                <button class="mt-2 btn btn-primary">Batal</button>
+                <a href="/admin/surat" class="mt-2 btn btn-secondary">Batal</a>
             </form>
         </div>
     </div>

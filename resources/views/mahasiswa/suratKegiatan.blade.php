@@ -80,13 +80,13 @@
                 <div class="form-row">
                     <div class="col-md-6">
                         <div class="position-relative form-group">
-                            <label for="waktu_pelaksanaan" class="">Jam Pelaksanaan</label>
+                            <label for="waktu_pelaksanaan" class="">Jam</label>
                             <input name="waktu_pelaksanaan" id="waktu_pelaksanaan" placeholder="Jam Pelaksanaan" type="time" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="position-relative form-group">
-                            <label for="tgl_pelaksanaan" class="">Tanggal Pelaksanaan</label>
+                            <label for="tgl_pelaksanaan" class="">Tanggal</label>
                             <input name="tgl_pelaksanaan" id="tgl_pelaksanaan" placeholder="Tanggal Pelaksanaan" type="date" class="form-control">
                         </div>
                     </div>
@@ -100,5 +100,4 @@
             </form>
         </div>
     </div>
-
 @endsection
