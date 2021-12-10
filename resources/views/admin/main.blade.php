@@ -11,6 +11,7 @@
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
 
+
     <!-- CSS -->
     <link href="{{ asset('template/main.css') }}" rel="stylesheet">
     <!-- Icon -->
@@ -154,6 +155,10 @@
                 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         </div>
     </div>
-    <script type="text/javascript" src="{{ asset('template/assets/scripts/main.js') }}"></script></body>
+    <script type="text/javascript" src="{{ asset('template/assets/scripts/main.js') }}"></script>
+</body>
 
 </html>
+
+
+

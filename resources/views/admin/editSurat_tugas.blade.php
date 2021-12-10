@@ -43,6 +43,13 @@
         </ul>
     @endsection
 
+    @section('pejabat')
+        <a href="/admin/pejabat">
+            <i class='metismenu-icon bx bxs-user-plus'></i>
+            Pejabat
+        </a>
+    @endsection
+
     @section('arsipSurat')
         <a href="/admin/arsip-surat">
             <i class="metismenu-icon bx bxs-bookmarks"></i>
@@ -93,7 +100,7 @@
                 </div>
                 <div class="position-relative form-group">
                     <label for="status" class="">Validasi Surat</label>
-                    <select onchange="checkAlert(event)" name="status" id="status" class="form-control">
+                    <select name="status" id="status" class="form-control">
                         <option value="">--- Pilih ---</option>
                         <option value="ditolak" {{ $surat->status == 'ditolak' ? 'selected' : '' }}>ditolak</option>
                         <option value="diterima" {{ $surat->status == 'diterima' ? 'selected' : '' }} >diterima</option>

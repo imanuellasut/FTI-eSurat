@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/surat-kegiatan" class="mm-active">
+                <a href="/admin/buat-surat/surat-kegiatan">
                     <i class="metismenu-icon"></i>
                     Surat Kegiatan
                 </a>
@@ -42,9 +42,9 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/berita-acara">
+                <a href="/admin/buat-surat/berita-acara" class="mm-active">
                     <i class="metismenu-icon"></i>
-                    Berita Acara
+                    Surat Kegiatan
                 </a>
             </li>
         </ul>
@@ -54,6 +54,13 @@
         <a href="/admin/pejabat">
             <i class='metismenu-icon bx bxs-user-plus'></i>
             Pejabat
+        </a>
+    @endsection
+
+    @section('pejabat')
+        <a href="/admin/pejabat">
+            <i class="metismenu-icon bx bxs-bookmarks"></i>
+            Arsip Surat
         </a>
     @endsection
 
@@ -72,22 +79,32 @@
             <form class="" action="{{ route('simpan-surat-kegiatan') }}" method="POST">
                 @csrf
                 <!--Hidden Inputan -->
-                    <input type="hidden" name="id_jenis_surats" value="B">
-                    <input type="hidden" name="nama_jenis_surat" value="Surat kegiatan Mahasiswa">
+                    <input type="hidden" name="id_jenis_surats" value="E">
+                    <input type="hidden" name="nama_jenis_surat" value="Berita Acara">
                     <input type="hidden" name="tipe_surat" value="keluar">
                     <input type="hidden" name="status" value="diproses">
                 <!--End Hidden Inputan -->
 
                 <div class="position-relative form-group">
-                    <label for="prihal" class="">Tema Kegiatan</label>
+                    <label for="prihal" class="">Tema Acara</label>
                     <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control">
                 </div>
-                <div class="position-relative form-group">
-                    <label for="isi_surat" class="">Tema Kegiatan</label>
-                    <input name="isi_surat" id="isi_surat" placeholder="Isi Surat" type="text" class="form-control">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="position-relative form-group">
+                            <label for="id_user" class="">ID (NIK/NIK)</label>
+                            <input name="id_user" id="id_user" placeholder="NIM/NIK" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="position-relative form-group">
+                            <label for="name" class="">Nama</label>
+                            <input name="name" id="name" placeholder="Nama" type="text" class="form-control">
+                        </div>
+                    </div>
                 </div>
                 <div class="position-relative form-group">
-                    <label for="mitra" class="">Mitra</label>
+                    <label for="mitra" class="">Pembicara</label>
                     <input name="mitra" id="mitra" placeholder="Mitra" type="text" class="form-control">
                 </div>
                 <div class="form-row">

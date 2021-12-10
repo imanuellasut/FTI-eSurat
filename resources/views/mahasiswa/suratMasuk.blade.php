@@ -78,7 +78,7 @@
                             @if($data->user->id === Auth::user()->id && $data->tipe_surat == 'masuk')
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>
-                                    <td> - </td>
+                                    <td>{{ $data->no_surat }}</td>
                                     <td>{{ $data->nama_jenis_surat }}</td>
                                     <td>{{ $data->tgl_pelaksanaan }}</td>
                                     <td>{{ $data->prihal }}</td>

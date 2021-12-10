@@ -59,7 +59,7 @@
                                 <div class="widget-content-left">
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="{{ asset('template/assets/images/avatars/1.jpg') }}" alt="">
+                                            <img width="42" class="rounded-circle" src="{{ asset('img/profile/' .Auth::user()->id_user. '.jpg') }}" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@
                     <div class="app-main__inner">
                         <!-- Content -->
                         @yield('content')
-                        
+
                     </div>
                 </div>
                 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>

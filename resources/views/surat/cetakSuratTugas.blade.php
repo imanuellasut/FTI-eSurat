@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
 </head>
 <body>
+
     <table>
             <tr>
                 <td width="60px">
-                    <img src="https://www.ukdw.ac.id/wp-content/uploads/2017/10/logo-ukdw.png" width="60" height="80"/>
+                    <img src="{{ public_path("/img/logo/logo-ukdw.png")}}" width="60" height="80" />
                 </td>
                 <td>&nbsp;&nbsp;</td>
                 <td>
@@ -40,14 +39,12 @@
         </table>
 
     <hr>
-    
+
     <br>
     <div class="row" align="center">
         <h2><u>{{ $cetak->nama_jenis_surat}}</u></h2>
-        <h3>No. : 000/A.00/FTI/2021 </h3>
-        <!--System-->
+        <h3>No. : {{ $cetak->no_surat}} </h3>
     </div>
-
     <br>
 
     <div class="col-sm; ml-10; mr-10;" align="justify">
@@ -64,8 +61,15 @@
                 </tr>
                 <tr style="text-align: center">
                     <td>{{$no++}}</td>
-                    <td>{{ $cetak->user->name}}</td>
-                    <td>{{ $cetak->user->id_user}}</td>
+                    @foreach ($cetak as $data )
+                    <td>{{ $data->nama_pengaju }}}</td>
+                    <td>{{ $data->id_pengaju }}}</td>
+                    @endforeach
+
+                    {{-- <td>{{ $cetak->id_pengaju }}</td> --}}
+                    {{-- <td>{{ $cetak->nama_pengaju }}</td> --}}
+                    {{-- <td>{{ $cetak->user->name}}</td>
+                    <td>{{ $cetak->user->id_user}}</td> --}}
                 </tr>
             </table>
         </div>
@@ -85,15 +89,16 @@
             <br>
         </div>
         <div align="left">
-            <div style="font-size: 16px">24 Januari 2020</div>
-            <div style="font-size: 16px">Dekan,</div><br><br><br><br><br><br>
-            <div style="font-size: 16px"><b><u>Restyandito, S.Kom., MSIS., Ph.D.</u></b></div>
+            <div style="font-size: 16px">{{ $cetak->tgl_validasi}}</div>
+            <div style="font-size: 16px">{{ $cetak->validasi->jabatan}}</div>
+            <div><img src="{{ public_path("/validasi/". $cetak->validasi->tanda_tangan. ".png")}}" alt="{{ $cetak->validasi->tanda_tangan}}.png"  width="100" height="100"/></div>
+            <div style="font-size: 16px"><b><u>{{ $cetak->validasi->nama_pejabat}}</u></b></div>
             <!--Nama Pengirim-->
-            <div style="font-size: 16px">NIK : 004 E 289</div>
+            <div style="font-size: 16px">NIK : {{ $cetak->validasi->tanda_tangan}}"</div>
             <!--NIK Pengirim-->
         </div>
+    </div>
 
 </body>
-
 </html>
 

@@ -109,7 +109,7 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>
-                                    <td></td>
+                                    <td>{{ $data->no_surat }}</td>
                                     <td>{{ $data->nama_jenis_surat }}</td>
                                     <td>{{ $data->tgl_pelaksanaan }}</td>
                                     <td>{{ $data->waktu_pelaksanaan }}</td>

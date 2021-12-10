@@ -40,6 +40,12 @@
                     Surat SK Dekan
                 </a>
             </li>
+            <li>
+                <a href="/admin/buat-surat/berita-acara">
+                    <i class="metismenu-icon"></i>
+                    Berita Acara
+                </a>
+            </li>
         </ul>
     @endsection
 

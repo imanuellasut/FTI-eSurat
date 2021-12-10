@@ -34,10 +34,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventBackHistory']], function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/surat', [AdminController::class, 'getAllSurat'])->name('admin.surat');
+    Route::post('/surat/validasi/{id}', [AdminController::class, 'validasi'])->name('validasi-surat');
 
     //Surat Tugas
     Route::get('/buat-surat/surat-tugas', [AdminController::class, 'buatSuratTugas'])->name('admin.suratTugas');
-    Route::post('/surat/surat-tugas/simpan', [AdminController::class, 'simpanSuratTugas'])->name('simpan-surat-tugas');
+    Route::post('/surat/surat-tugas/simpan', [AdminController::class, 'simpanSuratTugas'])->name('admin-simpan-surat-tugas');
     Route::get('/surat/edit-surat-tugas/id-{id}', [AdminController::class, 'editSuratTugas'])->name('edit-surat-tugas');
     Route::post('/surat/update-surat-tugas/{id}', [AdminController::class, 'updateSuratTugas'])->name('update-surat-tugas');
     Route::get('/surat/hapus-surat/id-{id}', [AdminController::class, 'hapusSurat'])->name('hapus-surat');
@@ -53,6 +54,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     //End Surat Kegiatan
 
     Route::get('/buat-surat/surat-sk-dekan', [AdminController::class, 'suratSKdekan'])->name('admin.suratSKdekan');
+
+    //Berita Acara
+    Route::get('/buat-surat/berita-acara', [AdminController::class, 'beritaAcara']);
+    //End Berita Acara
+
 });
 
 Route::group(['prefix' => 'dosen', 'middleware' => ['isDosen', 'auth', 'PreventBackHistory']], function () {

@@ -72,7 +72,7 @@
                             @if($data->user->id === Auth::user()->id && $data->tipe_surat == 'masuk')
                                 <tr>
                                     <th scope="row">{{ $no++ }}</th>
-                                    <td> - </td>
+                                    <td>{{ $data->no_surat }}</td>
                                     <td>{{ $data->nama_jenis_surat }}</td>
                                     <td>{{ $data->tgl_pelaksanaan }}</td>
                                     <td>{{ $data->prihal }}</td>
@@ -88,9 +88,9 @@
                                     <td>
 
                                         <div class="mb-1">
-                                            <a href="" class="badge badge-secondary">
+                                            <button type="button" class="btn badge badge-secondary border-0" data-toggle="modal" data-target="#lihatSurat">
                                                 <i class='bx bxs-show bx-xs'></i>
-                                            </a>
+                                            </button>
                                         </div>
                                         @if($data->status == 'diterima')
                                         <div class="mb-1">
@@ -119,3 +119,31 @@
         </div>
     </div>
 @endsection
+
+<!-- Info Lihat Surat Keluar -->
+    @foreach ($suratMasuk as $data )
+    @if($data->user->id === Auth::user()->id)
+        <div class="modal fade" id="lihatSurat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detail Surat</h5>
+                    </div>
+                    <div class="modal-bodys">
+                        <p class="mb-2 ml-2">
+                            Jenis Surat  : {{ $data->nama_jenis_surat }}
+                            <br/>Prihal  : {{ $data->prihal }}
+                            <br/>Jam     : {{ $data->waktu_pelaksanaan }}
+                            <br/>Tanggal : {{ $data->tgl_pelaksanaan }}
+                            <br/>Keterangan : {{ $data->keterangan }}
+                            </p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+    @endforeach
+<!-- End Info Lihat Surat Keluar -->

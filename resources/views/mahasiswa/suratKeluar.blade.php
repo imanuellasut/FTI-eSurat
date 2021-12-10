@@ -201,7 +201,7 @@
                             <br/>Mitra   : {{ $data->nama_mitra }}
                             <br/>Tanggal : {{ $data->tgl_pelaksanaan }}
                             <br/>Keterangan : {{ $data->keterangan }}
-                            </p>
+                        </p>
                     </div>
                     <div class="modal-footer justify-content-center">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
