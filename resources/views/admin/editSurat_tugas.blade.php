@@ -29,27 +29,31 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/surat-kegiatan">
+                <a href="/admin/buat-surat/surat-keterangan">
                     <i class="metismenu-icon"></i>
-                    Surat Kegiatan
+                    Surat keterangan
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/SK-Dekan">
+                <a href="/admin/buat-surat/surat-sk-dekan">
                     <i class="metismenu-icon"></i>
                     Surat SK Dekan
                 </a>
             </li>
         </ul>
+        <li>
+            <a href="/admin/buat-surat/surat-undangan">
+                <i class="metismenu-icon"></i>
+                Surat Undangan
+            </a>
+        </li>
+        <li>
+            <a href="/admin/buat-surat/berita-acara">
+                <i class="metismenu-icon"></i>
+                Berita Acara
+            </a>
+        </li>
     @endsection
-
-    @section('pejabat')
-        <a href="/admin/pejabat">
-            <i class='metismenu-icon bx bxs-user-plus'></i>
-            Pejabat
-        </a>
-    @endsection
-
     @section('arsipSurat')
         <a href="/admin/arsip-surat">
             <i class="metismenu-icon bx bxs-bookmarks"></i>

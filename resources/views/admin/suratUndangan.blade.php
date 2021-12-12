@@ -36,13 +36,13 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/surat-sk-dekan" class="mm-active">
+                <a href="/admin/buat-surat/surat-sk-dekan">
                     <i class="metismenu-icon"></i>
                     Surat SK Dekan
                 </a>
             </li>
-            <li>
-                <a href="/admin/buat-surat/surat-undangan">
+             <li>
+                <a href="/admin/buat-surat/surat-undangan" class="mm-active">
                     <i class="metismenu-icon"></i>
                     Surat Undangan
                 </a>

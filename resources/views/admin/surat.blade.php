@@ -29,15 +29,21 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/surat-kegiatan">
+                <a href="/admin/buat-surat/surat-keterangan">
                     <i class="metismenu-icon"></i>
-                    Surat Kegiatan
+                    Surat keterangan
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/SK-Dekan">
+                <a href="/admin/buat-surat/surat-sk-dekan">
                     <i class="metismenu-icon"></i>
                     Surat SK Dekan
+                </a>
+            </li>
+            <li>
+                <a href="/admin/buat-surat/surat-undangan">
+                    <i class="metismenu-icon"></i>
+                    Surat Undangan
                 </a>
             </li>
             <li>
@@ -68,6 +74,20 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
+            @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+
+            <!-- Surat Keterangan Berhasil -->
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
             <div class="main-card mb-3 card">
                 @if(session('status'))
                     <div class="alert alert-success">
@@ -114,8 +134,8 @@
                                             </div>
                                         @elseif($surat->id_jenis_surats == 'B')
                                             <div class="">
-                                                <a href="surat/edit-surat-kegiatan/id-{{ $surat->id }}" class="badge badge-info">
-                                                    <i class='bx bxs-edit bx-xs' title="Surat Kegiatan Mahasiswa"></i>
+                                                <a href="#" class="badge badge-info" data-toggle="modal" data-target="#suratketerangan{{ $surat->id }}">
+                                                    <i class='bx bxs-edit bx-xs' title="Surat Keterangan"></i>
                                                 </a>
                                             </div>
                                         @elseif($surat->id_jenis_surats == 'C')
@@ -126,15 +146,9 @@
                                             </div>
                                         @elseif($surat->id_jenis_surats == 'D')
                                             <div class="">
-                                                {{-- <button type="button" class="btn badge badge-info border-0" data-toggle="modal" data-tmodal-arget=".bd-example-lg">
-                                                    <i class='bx bxs-edit bx-xs' title="Surat Tugas"></i>
-                                                </button> --}}
                                                 <a href="#" class="badge badge-info" data-toggle="modal" data-target="#surattugas{{ $surat->id }}">
                                                     <i class='bx bxs-edit bx-xs' title="Surat Tugas"></i>
                                                 </a>
-                                                {{-- <a href="surat/edit-surat-tugas/id-{{ $surat->id }}" class="badge badge-info">
-                                                    <i class='bx bxs-edit bx-xs' title="Surat Tugas"></i>
-                                                </a> --}}
                                             </div>
                                         @elseif($surat->id_jenis_surats == 'E')
                                             <div class="">
@@ -153,7 +167,11 @@
                                                 </a>
                                             </div>
                                         @elseif($surat->id_jenis_surats == 'B' && $surat->status == 'diterima' )
-
+                                            <div class="mt-1">
+                                                <a href="surat/cetak-{{ $surat->id}}" class="badge badge-success">
+                                                    <i class='bx bxs-download bx-xs'></i>
+                                                </a>
+                                            </div>
                                         @elseif($surat->id_jenis_surats == 'C' && $surat->status == 'diterima' )
 
                                         @elseif($surat->id_jenis_surats == 'D' && $surat->status == 'diterima' )
@@ -194,7 +212,78 @@
 
 <!-- Pup Up Validasi Surat Tugas-->
     @foreach ($allSurats as $surat )
-    <div class="modal fade" id="surattugas{{ $surat->id }}" tabindex="-1" role="dialog" aria-labelledby="surattugaslLabel" aria-hidden="true">
+    <div class="modal fade" id="surattugas{{ $surat->id }}" tabindex="-1" role="dialog" aria-labelledby="suratketeranganlLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="suratketeranganlLabel">Validasi Surat Tugas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <th>Jenis Surat</th>
+                            <td>: {{ $surat->nama_jenis_surat }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prihal</th>
+                            <td>: {{ $surat->prihal }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mitra</th>
+                            <td>: {{ $surat->nama_mitra }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tanggal</th>
+                            <td>: {{ $surat->tgl_pelaksanaan }}</td>
+                        </tr>
+                        <tr>
+                            <th>Keterangan</th>
+                            <td>: {{ $surat->keterangan }}</td>
+                        </tr>
+                    </table>
+
+                    <form method="post" action="{{ url('admin/surat/update-surat-tugas', $surat->id) }}">
+                        @csrf
+
+                        <!--Hidden Inputan -->
+                            <input type="hidden" name="tipe_surat" value="Masuk">
+                            <input type="hidden" name="no_surat" value="{{ $validasiD }}/{{ $surat->id_jenis_surats }}/FTI/<?php echo date("Y") ?>">
+                            <input type="hidden" name="tgl_validasi" id="tgl_validasi" placeholder="tgl_validasi" type="date" class="form-control" value="<?php echo date("Y-m-d") ?>">
+                        <!--End Hidden Inputan -->
+
+                        <label for="status" class="">Status Surat</label>
+                        <select onchange="checkAlert(event)" name="status" id="status" class="form-control">
+                            <option value="">--- Pilih Status Surat ---</option>
+                            <option value="ditolak" {{ $surat->status == 'ditolak' ? 'selected' : '' }}>ditolak</option>
+                            <option value="diterima" {{ $surat->status == 'diterima' ? 'selected' : '' }} >diterima</option>
+                        </select>
+
+                        <label for="id_validasi" class="mt-1">Tanda Tangan</label>
+                        <select name="id_validasi" id="id_validasi" class="form-control">
+                            <option value="">--- Pilih Pejabat ---</option>
+                            <option value="1" {{ $surat->validasi->id_validasi == '1' ? 'selected' : '' }}>Ir. Henry Feriadi, M.Sc., Ph.D. - Rektor</option>
+                            <option value="2" {{ $surat->validasi->id_validasi == '2' ? 'selected' : '' }}>Restyandito, S.Kom., MSIS, Ph.D. - Dekan</option>
+                            <option value="3" {{ $surat->validasi->id_validasi == '3' ? 'selected' : '' }}>Drs. Jong Jek Siang, M.Sc. - Ka.Prodi</option>
+                            <option value="4" {{ $surat->validasi->id_validasi == '4' ? 'selected' : '' }}>Drs. Wimmie Handiwidjojo, MIT - Kepala Biro 1</option>
+                            <option value="5" {{ $surat->validasi->id_validasi == '5' ? 'selected' : '' }}>Budi Sutedjo DO, S.Kom, MM. - Wali Studi</option>
+                        </select>
+
+                        <button type="submit" class="mt-2 btn btn-primary">Validasi</button>
+                        <a href="#" class="mt-2 btn btn-secondary" data-dismiss="modal">Kembali</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+<!-- End Pup Up Validasi -->
+
+<!-- Pup Up Validasi Surat Keterangan-->
+    @foreach ($allSurats as $surat )
+    <div class="modal fade" id="suratketerangan{{ $surat->id }}" tabindex="-1" role="dialog" aria-labelledby="suratketeranganlLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -232,7 +321,8 @@
 
                         <!--Hidden Inputan -->
                             <input type="hidden" name="tipe_surat" value="Masuk">
-                            <input type="hidden" name="no_surat" value="{{ $validasiD }}/D/FTI/<?php echo date("Y") ?>">
+                            <input type="hidden" name="no_surat" value="{{ $validasiD }}/B/FTI/<?php echo date("Y") ?>">
+                            <input type="hidden" name="tgl_validasi" id="tgl_validasi" placeholder="tgl_validasi" type="date" class="form-control" value="<?php echo date("Y-m-d") ?>">
                         <!--End Hidden Inputan -->
 
                         <label for="status" class="">Status Surat</label>
@@ -245,15 +335,12 @@
                         <label for="id_validasi" class="mt-1">Tanda Tangan</label>
                         <select name="id_validasi" id="id_validasi" class="form-control">
                             <option value="">--- Pilih Pejabat ---</option>
-                            <option value="1" {{ $surat->validasi->id_validasi == '1' ? 'selected' : '' }}>Ir. Henry Feriadi, M.Sc., Ph.D.</option>
-                            <option value="2" {{ $surat->validasi->id_validasi == '2' ? 'selected' : '' }}>Restyandito, S.Kom., MSIS, Ph.D.</option>
-                            <option value="3" {{ $surat->validasi->id_validasi == '3' ? 'selected' : '' }}>Drs. Jong Jek Siang, M.Sc.</option>
-                            <option value="4" {{ $surat->validasi->id_validasi == '4' ? 'selected' : '' }}>Drs. Wimmie Handiwidjojo, MIT</option>
-                            <option value="5" {{ $surat->validasi->id_validasi == '5' ? 'selected' : '' }}>Budi Sutedjo DO, S.Kom, MM.</option>
+                            <option value="1" {{ $surat->validasi->id_validasi == '1' ? 'selected' : '' }}>Ir. Henry Feriadi, M.Sc., Ph.D. - Rektor</option>
+                            <option value="2" {{ $surat->validasi->id_validasi == '2' ? 'selected' : '' }}>Restyandito, S.Kom., MSIS, Ph.D. - Dekan</option>
+                            <option value="3" {{ $surat->validasi->id_validasi == '3' ? 'selected' : '' }}>Drs. Jong Jek Siang, M.Sc. - Ka.Prodi</option>
+                            <option value="4" {{ $surat->validasi->id_validasi == '4' ? 'selected' : '' }}>Drs. Wimmie Handiwidjojo, MIT - Kepala Biro 1</option>
+                            <option value="5" {{ $surat->validasi->id_validasi == '5' ? 'selected' : '' }}>Budi Sutedjo DO, S.Kom, MM. - Wali Studi</option>
                         </select>
-
-                        <label for="tgl_validasi" class="mt-1">Tanggal Validasi</label>
-                        <input name="tgl_validasi" id="tgl_validasi" placeholder="tgl_validasi" type="date" class="form-control">
 
                         <button type="submit" class="mt-2 btn btn-primary">Validasi</button>
                         <a href="#" class="mt-2 btn btn-secondary" data-dismiss="modal">Kembali</a>

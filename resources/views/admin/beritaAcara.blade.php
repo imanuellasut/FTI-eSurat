@@ -30,21 +30,27 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/surat-kegiatan">
+                <a href="/admin/buat-surat/surat-keterangan">
                     <i class="metismenu-icon"></i>
-                    Surat Kegiatan
+                    Surat Keterangan
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/SK-Dekan">
+                <a href="/admin/buat-surat/surat-sk-dekan" >
                     <i class="metismenu-icon"></i>
                     Surat SK Dekan
                 </a>
             </li>
             <li>
+                <a href="/admin/buat-surat/surat-undangan">
+                    <i class="metismenu-icon"></i>
+                    Surat Undangan
+                </a>
+            </li>
+            <li>
                 <a href="/admin/buat-surat/berita-acara" class="mm-active">
                     <i class="metismenu-icon"></i>
-                    Surat Kegiatan
+                    Berita Acara
                 </a>
             </li>
         </ul>
@@ -75,10 +81,11 @@
 
 @section('content')
     <div class="main-card mb-3 card">
-        <div class="card-body"><h5 class="card-title">Form Surat Kegiatan</h5>
-            <form class="" action="{{ route('simpan-surat-kegiatan') }}" method="POST">
+        <div class="card-body"><h5 class="card-title">Form Berita Acara</h5>
+            <form class="" action="{{ route('simpan-berita-acara') }}" method="POST">
                 @csrf
                 <!--Hidden Inputan -->
+                    <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
                     <input type="hidden" name="id_jenis_surats" value="E">
                     <input type="hidden" name="nama_jenis_surat" value="Berita Acara">
                     <input type="hidden" name="tipe_surat" value="keluar">
@@ -86,25 +93,15 @@
                 <!--End Hidden Inputan -->
 
                 <div class="position-relative form-group">
-                    <label for="prihal" class="">Tema Acara</label>
+                    <label for="prihal" class="">Prihal Acara</label>
                     <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control">
                 </div>
-                <div class="form-row">
-                    <div class="col-md-4">
-                        <div class="position-relative form-group">
-                            <label for="id_user" class="">ID (NIK/NIK)</label>
-                            <input name="id_user" id="id_user" placeholder="NIM/NIK" type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="position-relative form-group">
-                            <label for="name" class="">Nama</label>
-                            <input name="name" id="name" placeholder="Nama" type="text" class="form-control">
-                        </div>
-                    </div>
+                <div class="position-relative form-group">
+                    <label for="tema" class="">Tema Acara</label>
+                    <input name="tema" id="tema" placeholder="Tema Acara" type="text" class="form-control">
                 </div>
                 <div class="position-relative form-group">
-                    <label for="mitra" class="">Pembicara</label>
+                    <label for="mitra" class="">Mitra</label>
                     <input name="mitra" id="mitra" placeholder="Mitra" type="text" class="form-control">
                 </div>
                 <div class="form-row">
@@ -123,13 +120,17 @@
                     <div class="col-md-8">
                         <div class="position-relative form-group">
                             <label for="lokasi" class="">Tempat</label>
-                            <input name="lokasi" id="id_user" placeholder="Tempat" type="text" class="form-control">
+                            <input name="lokasi" id="lokasi" placeholder="Tempat" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="position-relative form-group">
-                    <label for="mitra" class="">Keterangan</label>
-                    <textarea name="text" id="mitra" class="form-control"></textarea>
+                    <label for="isi_surat" class="">Isi Acara</label>
+                    <textarea name="isi_surat" id="isi_surat" class="form-control"></textarea>
+                </div>
+                <div class="position-relative form-group">
+                    <label for="keterangan" class="">Keterangan Acara</label>
+                    <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
                 </div>
                 <button class="mt-2 btn btn-primary">Buat</button>
                 <a href="/admin/surat" class="mt-2 btn btn-secondary">Batal</a>

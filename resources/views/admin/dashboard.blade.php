@@ -29,15 +29,21 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/surat-kegiatan">
+                <a href="/admin/buat-surat/surat-keterangan">
                     <i class="metismenu-icon"></i>
-                    Surat Kegiatan
+                    Surat keterangan
                 </a>
             </li>
             <li>
-                <a href="/admin/buat-surat/SK-Dekan">
+                <a href="/admin/buat-surat/surat-sk-dekan">
                     <i class="metismenu-icon"></i>
                     Surat SK Dekan
+                </a>
+            </li>
+            <li>
+                <a href="/admin/buat-surat/surat-undangan">
+                    <i class="metismenu-icon"></i>
+                    Surat Undangan
                 </a>
             </li>
             <li>
@@ -69,8 +75,8 @@
                         <div class="widget-subheading">Total Surat Tugas</div>
                     </div>
                     <div class="widget-content-right">
-                        <div class="widget-numbers text-success">
-                            <span>1896</span>
+                        <div class="widget-numbers text-info">
+                            <span>{{ $validasiD }}</span>
                         </div>
                     </div>
                 </div>
@@ -87,7 +93,7 @@
                     </div>
                     <div class="widget-content-right">
                         <div class="widget-numbers text-info">
-                            <span>1896</span>
+                            <span>5</span>
                         </div>
                     </div>
                 </div>
@@ -104,7 +110,7 @@
                     </div>
                     <div class="widget-content-right">
                         <div class="widget-numbers text-info">
-                            <span>1896</span>
+
                         </div>
                     </div>
                 </div>

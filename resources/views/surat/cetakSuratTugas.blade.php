@@ -42,8 +42,8 @@
 
     <br>
     <div class="row" align="center">
-        <h2><u>{{ $cetak->nama_jenis_surat}}</u></h2>
-        <h3>No. : {{ $cetak->no_surat}} </h3>
+        {{-- <h2><u>{{ $cetakSuratJson->nama_jenis_surat}}</u></h2>
+        <h3>No. : {{ $cetakSuratJson->no_surat}} </h3> --}}
     </div>
     <br>
 
@@ -53,22 +53,21 @@
         </div><br>
         <div class="col-sm">
             <?php $no = 1; ?>
-            <table border="1" align="center">
-                <tr>
-                    <th width="30px">NO</th>
-                    <th width="200px">Nama</th>
-                    <th width="150px">NIM</th>
+            <table align="center" style="border-collapse: collapse, border: 1px solid black">
+                <tr >
+                    <th width="30px" style="border: 1px solid black">NO</th>
+                    <th width="200px" style="border: 1px solid black">Nama</th>
+                    <th width="150px" style="border: 1px solid black">NIM</th>
                 </tr>
                 <tr style="text-align: center">
-                    <td>{{$no++}}</td>
-                    @foreach ($cetak as $data )
-                    <td>{{ $data->nama_pengaju }}}</td>
-                    <td>{{ $data->id_pengaju }}}</td>
+                    <td style="border: 1px solid black">{{$no++}}</td>
+                    @foreach ($pengaju as $data )
+                    <td style="border: 1px solid black">{{ $data }}</td>
                     @endforeach
 
-                    {{-- <td>{{ $cetak->id_pengaju }}</td> --}}
-                    {{-- <td>{{ $cetak->nama_pengaju }}</td> --}}
-                    {{-- <td>{{ $cetak->user->name}}</td>
+                    {{-- <td>{{ $cetak->id_pengaju }}</td>
+                    <td>{{ $cetak->nama_pengaju }}</td>
+                    <td>{{ $cetak->user->name}}</td>
                     <td>{{ $cetak->user->id_user}}</td> --}}
                 </tr>
             </table>
@@ -76,7 +75,7 @@
 
         <br>
 
-        <div class="col-sm">
+        {{-- <div class="col-sm">
             <div style="font-size: 16px;">Untuk mengikuti {{$cetak->perihal}} yang dilaksanakan oleh Mitra {{$cetak->nama_mitra}},
                 yang diselenggarakan oleh LPPM UKDW, pada tanggal {{$cetak->tgl_pelaksanaan}}.</div>
             <!---->
@@ -97,7 +96,7 @@
             <div style="font-size: 16px">NIK : {{ $cetak->validasi->tanda_tangan}}"</div>
             <!--NIK Pengirim-->
         </div>
-    </div>
+    </div> --}}
 
 </body>
 </html>

@@ -19,9 +19,11 @@ class Surats extends Model
         'id_jenis_surats',
         'no_surat',
         'id_validasi',
+        'pengaju',
         'id_pengaju',
         'nama_pengaju',
         'nama_jenis_surat',
+        'tema',
         'prihal',
         'tgl_pelaksanaan',
         'tgl_mulai',
@@ -44,9 +46,23 @@ class Surats extends Model
     ];
 
     protected $casts = [
+        'pengaju' => 'array',
         'id_pengaju' => 'array',
         'nama_pengaju' => 'array',
     ];
+
+    // public function setPengajuAttribute($value)
+	// {
+	//     $pengaju = [];
+
+	//     foreach ($value as $array_item) {
+	//         if (!is_null($array_item['idPengaju'])) {
+	//             $pengaju[] = $array_item;
+	//         }
+	//     }
+
+	//     $this->attributes['pengaju'] = json_encode($pengaju);
+	// }
 
     // public function jenis_surat()
     // {

@@ -28,6 +28,9 @@ Route::middleware(['middleware' => 'PreventBackHistory'])->group(function () {
     Auth::routes();
 });
 
+Route::get('/ajax', function () {
+    return view('ajax');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -45,18 +48,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::get('/surat/cetak-{id}', [AdminController::class, 'cetakSuratTugas'])->name('cetak-surat-tugas');
     //End Surat Tugas
 
-    //Surat Kegiatan
-    Route::get('/buat-surat/surat-kegiatan', [AdminController::class, 'suratKegiatan'])->name('admin.suratKegiatan');
-    Route::post('/surat/surat-kegiatan/simpan', [AdminController::class, 'simpanSuratKegiatanMahasiswa'])->name('simpan-surat-kegiatan');
-    Route::get('/surat/edit-surat-kegiatan/id-{id}', [AdminController::class, 'editSuratKegiatan'])->name('edit-surat-kegiatan');
-    Route::post('/surat/update-surat-kegiatan/{id}', [AdminController::class, 'updatSuratKegiatan'])->name('update-surat-kegiatan');
-    Route::get('/surat/cetak-{id}', [AdminController::class, 'cetakSuratTugas'])->name('cetak-surat-tugas');
-    //End Surat Kegiatan
+    //Surat Keterangan
+    Route::get('/buat-surat/surat-keterangan', [AdminController::class, 'suratsuratKeterangan'])->name('admin.suratKeterangan');
+    Route::post('/surat/surat-keterangan/simpan', [AdminController::class, 'simpanSuratKeterangan'])->name('simpan-surat-keterangan');
+    Route::get('/surat/edit-surat-keterangan/id-{id}', [AdminController::class, 'editSuratKeterangan'])->name('edit-surat-keterangan');
+    Route::post('/surat/update-surat-keterangan/{id}', [AdminController::class, 'updatSuratKegiatan'])->name('update-surat-keterangan');
+    Route::get('/surat/cetak-{id}', [AdminController::class, 'cetakSuratKeterangan'])->name('cetak-surat-keterangan');
+    //End Surat Keterangan
 
     Route::get('/buat-surat/surat-sk-dekan', [AdminController::class, 'suratSKdekan'])->name('admin.suratSKdekan');
 
+    //Surat Undangan
+    Route::get('/buat-surat/surat-undangan', [AdminController::class, 'suratUndangan'])->name('surat-undangan');
+    //End Surat Undangan
+
     //Berita Acara
     Route::get('/buat-surat/berita-acara', [AdminController::class, 'beritaAcara']);
+    Route::post('/surat/berita-acara/simpan', [AdminController::class, 'simpanBeritaAcara'])->name('simpan-berita-acara');
     //End Berita Acara
 
 });

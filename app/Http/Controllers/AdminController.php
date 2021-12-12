@@ -16,7 +16,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $validasiD = DB::table('surats')->where('id_jenis_surats', 'D')->get()->count();
+        return view('admin.dashboard', compact('validasiD'));
     }
 
     public function surat()
@@ -44,7 +45,7 @@ class AdminController extends Controller
     public function hapusSurat($id)
     {
         $surat = Surats::findOrfail($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with(['error' => 'Berhasil Menghapus Surat']);
     }
 
     public function buatSuratTugas()
@@ -54,6 +55,7 @@ class AdminController extends Controller
 
     public function simpanSuratTugas(Request $request)
     {
+        //$surat = Surats::create($request->all());
 
         $data = $request->all();
         //dd($data);
@@ -64,8 +66,8 @@ class AdminController extends Controller
         $surat->id_user = $data['id_user'];
         $surat->id_jenis_surats = $data['id_jenis_surats'];
         $surat->nama_jenis_surat = $data['nama_jenis_surat'];
-        $surat->id_pengaju = $data['id_pengaju'];
-        $surat->nama_pengaju = $data['nama_pengaju'];
+        $surat->pengaju = $data['pengaju'];
+        $surat->tema = $data['tema'];
         $surat->prihal = $data['prihal'];
         $surat->nama_mitra = $data['nama_mitra'];
         $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];
@@ -75,23 +77,7 @@ class AdminController extends Controller
         $surat->status = $data['status'];
         $surat->save();
 
-
-        // Surats::create([
-        //     'id_user' => $request->id_user,
-        //     'id_jenis_surats' => $request->id_jenis_surats,
-        //     'nama_jenis_surat' => $request->nama_jenis_surat,
-        //     'id_pengaju' => $request->id_pengaju,
-        //     'nama_pengaju' => $request->nama_pengaju,
-        //     'prihal' => $request->prihal,
-        //     'nama_mitra' => $request->nama_mitra,
-        //     'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
-        //     'lokasi' => $request->lokasi,
-        //     'keterangan' => $request->keterangan,
-        //     'tipe_surat' => $request->tipe_surat,
-        //     'status' => $request->status,
-        // ]);
-
-        return redirect()->back()->with('status', 'Surat Tugas berhasil Ditambahkan');
+        return redirect('admin/surat')->with('status', 'Berhasil Tambah Surat Tugas');
     }
 
     public function editSuratTugas($id)
@@ -108,73 +94,88 @@ class AdminController extends Controller
         return redirect('admin/surat');
     }
 
-    public function cetakSuratTugas($id) {
+    // public function cetakSuratTugas($id) {
 
-        $cetak = Surats::with('user', 'validasi')->findOrFail($id);
+    //     $cetak = Surats::with('user', 'validasi')->findOrFail($id);
+    //     //$cetakSuratJson = Surats::($id)->toArray();
+    //     // $jsonData = json_decode($cetakSuratJson, true);
 
-        // $cetakSurat = Surats::with('user', 'validasi')->findOrfail($id)->first();
-        // $cetak['cetakSurat'] =  $cetakSurat;
-        // $cetak = json_decode($dataSurat);
+    //     // $cetakData = Surats::findOrFail($id);
 
-        // dd($cetak);
+    //     // $cetakSuratJson = Surats::findOrFail($id);
+    //     $jsonData = DB::table('surats')
+    //                 -> select('pengaju')
+    //                 -> where('id', $id)->get()->toJson();
 
-        return view('surat.cetakSuratTugas', compact('cetak'));
-    }
+    //     // $cetakSuratJson = Surats::with('validasi', 'user')->where('id', $id)->orderBy('updated_at', 'desc')->get()->toJson();
+    //     // $cetakSuratJson = json_decode($jsonData);
+    //     // $cetak = Surats::with('user', 'validasi')->get($id);
+    //     // $cetakData['cetakSurat'] =  $cetakSuratJson;
+    //     $pengaju = json_decode($jsonData, true);
+    //     // var_dump(json_decode($jsonData, true));
+    //     // dd($pengaju);
 
-    // public function cetakSuratTugas($id)
-    // {
-    //     $options = new Options();
-    //     $dompdf = new Dompdf($options);
-    //     $options->setIsHtml5ParserEnabled(true);
-    //     $options->setDebugPng(true);
+    //     //$cetakData['jsonData'] = $jsonData;
 
-    //     $cetak = Surats::with('user', 'validasi')->findOrfail($id);
-    //     // $pdf = PDF::loadview('surat.cetakSuratTugas', ['cetak' => $cetak]);
-
-    //     $html = view('surat.cetakSuratTugas', compact('cetak'));
-
-    //     // $pdf = new Dompdf();
-
-    //     $dompdf->loadHtml($html);
-
-    //     // (Optional) Setup the paper size and orientation
-    //     // $dompdf->setPaper('A4', 'portrait');
-
-    //     // Render the HTML as PDF
-    //     $dompdf->render();
-
-    //     // Output the generated PDF to Browser
-    //     // return $dompdf->stream();
-
-    //     return $dompdf->stream('Surat Tugas.pdf', array('Attachment' => false));
-    //     //return view('surat.cetaksuratTugas', compact('cetak'));
+    //     return view('surat.cetakSuratTugas', compact('cetak', 'pengaju'));
     // }
 
-    public function suratKegiatan()
+    public function cetakSuratTugas($id)
     {
-        return view('admin.suratKegiatan');
+        $options = new Options();
+        $dompdf = new Dompdf($options);
+        $options->setIsHtml5ParserEnabled(true);
+        $options->setDebugPng(true);
+
+        $cetak = Surats::with('user', 'validasi')->findOrfail($id);
+        // $pdf = PDF::loadview('surat.cetakSuratTugas', ['cetak' => $cetak]);
+
+        $html = view('surat.cetakSuratTugas', compact('cetak'));
+
+        // $pdf = new Dompdf();
+
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        // $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        // return $dompdf->stream();
+
+        return $dompdf->stream('Surat Tugas.pdf', array('Attachment' => false));
+        //return view('surat.cetaksuratTugas', compact('cetak'));
     }
 
-    public function simpanSuratKegiatan(Request $request)
+    public function suratsuratKeterangan()
+    {
+        return view('admin.suratKeterangan');
+    }
+
+    public function simpanSuratKeterangan(Request $request)
     {
         Surats::create([
             'id_user' => $request->id_user,
             'id_jenis_surats' => $request->id_jenis_surats,
             'nama_jenis_surat' => $request->nama_jenis_surat,
             'prihal' => $request->prihal,
+            'tema' => $request->tema,
             'nama_mitra' => $request->nama_mitra,
             'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
-            'waktu_pelaksanaan' => $request->waktu_pelaksanaan,
+            'waktu_mulai' => $request->waktu_mulai,
+            'waktu_selesai' => $request->waktu_selesai,
             'lokasi' => $request->lokasi,
-            'keterangan' => $request->keterangan,
+            'isi_surat' => $request->isi_surat,
             'tipe_surat' => $request->tipe_surat,
             'status' => $request->status,
         ]);
 
-        return redirect('admin/surat');
+        return redirect('admin/surat')->with(['success' => 'Berhasil Tambah Surat Keterangan']);
     }
 
-    public function editSuratKegiatan($id)
+    public function editSuratKeterangan($id)
     {
         $surat = Surats::findOrfail($id);
         return view('admin.editSurat_tugas', compact('surat'));
@@ -185,6 +186,10 @@ class AdminController extends Controller
         return view('admin.suratSKdekan');
     }
 
+    public function suratUndangan()
+    {
+        return view('admin.suratUndangan');
+    }
 
     public function beritaAcara()
     {
