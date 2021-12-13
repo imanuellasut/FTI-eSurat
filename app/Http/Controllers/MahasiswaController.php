@@ -73,12 +73,12 @@ class MahasiswaController extends Controller
         return redirect('mahasiswa/surat-keluar');
     }
 
-    public function suratKegiatan()
+    public function suratKeterangan()
     {
         return view('mahasiswa.suratKegiatan');
     }
 
-    public function simpanSuratKegiatanMahasiswa(Request $request)
+    public function simpanSuratKeterangan (Request $request)
     {
         // dd($request->all());
         Surats::create([
@@ -98,13 +98,13 @@ class MahasiswaController extends Controller
         return redirect('mahasiswa/surat-keluar');
     }
 
-    public function editSuratKegiatan($id)
+    public function editSuratKeterangan($id)
     {
         $surat = Surats::findOrfail($id);
         return view('mahasiswa.editSuratKegiatan', compact('surat'));
     }
 
-    public function updatSuratKegiatan($id, Request $request)
+    public function updateSuratKeterangan($id, Request $request)
     {
         $surat = Surats::findOrfail($id);
         $surat->update($request->all());

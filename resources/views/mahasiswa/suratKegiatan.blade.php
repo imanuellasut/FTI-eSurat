@@ -36,9 +36,9 @@
                 </a>
             </li>
             <li>
-                <a href="/mahasiswa/pengajuan-surat/surat-kegiatan" class="mm-active">
+                <a href="/mahasiswa/pengajuan-surat/surat-keterangan" class="mm-active">
                     <i class="metismenu-icon"></i>
-                    Surat Kegiatan
+                    Surat Keterangan
                 </a>
             </li>
         </ul>
@@ -55,22 +55,27 @@
 
 @section('content')
     <div class="main-card mb-3 card">
-        <div class="card-body"><h5 class="card-title">Form Surat kegiatan Mahasiswa</h5>
-            <form class="" action="{{ route('simpan-surat-kegiatan') }}" method="POST">
+        <div class="card-body"><h5 class="card-title">Form Surat Keterangan</h5>
+            <form class="" action="{{ route('simpan-surat-keterangan') }}" method="POST">
                 @csrf
                 <!--Hidden Inputan -->
                     <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
                     <input type="hidden" name="id_jenis_surats" value="B">
-                    <input type="hidden" name="nama_jenis_surat" value="Surat kegiatan Mahasiswa">
+                    <input type="hidden" name="nama_jenis_surat" value="Surat Keterangan">
                     <input type="hidden" name="tipe_surat" value="keluar">
                     <input type="hidden" name="status" value="diproses">
                 <!--End Hidden Inputan -->
 
                 <div class="position-relative form-group">
-                    <label for="prihal" class="">Prihal Surat</label>
+                    <label for="prihal" class="">Prihal</label>
                     <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control">
-                <div class="position-relative form-group mt-1">
-                    <label for="nama_mitra" class="">Nama Mitra</label>
+                </div>
+                <div class="position-relative form-group">
+                    <label for="tema" class="">Tema </label>
+                    <input name="tema" id="isi_surat" placeholder="Tema Surat" type="text" class="form-control">
+                </div>
+                <div class="position-relative form-group">
+                    <label for="nama_mitra" class="">Mitra</label>
                     <input name="nama_mitra" id="nama_mitra" placeholder="Nama Mitra" type="text" class="form-control">
                 </div>
                 <div class="position-relative form-group">
@@ -78,26 +83,33 @@
                     <input name="lokasi" id="lokasi" placeholder="Tempat" type="text" class="form-control">
                 </div>
                 <div class="form-row">
-                    <div class="col-md-6">
+                    <div class="col-md-2">
                         <div class="position-relative form-group">
-                            <label for="waktu_pelaksanaan" class="">Jam</label>
-                            <input name="waktu_pelaksanaan" id="waktu_pelaksanaan" placeholder="Jam Pelaksanaan" type="time" class="form-control">
+                            <label for="waktu_mulai" class="">Jam Mulai</label>
+                            <input name="waktu_mulai" id="waktu_mulai" placeholder="Waktu Mulai" type="time" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-2">
+                        <div class="position-relative form-group">
+                            <label for="waktu_selesai" class="">Jam Selesai</label>
+                            <input name="waktu_selesai" id="waktu_selesai" placeholder="Waktu Selesai" type="time" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
                         <div class="position-relative form-group">
                             <label for="tgl_pelaksanaan" class="">Tanggal</label>
-                            <input name="tgl_pelaksanaan" id="tgl_pelaksanaan" placeholder="Tanggal Pelaksanaan" type="date" class="form-control">
+                            <input name="tgl_pelaksanaan" id="tgl_pelaksanaan" placeholder="Tgl Pelaksanan" type="date" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="position-relative form-group">
-                    <label for="keterangan" class="">Keterangan</label>
-                    <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
+                    <label for="isi_surat" class="">Isi Surat</label>
+                    <textarea name="isi_surat" id="isi_surat" class="form-control"></textarea>
                 </div>
                 <button type="submit" class="mt-2 btn btn-primary">Buat</button>
-                <a href="/mahasiswa/surat-keluar" class="mt-2 btn btn-secondary">Back</a>
+                <a href="/mahasiswa/surat-keluar" class="mt-2 btn btn-secondary">Kembali</a>
             </form>
         </div>
     </div>
 @endsection
+

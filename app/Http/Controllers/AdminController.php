@@ -16,8 +16,10 @@ class AdminController extends Controller
 {
     public function index()
     {
+        $allSurats = Surats::with('validasi', 'user')->orderBy('updated_at', 'desc')->paginate(10);
+
         $validasiD = DB::table('surats')->where('id_jenis_surats', 'D')->get()->count();
-        return view('admin.dashboard', compact('validasiD'));
+        return view('admin.dashboard', compact('allSurats','validasiD'));
     }
 
     public function surat()

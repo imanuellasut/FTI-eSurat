@@ -36,9 +36,9 @@
                 </a>
             </li>
             <li>
-                <a href="/mahasiswa/pengajuan-surat/surat-kegiatan">
+                <a href="/mahasiswa/pengajuan-surat/surat-keterangan">
                     <i class="metismenu-icon"></i>
-                    Surat Kegiatan
+                    Surat Keterangan
                 </a>
             </li>
         </ul>

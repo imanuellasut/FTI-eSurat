@@ -119,7 +119,7 @@
 
         <div class="col-lg-12">
             <div class="main-card mb-3 card">
-                <div class="card-body"><h5 class="card-title">Buat Surat</h5>
+                <div class="card-body"><h5 class="card-title">Data Surat</h5>
                     <div class="table-responsive">
                         <table class="mb-0 table">
                             <thead>
@@ -132,27 +132,30 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            <?php $no=1; ?>
                             <tbody>
+                                @foreach ($allSurats as $surat )
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>001/D/FTI/2022</td>
-                                    <td>Surat Tugas</td>
-                                    <td>12-01-2022</td>
-                                    <td>Kerja Praktek</td>
+                                    <th scope="row">{{ $no++ }}</th>
+                                    <td>{{ $surat->no_surat }}</td>
+                                    <td>{{ $surat->nama_jenis_surat }}</td>
+                                    @if(is_null($surat->tgl_pelaksanaan))
+                                        <td>{{ $surat->tgl_mulai }} - {{ $surat->tgl_selesai }}</td>
+                                    @else
+                                        <td>{{ $surat->tgl_pelaksanaan }}</td>
+                                    @endif
+                                    <td>{{ $surat->prihal }}</td>
                                     <td>
-                                        <small class="badge badge-pill badge-success">Done</small>
+                                        @if($surat->status == 'diterima')
+                                            <small class="badge badge-pill badge-success">diTerima</small>
+                                        @elseif ($surat->status == 'ditolak')
+                                            <small class="badge badge-pill badge-danger">ditolak</small>
+                                        @else
+                                            <small class="badge badge-pill badge-warning">diproses</small>
+                                        @endif
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>001/E/FTI/2022</td>
-                                    <td>Surat SK Dekan</td>
-                                    <td>12-01-2022</td>
-                                    <td>Kerja Praktek</td>
-                                    <td>
-                                        <small class="badge badge-pill badge-success">Done</small>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

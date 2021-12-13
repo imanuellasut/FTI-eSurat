@@ -2,7 +2,7 @@
 
 <!-- Menu SideBar -->
     @section('dashboard')
-        <a href="/dashboard" class="mm-active">
+        <a href="/mahasiswa/dashboard" class="mm-active">
             <i class="metismenu-icon bx bxs-dashboard"></i>
             Dashboard
         </a>
@@ -36,9 +36,9 @@
                 </a>
             </li>
             <li>
-                <a href="/mahasiswa/pengajuan-surat/surat-kegiatan">
+                <a href="/mahasiswa/pengajuan-surat/surat-keterangan">
                     <i class="metismenu-icon"></i>
-                    Surat Kegiatan
+                    Surat Keterangan
                 </a>
             </li>
         </ul>

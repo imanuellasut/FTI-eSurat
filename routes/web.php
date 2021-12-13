@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
 
     //Surat Undangan
     Route::get('/buat-surat/surat-undangan', [AdminController::class, 'suratUndangan'])->name('surat-undangan');
+    Route::post('/surat/surat-undangan/simpan', [AdminController::class, 'simpanSuratUndangan'])->name('simpan-surat-undangan');
     //End Surat Undangan
 
     //Berita Acara
@@ -94,12 +95,12 @@ Route::group(['prefix' => 'mahasiswa', 'middleware' => ['isMahasiswa', 'auth', '
     Route::post('/surat-keluar/update-surat-tugas/{id}', [MahasiswaController::class, 'updateSuratTugas'])->name('mahasiswa.updateSuratTugas');
     //End Surat Tugas
 
-    //Surat Kegiatan
-    Route::get('/pengajuan-surat/surat-kegiatan', [MahasiswaController::class, 'suratKegiatan'])->name('mahasiswa.suratKegiatan');
-    Route::post('/pengajuan-surat/surat-kegiatan/simpan', [MahasiswaController::class, 'simpanSuratKegiatanMahasiswa'])->name('simpan-surat-kegiatan');
-    Route::get('/surat-keluar/edit-surat-kegiatan/id-{id}', [MahasiswaController::class, 'editSuratKegiatan'])->name('edit-surat-kegiatan');
-    Route::post('/surat-keluar/update-surat-kegiatan/{id}', [MahasiswaController::class, 'updatSuratKegiatan'])->name('update-surat-kegiatan');
-    //End Surat Kegiatan
+    //Surat Keterangan
+    Route::get('/pengajuan-surat/surat-keterangan', [MahasiswaController::class, 'suratKeterangan'])->name('mahasiswa.suratKegiatan');
+    Route::post('/pengajuan-surat/surat-kegiatan/simpan', [MahasiswaController::class, 'simpanSuratKeterangan'])->name('simpan-surat-keterangan');
+    Route::get('/surat-keluar/edit-surat-kegiatan/id-{id}', [MahasiswaController::class, 'editSuratKeterangan'])->name('edit-surat-kegiatan');
+    Route::post('/surat-keluar/update-surat-kegiatan/{id}', [MahasiswaController::class, 'updateSuratKeterangan'])->name('update-surat-kegiatan');
+    //End Surat Keterangan
 
     Route::get('/arsip-surat', [MahasiswaController::class, 'arsipSurat'])->name('mahasiswa.arsipSurat');
 });

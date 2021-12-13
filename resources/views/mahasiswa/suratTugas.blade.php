@@ -36,9 +36,9 @@
                 </a>
             </li>
             <li>
-                <a href="/mahasiswa/pengajuan-surat/surat-kegiatan">
+                <a href="/mahasiswa/pengajuan-surat/surat-keterangan">
                     <i class="metismenu-icon"></i>
-                    Surat Kegiatan
+                    Surat Keterangan
                 </a>
             </li>
         </ul>
@@ -66,36 +66,80 @@
                     <input type="hidden" name="status" value="diproses">
                 <!--End Hidden Inputan -->
 
-                <div class="position-relative form-group">
-                    <label for="prihal" class="">Prihal Surat</label>
-                    <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control">
-                <div class="position-relative form-group">
-                    <label for="nama_mitra" class="">Pelaksana Tugas</label>
-                    <input name="nama_mitra" id="nama_mitra" placeholder="Pelaksana Tugas" type="text" class="form-control">
-                </div>
                 <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="position-relative form-group">
+                            <label for="id_pengaju" class="">ID (NIK/NIK)</label>
+                            <input name="pengaju[][idPengaju]" onkeyup="isi_otomatis()" id="id_pengaju" placeholder="NIM/NIK" type="text" class="form-control" value="{{ old('id_user') }}">
+                        </div>
+                    </div>
                     <div class="col-md-6">
+                        <div class="position-relative form-group">
+                            <label for="nama_pengaju" class="">Nama</label>
+                            <input name="pengaju[][namaPengaju]" id="name" placeholder="Nama" type="text" class="form-control" value="{{ old('name') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="position-relative form-group">
+                            <label for="nama_pengaju" class="">Action</label>
+                            <a href="#" class="tambahPengaju btn btn-info form-control">Tambah</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suratTugas"></div>
+
+                <div class="position-relative form-group">
+                    <label for="prihal" class="">Prihal Tugas</label>
+                    <input name="prihal" id="prihal" placeholder="Prihal Tugas" type="text" class="form-control">
+                </div>
+
+                <div class="position-relative form-group">
+                    <label for="nama_mitra" class="">Mitra</label>
+                    <input name="nama_mitra" id="nama_mitra" placeholder="Nama Mitra" type="text" class="form-control">
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-10">
                         <div class="position-relative form-group">
                             <label for="lokasi" class="">Tempat</label>
                             <input name="lokasi" id="lokasi" placeholder="Tempat" type="text" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-2">
                         <div class="position-relative form-group">
                             <label for="tgl_pelaksanaan" class="">Tanggal Pelaksanaan</label>
-                            <input name="tgl_pelaksanaan" id="tgl_pelaksanaan" placeholder="Tanggal Pelaksanaan" type="date" class="form-control">
+                            <input name="tgl_pelaksanaan" id="tgl_pelaksanaan" placeholder="tgl_pelaksanaan" type="date" class="form-control">
                         </div>
                     </div>
                 </div>
+
                 <div class="position-relative form-group">
                     <label for="keterangan" class="">Keterangan</label>
                     <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
                 </div>
-                <button type="submit" class="mt-2 btn btn-primary">Buat</button>
-                <a href="/mahasiswa/surat-keluar" class="mt-2 btn btn-secondary">Batal</a>
+                <button class="mt-2 btn btn-primary" type="submit">Buat</button>
+                <a href="/mahasiswa/surat-keluar" class="mt-2 btn btn-secondary">Kembali</a>
             </form>
+            <!-- JavaScript -->
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+                <script type="text/javascript">
+
+                    $(' .tambahPengaju').on('click', function() {
+                        tambahPengaju();
+                    });
+
+                    function tambahPengaju(){
+                        var suratTugas = '<div><div class="form-row"><div class="col-md-4"><div class="position-relative form-group"><input name="pengaju[][idPengaju]" id="id_pengaju" placeholder="NIM/NIK" type="text" class="form-control" value="{{ old('pengaju[][idPengaju]') }}"></div></div><div class="col-md-6"><div class="position-relative form-group"><input name="pengaju[][namaPengaju]" id="nama_pengaju" placeholder="Nama" type="text" class="form-control" value="{{ old('pengaju[][namaPengaju]') }}"></div></div><div class="col-md2"><div class="position-relative form-group"><a href="#" class="hapus btn btn-danger form-control">Hapus</a></div></div></div></div>';
+                        $(' .suratTugas').append(suratTugas);
+                    };
+
+                    $(' .hapus').live('click', function(){
+                        $(this).parent().parent().parent().remove();
+                    });
+
+                </script>
+            <!--End JavaScript -->
         </div>
     </div>
-
 @endsection
-
