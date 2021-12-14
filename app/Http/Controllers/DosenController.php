@@ -33,7 +33,7 @@ class DosenController extends Controller
     public function hapusSurat($id)
     {
         Surats::findOrfail($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with(['error' => 'Berhasil Menghapus Surat']);
     }
 
     public function suratTugas()
@@ -57,7 +57,7 @@ class DosenController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect('dosen/surat-keluar');
+        return redirect('dosen/surat-keluar')->with(['success' => 'Berhasil Tambah Surat Tugas']);
     }
 
     public function editSuratTugas($id)

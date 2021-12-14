@@ -84,6 +84,9 @@ Route::group(['prefix' => 'dosen', 'middleware' => ['isDosen', 'auth', 'PreventB
     Route::get('/pengajuan-surat/surat-keterangan', [DosenController::class, 'suratKeterangan'])->name('surat-keterangan');
     Route::get('/pengajuan-surat/simpan-surat-keterangan', [DosenController::class, 'suratKeterangan'])->name('surat-keterangan');
 
+    //Berita Acara
+    Route::get('/pengajuan-surat/berita-acara', [DosenController::class, 'beritaAcara'])->name('berita-acara');
+    Route::post('/pengajuan-surat/berita-acara/simpan', [DosenController::class, 'beritaAcara'])->name('simpan-berita-acara');
 
     Route::get('/arsipSurat', [DosenController::class, 'arsipSurat'])->name('dosen.arsipSurat');
 });

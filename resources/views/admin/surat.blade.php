@@ -81,13 +81,14 @@
             </div>
             @endif
 
-            <!-- Surat Keterangan Berhasil -->
+            <!-- Surat Berhasil -->
             @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 <strong>{{ $message }}</strong>
             </div>
             @endif
+
             <div class="main-card mb-3 card">
                 @if(session('status'))
                     <div class="alert alert-success">

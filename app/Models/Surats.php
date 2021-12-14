@@ -33,6 +33,9 @@ class Surats extends Model
         'waktu_selesai',
         'nama_mitra',
         'lokasi',
+        'menimbang',
+        'mengingat',
+        'Menetapkan',
         'keterangan',
         'isi_surat',
         'penutup_surat',
@@ -49,6 +52,9 @@ class Surats extends Model
         'pengaju' => 'array',
         'id_pengaju' => 'array',
         'nama_pengaju' => 'array',
+        'menimbang' => 'array',
+        'mengingat' => 'array',
+        'Menetapkan' => 'array',
     ];
 
     // public function setPengajuAttribute($value)
