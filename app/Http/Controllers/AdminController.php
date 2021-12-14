@@ -216,8 +216,7 @@ class AdminController extends Controller
     //End Surat Keterangan
 
 
-    public function suratSKdekan()
-    {
+    public function suratSKdekan() {
         return view('admin.suratSKdekan');
     }
 
