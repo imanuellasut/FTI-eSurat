@@ -42,19 +42,22 @@ class MahasiswaController extends Controller
 
     public function simpanSuratTugasMahasiswa(Request $request)
     {
-        // dd($request->all());
-        Surats::create([
-            'id_user' => $request->id_user,
-            'id_jenis_surats' => $request->id_jenis_surats,
-            'nama_jenis_surat' => $request->nama_jenis_surat,
-            'prihal' => $request->prihal,
-            'nama_mitra' => $request->nama_mitra,
-            'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
-            'lokasi' => $request->lokasi,
-            'keterangan' => $request->keterangan,
-            'tipe_surat' => $request->tipe_surat,
-            'status' => $request->status,
-        ]);
+        $data = $request->all();
+
+        $surat = new Surats;
+        $surat->id_user = $data['id_user'];
+        $surat->id_jenis_surats = $data['id_jenis_surats'];
+        $surat->nama_jenis_surat = $data['nama_jenis_surat'];
+        $surat->pengaju = $data['pengaju'];
+        $surat->tema = $data['tema'];
+        $surat->prihal = $data['prihal'];
+        $surat->nama_mitra = $data['nama_mitra'];
+        $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];
+        $surat->lokasi = $data['lokasi'];
+        $surat->keterangan = $data['keterangan'];
+        $surat->tipe_surat = $data['tipe_surat'];
+        $surat->status = $data['status'];
+        $surat->save();
 
         return redirect('mahasiswa/surat-keluar');
     }
@@ -82,15 +85,17 @@ class MahasiswaController extends Controller
     {
         // dd($request->all());
         Surats::create([
-            'id_user' => $request->id_user,
+             'id_user' => $request->id_user,
             'id_jenis_surats' => $request->id_jenis_surats,
             'nama_jenis_surat' => $request->nama_jenis_surat,
             'prihal' => $request->prihal,
+            'tema' => $request->tema,
             'nama_mitra' => $request->nama_mitra,
             'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
-            'waktu_pelaksanaan' => $request->waktu_pelaksanaan,
+            'waktu_mulai' => $request->waktu_mulai,
+            'waktu_selesai' => $request->waktu_selesai,
             'lokasi' => $request->lokasi,
-            'keterangan' => $request->keterangan,
+            'isi_surat' => $request->isi_surat,
             'tipe_surat' => $request->tipe_surat,
             'status' => $request->status,
         ]);

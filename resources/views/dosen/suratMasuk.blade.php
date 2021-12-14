@@ -35,6 +35,18 @@
                     Surat Tugas
                 </a>
             </li>
+            <li>
+                <a href="/dosen/pengajuan-surat/surat-keterangan">
+                    <i class="metismenu-icon"></i>
+                    Surat Keterangan
+                </a>
+            </li>
+            <li>
+                <a href="/dosen/pengajuan-surat/berita-acara">
+                    <i class="metismenu-icon"></i>
+                    Berita Acara
+                </a>
+            </li>
         </ul>
     @endsection
 

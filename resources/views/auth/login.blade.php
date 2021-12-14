@@ -40,7 +40,7 @@
                 <button type="submit" class="btn btn-primary">
                     {{ __('Login') }}
                 </button>
-                <a href="{{ route('register') }}" class="btn btn-info">Register </a>
+                {{-- <a href="{{ route('register') }}" class="btn btn-info">Register </a> --}}
             </form>
         </div>
     </div>

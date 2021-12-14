@@ -30,6 +30,12 @@ class DosenController extends Controller
         return view('dosen.suratKeluar', compact('surat'));
     }
 
+    public function hapusSurat($id)
+    {
+        Surats::findOrfail($id)->delete();
+        return redirect()->back();
+    }
+
     public function suratTugas()
     {
         return view('dosen.suratTugas');
@@ -59,6 +65,40 @@ class DosenController extends Controller
         $surat = Surats::findOrfail($id);
         return view('dosen.editSurat_tugas', compact('surat'));
     }
+
+    public function suratKeterangan() {
+        return view('dosen.suratKeterangan');
+    }
+
+    public function simpanSuratKeterangan(Request $request) {
+        Surats::create([
+            'id_user' => $request->id_user,
+            'id_jenis_surats' => $request->id_jenis_surats,
+            'nama_jenis_surat' => $request->nama_jenis_surat,
+            'prihal' => $request->prihal,
+            'tema' => $request->tema,
+            'nama_mitra' => $request->nama_mitra,
+            'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
+            'waktu_mulai' => $request->waktu_mulai,
+            'waktu_selesai' => $request->waktu_selesai,
+            'lokasi' => $request->lokasi,
+            'isi_surat' => $request->isi_surat,
+            'tipe_surat' => $request->tipe_surat,
+            'status' => $request->status,
+        ]);
+
+        return redirect('dosen/surat-keluar')->with(['success' => 'Berhasil Tambah Surat Keterangan']);
+    }
+
+    public function editSuratKeterangan($id) {
+        $surat = Surats::findOrfail($id);
+        return view('dosen.editSuratKeterangan', compact('surat'));
+    }
+
+    public function beritaAcara() {
+        return view('dosen.beritaAcara');
+    }
+
 
     public function arsipSurat()
     {

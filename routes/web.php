@@ -74,9 +74,16 @@ Route::group(['prefix' => 'dosen', 'middleware' => ['isDosen', 'auth', 'PreventB
     Route::get('/dashboard', [DosenController::class, 'index'])->name('dosen.dashboard');
     Route::get('/surat-masuk', [DosenController::class, 'suratMasuk'])->name('dosen.suratMasuk');
     Route::get('/surat-keluar', [DosenController::class, 'suratKeluar'])->name('dosen.suratKeluar');
+    Route::get('/surat-keluar/hapus-surat/id-{id}', [DosenController::class, 'hapusSurat']);
+
     //Surat Tugas
     Route::get('/pengajuan-surat/surat-tugas', [DosenController::class, 'suratTugas'])->name('dosen.suratTugas');
     Route::post('/pengajuan-surat/surat-tugas/simpan', [DosenController::class, 'simpanSuratTugasDosen'])->name('simpan-surat-tugasDosen');
+
+    //Surat Keterangan
+    Route::get('/pengajuan-surat/surat-keterangan', [DosenController::class, 'suratKeterangan'])->name('surat-keterangan');
+    Route::get('/pengajuan-surat/simpan-surat-keterangan', [DosenController::class, 'suratKeterangan'])->name('surat-keterangan');
+
 
     Route::get('/arsipSurat', [DosenController::class, 'arsipSurat'])->name('dosen.arsipSurat');
 });

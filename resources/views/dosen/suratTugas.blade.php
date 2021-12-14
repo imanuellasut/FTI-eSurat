@@ -35,6 +35,18 @@
                     Surat Tugas
                 </a>
             </li>
+            <li>
+                <a href="/dosen/pengajuan-surat/surat-keterangan" class="mm-active">
+                    <i class="metismenu-icon"></i>
+                    Surat Keterangan
+                </a>
+            </li>
+            <li>
+                <a href="/dosen/pengajuan-surat/berita-acara">
+                    <i class="metismenu-icon"></i>
+                    Berita Acara
+                </a>
+            </li>
         </ul>
     @endsection
 
@@ -65,12 +77,12 @@
                     <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control">
                 </div>
                 <div class="position-relative form-group mt-1">
-                    <label for="nama_mitra" class="">Pelaksana Tugas</label>
+                    <label for="nama_mitra" class="">Mitra</label>
                     <input name="nama_mitra" id="nama_mitra" placeholder="Pelaksana Tugas" type="text" class="form-control">
                 </div>
                 <div class="form-row">
                     <div class="col-md-6">
-                        <div class="position-relative form-group mt-1">
+                        <div class="position-relative form-group">
                             <label for="lokasi" class="">Tempat</label>
                             <input name="lokasi" id="lokasi" placeholder="Tempat" type="text" class="form-control">
                         </div>

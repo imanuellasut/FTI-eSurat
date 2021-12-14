@@ -18,8 +18,12 @@ class AdminController extends Controller
     {
         $allSurats = Surats::with('validasi', 'user')->orderBy('updated_at', 'desc')->paginate(10);
 
+        $validasiA = DB::table('surats')->where('id_jenis_surats', 'A')->get()->count();
+        $validasiB = DB::table('surats')->where('id_jenis_surats', 'B')->get()->count();
+        $validasiC = DB::table('surats')->where('id_jenis_surats', 'C')->get()->count();
         $validasiD = DB::table('surats')->where('id_jenis_surats', 'D')->get()->count();
-        return view('admin.dashboard', compact('allSurats','validasiD'));
+        $validasiE = DB::table('surats')->where('id_jenis_surats', 'E')->get()->count();
+        return view('admin.dashboard', compact('allSurats','validasiA','validasiB','validasiC','validasiD','validasiE'));
     }
 
     public function surat()
