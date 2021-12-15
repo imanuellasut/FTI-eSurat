@@ -39,53 +39,61 @@
         </table>
 
     <hr>
-
+    <table>
+        <tr>
+            <td>No </td>
+            <td>: {{ $cetak->no_surat}}</td>
+        </tr>
+        <tr>
+            <td>Hal </td>
+            <td>: {{ $cetak->prihal }}</td>
+        </tr>
+        <tr>
+            <td>Jenis Surat </td>
+            <td>: {{ $cetak->nama_jenis_surat }}</td>
+        </tr>
+        <tr>
+            <td>Lampiran </td>
+            <td>: -</td>
+        </tr>
+    </table>
     <br>
-    <div class="row" align="center">
-        <h2><u>{{ $cetak->nama_jenis_surat}}</u></h2>
-        <h3>No. : {{ $cetak->no_surat}} </h3>
-    </div>
-    <br>
-
     <div class="col-sm; ml-10; mr-10;" align="justify">
         <div style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Dengan ini {{ $cetak->validasi->jabatan}} Fakultas Teknologi Informasi Universitas Kristen Duta Wacana memberikan tugas kepada :
-        </div><br>
-        <div class="col-sm">
-            <?php $no = 1; ?>
-            <table align="center" style="border-collapse: collapse, border: 1px solid black">
-                <tr >
-                    <th width="30px" style="border: 1px solid black">NO</th>
-                    <th width="200px" style="border: 1px solid black">Nama</th>
-                    <th width="150px" style="border: 1px solid black">NIM</th>
-                </tr>
-                <tr style="text-align: center">
-                    <td style="border: 1px solid black">{{$no++}}</td>
-                    @if(is_null($cetakPengaju->pengaju))
-                        <td>{{ $cetak->user->name}}</td>
-                        <td>{{ $cetak->user->id_user}}</td>
-                    @else
-                        <td>{{ $cetakPengaju->pengaju['id_pengaju'] }}</td>
-                        <td>{{ $cetakPengaju->pengaju['namaPengaju'] }}</td>
-                    @endif 
-                </tr>
-            </table>
+            Dengan ini {{ $cetak->validasi->jabatan}} Fakultas Teknologi Informasi Universitas Kristen Duta Wacana Yogyakarta memeberikan Surat
+            {{ $cetak->prihal }} yang dilaksanakan pada :
         </div>
-
         <br>
-
-        <div class="col-sm">
-            <div style="font-size: 16px;">Untuk mengikuti {{$cetak->perihal}} yang dilaksanakan oleh Mitra {{$cetak->nama_mitra}},
-            pada tanggal {{ \Carbon\Carbon::parse($cetak->tgl_pelaksanaan)->isoformat('dddd, D-MMMM-Y') }}</div>
-            <br>
-            <div style="font-size: 16px;">Demikian surat tugas ini dibuat untuk dapat dipergunakan sebagaimana perlunya.
-                Kepada penerima tugas setelah menyelesaikan tugas dimohon menyampaikan laporan kepada pemberi tugas.</div>
-            <br>
-            <br>
+        <table>
+            <tr>
+                <td>Hari, Tanggal </td>
+                <td>: {{ \Carbon\Carbon::parse($cetak->tgl_pelaksanaan)->isoformat('dddd') }}, {{ \Carbon\Carbon::parse($cetak->tgl_pelaksanaan)->isoformat('D MMMM Y') }}</td>
+            </tr>
+            <tr>
+                <td>Jam</td>
+                <td>: {{ \Carbon\Carbon::parse($cetak->waktu_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($cetak->waktu_selesai)->format('H:i') }} WIB</td>
+            </tr>
+            <tr>
+                <td>Tempat </td>
+                <td>: {{ $cetak->lokasi }}</td>
+            </tr>
+            <tr>
+                <td>Tema </td>
+                <td>: {{ $cetak->tema }}</td>
+            </tr>
+            <tr>
+                <td>Dilaksanakan Oleh </td>
+                <td>: {{ $cetak->nama_mitra }}</td>
+            </tr>
+        </table>
+        <br>
+        <div style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {{ $cetak->isi_surat }}. Demikian surat ini dibuat untuk dapat dipergunakan sebagaimana perlunya. 
         </div>
+        <br>
         <div align="left">
-            <div style="font-size: 16px">{{ $cetak->tgl_validasi}}</div>
-            <div style="font-size: 16px">{{ $cetak->validasi->jabatan}}</div>
+            <div style="font-size: 16px">{{ \Carbon\Carbon::parse($cetak->tgl_validasi)->isoformat('dddd, D-MMMM-Y') }}</div>
+            <div style="font-size: 16px">{{ $cetak->validasi->jabatan}}</div>   
             <div><img src="{{ public_path("/validasi/". $cetak->validasi->tanda_tangan. ".png")}}" alt="{{ $cetak->validasi->tanda_tangan}}.png"  width="100" height="100"/></div>
             <div style="font-size: 16px"><b><u>{{ $cetak->validasi->nama_pejabat}}</u></b></div>
             <!--Nama Pengirim-->

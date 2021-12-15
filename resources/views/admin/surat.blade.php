@@ -169,7 +169,7 @@
                                             </div>
                                         @elseif($surat->id_jenis_surats == 'B' && $surat->status == 'diterima' )
                                             <div class="mt-1">
-                                                <a href="surat/cetak-{{ $surat->id}}" class="badge badge-success">
+                                                <a href="surat/surat-keterangan/cetak-{{ $surat->id}}" class="badge badge-success">
                                                     <i class='bx bxs-download bx-xs'></i>
                                                 </a>
                                             </div>
@@ -177,7 +177,7 @@
 
                                         @elseif($surat->id_jenis_surats == 'D' && $surat->status == 'diterima' )
                                             <div class="mt-1">
-                                                <a href="surat/cetak-{{ $surat->id}}" class="badge badge-success">
+                                                <a href="surat/surat-tugas/cetak-{{ $surat->id}}" class="badge badge-success">
                                                     <i class='bx bxs-download bx-xs'></i>
                                                 </a>
                                             </div>

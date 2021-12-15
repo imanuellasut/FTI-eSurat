@@ -45,7 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::get('/surat/edit-surat-tugas/id-{id}', [AdminController::class, 'editSuratTugas'])->name('edit-surat-tugas');
     Route::post('/surat/update-surat-tugas/{id}', [AdminController::class, 'updateSuratTugas'])->name('update-surat-tugas');
     Route::get('/surat/hapus-surat/id-{id}', [AdminController::class, 'hapusSurat'])->name('hapus-surat');
-    Route::get('/surat/cetak-{id}', [AdminController::class, 'cetakSuratTugas'])->name('cetak-surat-tugas');
+    Route::get('/surat/surat-tugas/cetak-{id}', [AdminController::class, 'cetakSuratTugas'])->name('cetak-surat-tugas');
     //End Surat Tugas
 
     //Surat Keterangan
@@ -53,18 +53,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::post('/surat/surat-keterangan/simpan', [AdminController::class, 'simpanSuratKeterangan'])->name('admin-simpan-surat-keterangan');
     Route::get('/surat/edit-surat-keterangan/id-{id}', [AdminController::class, 'editSuratKeterangan'])->name('edit-surat-keterangan');
     Route::post('/surat/update-surat-keterangan/{id}', [AdminController::class, 'updatSuratKegiatan'])->name('update-surat-keterangan');
-    Route::get('/surat/cetak-{id}', [AdminController::class, 'cetakSuratKeterangan'])->name('cetak-surat-keterangan');
+    Route::get('/surat/surat-keterangan/cetak-{id}', [AdminController::class, 'cetakSuratKeterangan'])->name('cetak-surat-keterangan');
     //End Surat Keterangan
 
     //Surat SK Dekan
     Route::get('/buat-surat/surat-sk-dekan', [AdminController::class, 'suratSKdekan'])->name('admin-sk-dekan');
     Route::post('/surat/surat-sk-dekan/simpan', [AdminController::class, 'simpanSKdekan'])->name('admin-simpan-sk-dekan');
-    Route::get('/surat/cetak-{id}', [AdminController::class, 'cetakSKdekan'])->name('cetak-surat-sk-dekan');
+    Route::get('/surat/surat-sk-dekan/cetak-{id}', [AdminController::class, 'cetakSKdekan'])->name('cetak-surat-sk-dekan');
     //End Surat Sk Dekan
 
     //Surat Undangan
     Route::get('/buat-surat/surat-undangan', [AdminController::class, 'suratUndangan'])->name('surat-undangan');
     Route::post('/surat/surat-undangan/simpan', [AdminController::class, 'simpanSuratUndangan'])->name('simpan-surat-undangan');
+    Route::post('/surat/surat-undangan/cetak-{id}', [AdminController::class, 'cetakSuratUndangan'])->name('cetak-surat-undangan');
     //End Surat Undangan
 
     //Berita Acara

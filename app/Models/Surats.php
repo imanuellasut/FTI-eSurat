@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 class Surats extends Model
 {
@@ -52,6 +53,11 @@ class Surats extends Model
         'mengingat' => 'array',
         'menetapkan' => 'array',
     ];
+
+    public function set() {
+        return Carbon::parse($this->attributes['tgl_pelaksanaan'])
+            ->translatedFormat('l, d F Y');
+    }
 
     // public function setPengajuAttribute($value)
 	// {

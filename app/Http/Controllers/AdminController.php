@@ -133,9 +133,13 @@ class AdminController extends Controller
             $options->setDebugPng(true);
 
             $cetak = Surats::with('user', 'validasi')->findOrfail($id);
+            $jsonData = DB::table('surats')
+                    -> select('pengaju')
+                    -> where('id', $id)->get()->toJson();
+            $cetakPengaju = json_decode($jsonData);
             // $pdf = PDF::loadview('surat.cetakSuratTugas', ['cetak' => $cetak]);
 
-            $html = view('surat.cetakSuratTugas', compact('cetak'));
+            $html = view('surat.cetakSuratTugas', compact('cetak', 'cetakPengaju'));
 
             // $pdf = new Dompdf();
 
@@ -175,6 +179,8 @@ class AdminController extends Controller
                 'waktu_selesai' => $request->waktu_selesai,
                 'lokasi' => $request->lokasi,
                 'isi_surat' => $request->isi_surat,
+                'keterangan' => $request->keterangan,
+                'penutup_surat' => $request->penutup_surat,
                 'tipe_surat' => $request->tipe_surat,
                 'status' => $request->status,
             ]);
@@ -187,6 +193,32 @@ class AdminController extends Controller
             $surat = Surats::findOrfail($id);
             return view('admin.editSurat_tugas', compact('surat'));
         }
+
+        // public function cetakSuratKeterangan($id) {
+
+        //     $cetak = Surats::with('user', 'validasi')->findOrFail($id);
+        //     //$cetakSuratJson = Surats::($id)->toArray();
+        //     // $jsonData = json_decode($cetakSuratJson, true);
+
+        //     // $cetakData = Surats::findOrFail($id);
+
+        //     // $cetakSuratJson = Surats::findOrFail($id);
+        //     // $jsonData = DB::table('surats')
+        //     //             -> select('pengaju')
+        //     //             -> where('id', $id)->get()->toJson();
+
+        //     // $cetakSuratJson = Surats::with('validasi', 'user')->where('id', $id)->orderBy('updated_at', 'desc')->get()->toJson();
+        //     // $cetakSuratJson = json_decode($jsonData);
+        //     // $cetak = Surats::with('user', 'validasi')->get($id);
+        //     // $cetakData['cetakSurat'] =  $cetakSuratJson;
+        //     // $pengaju = json_decode($jsonData, true);
+        //     // var_dump(json_decode($jsonData, true));
+        //     // dd($pengaju);
+
+        //     //$cetakData['jsonData'] = $jsonData;
+
+        //     return view('surat.cetakSuratKeterangan', compact('cetak'));
+        //}
 
         public function cetakSuratKeterangan($id) {
             $options = new Options();
@@ -274,11 +306,12 @@ class AdminController extends Controller
         }
     //End Surat Undangan
 
-    public function beritaAcara() {
-        return view('admin.beritaAcara');
-    }
+    //Berita Acara
+        public function beritaAcara() {
+            return view('admin.beritaAcara');
+        }
 
-    public function simpanBeritaAcara(Request $request) {
+        public function simpanBeritaAcara(Request $request) {
 
             $data = $request->all();
 
@@ -301,6 +334,8 @@ class AdminController extends Controller
 
             return redirect('admin/surat')->with('status', 'Berhasil Tambah Surat Tugas');
         }
+
+    //Berita Acara
 
     public function arsipSurat()
     {
