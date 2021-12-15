@@ -88,12 +88,12 @@
                 <div class="widget-content-wrapper">
                     <i class="bx bxs-envelope bx-lg"></i>
                     <div class="widget-content-left ml-1">
-                        <div class="widget-heading">Surat Kegiatan</div>
-                        <div class="widget-subheading">Total Surat Kegiatan</div>
+                        <div class="widget-heading">Surat Keterangan Kegiatan</div>
+                        <div class="widget-subheading">Total Surat Keterangan Kegiatan</div>
                     </div>
                     <div class="widget-content-right">
                         <div class="widget-numbers text-info">
-                            <span>5</span>
+                            <span>{{ $validasiB }}</span>
                         </div>
                     </div>
                 </div>
@@ -105,17 +105,69 @@
                 <div class="widget-content-wrapper">
                     <i class="bx bxs-envelope bx-lg"></i>
                     <div class="widget-content-left ml-1">
-                        <div class="widget-heading">Surat SK Dekan</div>
-                        <div class="widget-subheading">Total Surat Kegiatan</div>
+                        <div class="widget-heading">Surat keputusan Dekan</div>
+                        <div class="widget-subheading">Total Surat keputusan Dekan</div>
                     </div>
                     <div class="widget-content-right">
                         <div class="widget-numbers text-info">
-
+                            <span>{{ $validasiA }}</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-4 col-xl-4 ">
+            <div class="card mb-3 widget-content">
+                <div class="widget-content-wrapper">
+                    <i class="bx bxs-envelope bx-lg"></i>
+                    <div class="widget-content-left ml-1">
+                        <div class="widget-heading">Surat Undangan</div>
+                        <div class="widget-subheading">Total Surat Undangan</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-info">
+                            <span>{{ $validasiC }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-xl-4 ">
+            <div class="card mb-3 widget-content">
+                <div class="widget-content-wrapper">
+                    <i class="bx bxs-envelope bx-lg"></i>
+                    <div class="widget-content-left ml-1">
+                        <div class="widget-heading">Surat Undangan</div>
+                        <div class="widget-subheading">Total Surat Undangan</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-info">
+                            <span>{{ $validasiE }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-xl-4 ">
+            <div class="card mb-3 widget-content">
+                <div class="widget-content-wrapper">
+                    <i class="bx bxs-envelope bx-lg"></i>
+                    <div class="widget-content-left ml-1">
+                        <div class="widget-heading">Total Surat</div>
+                        <div class="widget-subheading">Seluruh Surat</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-info">
+                            <span>{{ $totalsurat }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="col-lg-12">
             <div class="main-card mb-3 card">

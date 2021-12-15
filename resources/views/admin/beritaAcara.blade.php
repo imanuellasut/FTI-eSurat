@@ -101,8 +101,8 @@
                     <input name="tema" id="tema" placeholder="Tema Acara" type="text" class="form-control">
                 </div>
                 <div class="position-relative form-group">
-                    <label for="mitra" class="">Mitra</label>
-                    <input name="mitra" id="mitra" placeholder="Mitra" type="text" class="form-control">
+                    <label for="nama_mitra" class="">Mitra</label>
+                    <input name="nama_mitra" id="nama_mitra" placeholder="Nama Mitra" type="text" class="form-control">
                 </div>
                 <div class="form-row">
                     <div class="col-md-2">

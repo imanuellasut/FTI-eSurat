@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li>
-                <a href="/dosen/pengajuan-surat/surat-keterangan" class="mm-active">
+                <a href="/dosen/pengajuan-surat/surat-keterangan">
                     <i class="metismenu-icon"></i>
                     Surat Keterangan
                 </a>

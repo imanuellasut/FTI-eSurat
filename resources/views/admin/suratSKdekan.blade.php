@@ -67,19 +67,19 @@
 @section('content')
     <div class="main-card mb-3 card">
         <div class="card-body"><h5 class="card-title">Form Surat Keputusan Dekan</h5>
-            <form class="" action="{{ route('admin-simpan-surat-tugas') }}" method="POST">
+            <form class="" action="{{ route('admin-simpan-sk-dekan') }}" method="POST">
                 @csrf
                 <!--Hidden Inputan -->
                     <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
-                    <input type="hidden" name="id_jenis_surats" value="D">
+                    <input type="hidden" name="id_jenis_surats" value="A">
                     <input type="hidden" name="nama_jenis_surat" value="Surat Keputusan">
                     <input type="hidden" name="tipe_surat" value="keluar">
                     <input type="hidden" name="status" value="diproses">
                 <!--End Hidden Inputan -->
 
                 <div class="position-relative form-group">
-                    <label for="tema" class="">Tentang</label>
-                    <input name="tema" id="tema" placeholder="Tentang" type="text" class="form-control">
+                    <label for="prihal" class="">Tentang</label>
+                    <input name="prihal" id="prihal" placeholder="Tentang" type="text" class="form-control">
                 </div>
                 <div class="form-row">
                     <div class="col-md-10">
@@ -90,7 +90,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="position-relative form-group">
-                            <label for="nama_pengaju" class="">Action</label>
+                            <label for="Action" class="">Action</label>
                             <a href="#" class="tambahMenimbang btn btn-info form-control">Tambah</a>
                         </div>
                     </div>

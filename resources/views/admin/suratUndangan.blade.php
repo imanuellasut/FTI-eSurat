@@ -72,8 +72,8 @@
                 @csrf
                 <!--Hidden Inputan -->
                     <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
-                    <input type="hidden" name="id_jenis_surats" value="E">
-                    <input type="hidden" name="nama_jenis_surat" value="Berita Acara">
+                    <input type="hidden" name="id_jenis_surats" value="C">
+                    <input type="hidden" name="nama_jenis_surat" value="Surat Undangan">
                     <input type="hidden" name="tipe_surat" value="keluar">
                     <input type="hidden" name="status" value="diproses">
                 <!--End Hidden Inputan -->
@@ -87,8 +87,8 @@
                     <input name="tema" id="tema" placeholder="Tentang" type="text" class="form-control">
                 </div>
                 <div class="position-relative form-group">
-                    <label for="mitra" class="">Mitra</label>
-                    <input name="mitra" id="mitra" placeholder="Mitra" type="text" class="form-control">
+                    <label for="nama_mitra" class="">Mitra</label>
+                    <input name="nama_mitra" id="nama_mitra" placeholder="Nama Mitra" type="text" class="form-control">
                 </div>
                 <div class="form-row">
                     <div class="col-md-2">

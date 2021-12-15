@@ -9,7 +9,7 @@
     @endsection
 
     @section('suratMasuk')
-        <a href="/dosen/surat-masuk" class="">
+        <a href="/dosen/surat-masuk">
             <i class="metismenu-icon bx bxs-envelope"></i>
             Surat Masuk
         </a>
@@ -28,7 +28,7 @@
             Pengajuan Surat
             <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
         </a>
-        <ul>
+        <ul class="mm-show">
             <li>
                 <a href="/dosen/pengajuan-surat/surat-tugas">
                     <i class="metismenu-icon"></i>
@@ -81,8 +81,8 @@
                     <input name="tema" id="tema" placeholder="Tema Acara" type="text" class="form-control">
                 </div>
                 <div class="position-relative form-group">
-                    <label for="mitra" class="">Mitra</label>
-                    <input name="mitra" id="mitra" placeholder="Mitra" type="text" class="form-control">
+                    <label for="nama_mitra" class="">Mitra</label>
+                    <input name="nama_mitra" id="mitra" placeholder="Mitra" type="text" class="form-control">
                 </div>
                 <div class="form-row">
                     <div class="col-md-2">

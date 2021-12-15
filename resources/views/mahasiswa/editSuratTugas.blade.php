@@ -70,6 +70,7 @@
                 <div class="position-relative form-group">
                     <label for="prihal" class="">Prihal Surat</label>
                     <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control" value="{{ $surat->prihal }}">
+                </div>
                 <div class="position-relative form-group mt-2">
                     <label for="nama_mitra" class="">Mitra</label>
                     <input name="nama_mitra" id="nama_mitra" placeholder="Pelaksana Tugas" type="text" class="form-control" value="{{ $surat->nama_mitra }}">

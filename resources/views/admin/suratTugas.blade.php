@@ -102,8 +102,8 @@
                 <div class="suratTugas"></div>
 
                 <div class="position-relative form-group">
-                    <label for="tema" class="">Tema Surat</label>
-                    <input name="tema" id="tema" placeholder="Tema Surat" type="text" class="form-control">
+                    <label for="prihal" class="">Prihal Surat</label>
+                    <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control">
                 </div>
 
                 <div class="position-relative form-group">

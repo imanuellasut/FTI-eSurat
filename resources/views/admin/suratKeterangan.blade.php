@@ -75,7 +75,7 @@
 @section('content')
     <div class="main-card mb-3 card">
         <div class="card-body"><h5 class="card-title">Form Surat Keterangan</h5>
-            <form class="" action="{{ route('simpan-surat-keterangan') }}" method="POST">
+            <form class="" action="{{ route('admin-simpan-surat-keterangan') }}" method="POST">
                 @csrf
                 <!--Hidden Inputan -->
                     <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">

@@ -75,7 +75,7 @@
 
         <br>
 
-        {{-- <div class="col-sm">
+        <div class="col-sm">
             <div style="font-size: 16px;">Untuk mengikuti {{$cetak->perihal}} yang dilaksanakan oleh Mitra {{$cetak->nama_mitra}},
                 yang diselenggarakan oleh LPPM UKDW, pada tanggal {{$cetak->tgl_pelaksanaan}}.</div>
             <!---->
@@ -96,7 +96,7 @@
             <div style="font-size: 16px">NIK : {{ $cetak->validasi->tanda_tangan}}"</div>
             <!--NIK Pengirim-->
         </div>
-    </div> --}}
+    </div>
 
 </body>
 </html>

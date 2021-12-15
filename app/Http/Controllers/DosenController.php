@@ -71,21 +71,24 @@ class DosenController extends Controller
     }
 
     public function simpanSuratKeterangan(Request $request) {
-        Surats::create([
-            'id_user' => $request->id_user,
-            'id_jenis_surats' => $request->id_jenis_surats,
-            'nama_jenis_surat' => $request->nama_jenis_surat,
-            'prihal' => $request->prihal,
-            'tema' => $request->tema,
-            'nama_mitra' => $request->nama_mitra,
-            'tgl_pelaksanaan' => $request->tgl_pelaksanaan,
-            'waktu_mulai' => $request->waktu_mulai,
-            'waktu_selesai' => $request->waktu_selesai,
-            'lokasi' => $request->lokasi,
-            'isi_surat' => $request->isi_surat,
-            'tipe_surat' => $request->tipe_surat,
-            'status' => $request->status,
-        ]);
+
+        $data = $request->all();
+
+        $surat = new Surats;
+        $surat->id_user = $data['id_user'];
+        $surat->id_jenis_surats = $data['id_jenis_surats'];
+        $surat->nama_jenis_surat = $data['nama_jenis_surat'];
+        $surat->prihal = $data['prihal'];
+        $surat->tema = $data['tema'];
+        $surat->nama_mitra = $data['nama_mitra'];
+        $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];
+        $surat->waktu_mulai = $data['waktu_mulai'];
+        $surat->waktu_selesai = $data['waktu_selesai'];
+        $surat->lokasi = $data['lokasi'];
+        $surat->isi_surat = $data['isi_surat'];
+        $surat->tipe_surat = $data['tipe_surat'];
+        $surat->status = $data['status'];
+        $surat->save();
 
         return redirect('dosen/surat-keluar')->with(['success' => 'Berhasil Tambah Surat Keterangan']);
     }
@@ -97,6 +100,30 @@ class DosenController extends Controller
 
     public function beritaAcara() {
         return view('dosen.beritaAcara');
+    }
+
+    public function simpanBeritaAcara(Request $request) {
+
+        $data = $request->all();
+
+        $surat = new Surats;
+        $surat->id_user = $data['id_user'];
+        $surat->id_jenis_surats = $data['id_jenis_surats'];
+        $surat->nama_jenis_surat = $data['nama_jenis_surat'];
+        $surat->prihal = $data['prihal'];
+        $surat->tema = $data['tema'];
+        $surat->nama_mitra = $data['nama_mitra'];
+        $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];
+        $surat->waktu_pelaksanaan = $data['waktu_pelaksanaan'];
+        $surat->lokasi = $data['lokasi'];
+        $surat->isi_surat = $data['isi_surat'];
+        $surat->keterangan = $data['keterangan'];
+        $surat->tipe_surat = $data['tipe_surat'];
+        $surat->status = $data['status'];
+        $surat->save();
+
+
+        return redirect('dosen/surat-keluar')->with('status', 'Berhasil Tambah Berita Acara');
     }
 
 

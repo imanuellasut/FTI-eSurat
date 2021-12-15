@@ -1,9 +1,7 @@
 ## FTI-eSurat
 
 Aplikasi Sistem Manajemen Surat Sederhana dengan laravel v8.x. System requirementsnya liat di sini
-[Patreon page](https://laravel.com/docs/8.x).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+[Laravel 8.x](https://laravel.com/docs/8.x).
 
 ## Konfigurasi
 

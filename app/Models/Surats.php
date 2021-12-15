@@ -32,6 +32,8 @@ class Surats extends Model
         'nama_mitra',
         'lokasi',
         'menimbang',
+        'mengingat',
+        'menetapkan',
         'keterangan',
         'isi_surat',
         'penutup_surat',
@@ -48,7 +50,7 @@ class Surats extends Model
         'pengaju' => 'array',
         'menimbang' => 'array',
         'mengingat' => 'array',
-        'Menetapkan' => 'array',
+        'menetapkan' => 'array',
     ];
 
     // public function setPengajuAttribute($value)

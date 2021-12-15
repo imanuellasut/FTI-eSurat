@@ -49,7 +49,6 @@ class MahasiswaController extends Controller
         $surat->id_jenis_surats = $data['id_jenis_surats'];
         $surat->nama_jenis_surat = $data['nama_jenis_surat'];
         $surat->pengaju = $data['pengaju'];
-        $surat->tema = $data['tema'];
         $surat->prihal = $data['prihal'];
         $surat->nama_mitra = $data['nama_mitra'];
         $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];
@@ -85,7 +84,7 @@ class MahasiswaController extends Controller
     {
         // dd($request->all());
         Surats::create([
-             'id_user' => $request->id_user,
+            'id_user' => $request->id_user,
             'id_jenis_surats' => $request->id_jenis_surats,
             'nama_jenis_surat' => $request->nama_jenis_surat,
             'prihal' => $request->prihal,

@@ -16,14 +16,16 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $allSurats = Surats::with('validasi', 'user')->orderBy('updated_at', 'desc')->paginate(10);
+        $allSurats = Surats::with('validasi', 'user')->orderBy('updated_at', 'desc')->paginate(20);
 
         $validasiA = DB::table('surats')->where('id_jenis_surats', 'A')->get()->count();
         $validasiB = DB::table('surats')->where('id_jenis_surats', 'B')->get()->count();
         $validasiC = DB::table('surats')->where('id_jenis_surats', 'C')->get()->count();
         $validasiD = DB::table('surats')->where('id_jenis_surats', 'D')->get()->count();
         $validasiE = DB::table('surats')->where('id_jenis_surats', 'E')->get()->count();
-        return view('admin.dashboard', compact('allSurats','validasiA','validasiB','validasiC','validasiD','validasiE'));
+        $totalsurat = DB::table('surats')->get()->count();
+
+        return view('admin.dashboard', compact('allSurats','validasiA','validasiB','validasiC','validasiD','validasiE', 'totalsurat'));
     }
 
     public function surat()
@@ -31,18 +33,18 @@ class AdminController extends Controller
         return view('admin.surat');
     }
 
-    public function getAllSurat()
-    {
+    public function getAllSurat() {
 
-        $allSurats = Surats::with('validasi', 'user')->orderBy('updated_at', 'desc')->paginate(5);
+        $allSurats = Surats::with('validasi', 'user')->orderBy('updated_at', 'desc')->paginate(20);
 
         $validasiA = DB::table('surats')->where('id_jenis_surats', 'A')->get()->count();
         $validasiB = DB::table('surats')->where('id_jenis_surats', 'B')->get()->count();
         $validasiC = DB::table('surats')->where('id_jenis_surats', 'C')->get()->count();
         $validasiD = DB::table('surats')->where('id_jenis_surats', 'D')->get()->count();
         $validasiE = DB::table('surats')->where('id_jenis_surats', 'E')->get()->count();
+        $totalsurat = DB::table('surats')->get()->count();
 
-        return view('admin.surat', compact('allSurats', 'validasiD'));
+        return view('admin.surat', compact('allSurats', 'validasiA', 'validasiB', 'validasiC', 'validasiD', 'validasiE', 'totalsurat'))->with('status', 'Berhasil Validasi');
     }
 
     public function validasiSurat($id, Request $request)
@@ -50,7 +52,7 @@ class AdminController extends Controller
         $surat = Surats::findOrfail($id);
         $surat->update($request->all());
 
-        return redirect('admin/surat');
+        return redirect('admin/surat')->with(['success' => 'Berhasil Validasi']);
     }
 
     public function hapusSurat($id)
@@ -73,7 +75,6 @@ class AdminController extends Controller
             $surat->id_jenis_surats = $data['id_jenis_surats'];
             $surat->nama_jenis_surat = $data['nama_jenis_surat'];
             $surat->pengaju = $data['pengaju'];
-            $surat->tema = $data['tema'];
             $surat->prihal = $data['prihal'];
             $surat->nama_mitra = $data['nama_mitra'];
             $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];
@@ -82,6 +83,7 @@ class AdminController extends Controller
             $surat->tipe_surat = $data['tipe_surat'];
             $surat->status = $data['status'];
             $surat->save();
+
 
             return redirect('admin/surat')->with('status', 'Berhasil Tambah Surat Tugas');
         }
@@ -215,23 +217,94 @@ class AdminController extends Controller
         }
     //End Surat Keterangan
 
+    //Surat Keputusan Dekan
+        public function suratSKdekan() {
+            return view('admin.suratSKdekan');
+        }
 
-    public function suratSKdekan() {
-        return view('admin.suratSKdekan');
-    }
+        public function simpanSKdekan(Request $request) {
 
-    public function suratUndangan()
-    {
-        return view('admin.suratUndangan');
-    }
+            $data = $request->all();
 
-    public function beritaAcara()
-    {
+            $surat = new Surats;
+            $surat->id_user = $data['id_user'];
+            $surat->id_jenis_surats = $data['id_jenis_surats'];
+            $surat->nama_jenis_surat = $data['nama_jenis_surat'];
+            $surat->prihal = $data['prihal'];
+            $surat->menimbang = $data['menimbang'];
+            $surat->mengingat = $data['mengingat'];
+            $surat->menetapkan = $data['menetapkan'];
+            $surat->tipe_surat = $data['tipe_surat'];
+            $surat->status = $data['status'];
+            $surat->save();
+
+            return redirect('admin/surat')->with('status', 'Berhasil Tambah Surat Keputusan Dekan');
+        }
+
+    //End Surat Keputusan Dekan
+
+    // Surat Undangan
+        public function suratUndangan() {
+            return view('admin.suratUndangan');
+        }
+
+        public function simpanSuratUndangan(Request $request) {
+
+            $data = $request->all();
+
+            $surat = new Surats;
+            $surat->id_user = $data['id_user'];
+            $surat->id_jenis_surats = $data['id_jenis_surats'];
+            $surat->nama_jenis_surat = $data['nama_jenis_surat'];
+            $surat->prihal = $data['prihal'];
+            $surat->tema = $data['tema'];
+            $surat->nama_mitra = $data['nama_mitra'];
+            $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];
+            $surat->waktu_mulai = $data['waktu_mulai'];
+            $surat->waktu_selesai = $data['waktu_selesai'];
+            $surat->lokasi = $data['lokasi'];
+            $surat->isi_surat = $data['isi_surat'];
+            $surat->keterangan = $data['keterangan'];
+            $surat->tipe_surat = $data['tipe_surat'];
+            $surat->status = $data['status'];
+            $surat->save();
+
+
+            return redirect('admin/surat')->with('status', 'Berhasil Tambah Surat Tugas');
+        }
+    //End Surat Undangan
+
+    public function beritaAcara() {
         return view('admin.beritaAcara');
     }
+
+    public function simpanBeritaAcara(Request $request) {
+
+            $data = $request->all();
+
+            $surat = new Surats;
+            $surat->id_user = $data['id_user'];
+            $surat->id_jenis_surats = $data['id_jenis_surats'];
+            $surat->nama_jenis_surat = $data['nama_jenis_surat'];
+            $surat->prihal = $data['prihal'];
+            $surat->tema = $data['tema'];
+            $surat->nama_mitra = $data['nama_mitra'];
+            $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];
+            $surat->waktu_pelaksanaan = $data['waktu_pelaksanaan'];
+            $surat->lokasi = $data['lokasi'];
+            $surat->isi_surat = $data['isi_surat'];
+            $surat->keterangan = $data['keterangan'];
+            $surat->tipe_surat = $data['tipe_surat'];
+            $surat->status = $data['status'];
+            $surat->save();
+
+
+            return redirect('admin/surat')->with('status', 'Berhasil Tambah Surat Tugas');
+        }
 
     public function arsipSurat()
     {
         return view('admin.arsipSurat');
     }
 }
+
