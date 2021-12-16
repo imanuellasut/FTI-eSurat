@@ -89,7 +89,7 @@ Route::group(['prefix' => 'dosen', 'middleware' => ['isDosen', 'auth', 'PreventB
     Route::post('/pengajuan-surat/surat-tugas/simpan', [DosenController::class, 'simpanSuratTugasDosen'])->name('simpan-surat-tugasDosen');
     Route::get('/surat-keluar/edit-surat-tugas/id-{id}', [DosenController::class, 'editSuratTugas'])->name('edit-surat-tugasDosen');
     Route::post('/surat-keluar/update-surat-tugas/{id}', [DosenController::class, 'updateSuratTugas'])->name('update-surat-tugasDosen');
-    Route::get('/surat-masuk/surat-tugas/cetak-{id}', [AdminController::class, 'cetakSuratTugas'])->name('cetak-surat-tugas');
+    Route::get('/surat-masuk/surat-tugas/cetak-{id}', [AdminController::class, 'cetakSuratTugasDosen'])->name('cetak-surat-tugas');
 
     //Surat Keterangan
     Route::get('/pengajuan-surat/surat-keterangan', [DosenController::class, 'suratKeterangan'])->name('surat-keterangan');
