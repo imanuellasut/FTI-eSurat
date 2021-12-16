@@ -74,7 +74,9 @@ class AdminController extends Controller
             $surat->id_user = $data['id_user'];
             $surat->id_jenis_surats = $data['id_jenis_surats'];
             $surat->nama_jenis_surat = $data['nama_jenis_surat'];
-            $surat->pengaju = $data['pengaju'];
+            $surat->idPengaju = $data['idPengaju'];
+            $surat->namaPengaju = $data['idPengaju'];
+            $surat->nama_jenis_surat = $data['nama_jenis_surat'];
             $surat->prihal = $data['prihal'];
             $surat->nama_mitra = $data['nama_mitra'];
             $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];
@@ -133,16 +135,24 @@ class AdminController extends Controller
             $options->setDebugPng(true);
 
             $cetak = Surats::with('user', 'validasi')->findOrfail($id);
-            $jsonData = DB::table('surats')
-                    -> select('pengaju')
-                    -> where('id', $id)->first();
-            $collecttion = json_decode(json_encode($jsonData),true);
 
-            //dd($collecttion);
+            $cetakJson = Surats::findOrfail($id);
+
+            $idPengaju = $cetakJson->idPengaju;
+            $namaPengaju = $cetakJson->namaPengaju;
+
+            // $jsonData = DB::table('surats')
+            //         -> select('pengaju')
+            //         -> where('id', $id)->first();
+            // // $collecttion = utf8_decode($jsonData);
+
+            // $collecttion = json_decode(json_encode($jsonData),true);
+
+            // dd($collecttion);
 
             // $pdf = PDF::loadview('surat.cetakSuratTugas', ['cetak' => $cetak]);
 
-            $html = view('surat.cetakSuratTugas', ["cetak"=>$cetak, "collecttion"=>$collecttion]);
+            $html = view('surat.cetakSuratTugas', ["cetak"=>$cetak, "cetakJson"=>$cetakJson , "idPengaju"=>$idPengaju , "namaPengaju"=>$namaPengaju]);
 
             // $pdf = new Dompdf();
 
@@ -274,6 +284,37 @@ class AdminController extends Controller
             $surat->save();
 
             return redirect('admin/surat')->with('status', 'Berhasil Tambah Surat Keputusan Dekan');
+        }
+
+        public function cetakSKdekan($id) {
+            $options = new Options();
+            $dompdf = new Dompdf($options);
+            $options->setIsHtml5ParserEnabled(true);
+            $options->setDebugPng(true);
+
+            $cetak = Surats::with('user', 'validasi')->findOrfail($id)->first();
+            $cetakJson = Surats::findOrfail($id);
+
+            //$cetak = Surats::with('user', 'validasi')->findOrfail($id);
+            // $pdf = PDF::loadview('surat.cetakSuratTugas', ['cetak' => $cetak]);
+
+            $html = view('surat.cetakSuratKeputusan', compact('cetak', 'cetakJson'));
+
+            // $pdf = new Dompdf();
+
+            $dompdf->loadHtml($html);
+
+            // (Optional) Setup the paper size and orientation
+            // $dompdf->setPaper('A4', 'portrait');
+
+            // Render the HTML as PDF
+            $dompdf->render();
+
+            // Output the generated PDF to Browser
+            // return $dompdf->stream();
+
+            return $dompdf->stream('Surat Keputusan.pdf', array('Attachment' => false));
+            // return view('surat.cetaksuratTugas', compact('cetak'));
         }
 
     //End Surat Keputusan Dekan

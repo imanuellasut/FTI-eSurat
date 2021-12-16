@@ -6,6 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <style>
+        .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+    }
+
+    .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    }
+
+    .item1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    }
+    </style>
 </head>
 <body>
 
@@ -37,9 +58,7 @@
                 </td>
             </tr>
         </table>
-
     <hr>
-
     <br>
     <div class="row" align="center">
         <h2><u>{{ $cetak->nama_jenis_surat}}</u></h2>
@@ -51,31 +70,35 @@
         <div style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Dengan ini {{ $cetak->validasi->jabatan}} Fakultas Teknologi Informasi Universitas Kristen Duta Wacana memberikan tugas kepada :
         </div><br>
-        <div class="col-sm">
-            <?php $no = 1; ?>
-            <table align="center" style="border-collapse: collapse, border: 1px solid black">
+        <div class="grid-container">
+            <div class="item1">
+                <?php $no = 1; ?>
+            <table border="1" style="float: left;">
                 <tr >
-                    <th width="30px" style="border: 1px solid black">NO</th>
-                    <th width="200px" style="border: 1px solid black">Nama</th>
-                    <th width="150px" style="border: 1px solid black">NIM</th>
+                    <th width="30px" >NO</th>
+                    <th width="200px" >Nama</th>
                 </tr>
+                @foreach ($namaPengaju as $namaPengaju )
                 <tr style="text-align: center">
-                    <td style="border: 1px solid black">{{$no++}}</td>
-                    @if(is_null($cetak->pengaju))
-                        <td>{{ $cetak->user->name}}</td>
-                        <td>{{ $cetak->user->id_user}}</td>
-                    @else
-                        @foreach ($collecttion as $data )
-                            <td>{{ $data->pengaju['idPengaju'] }}</td>
-                            <td></td>
-                        @endforeach
-                    @endif
+                        <td >{{$no++}}</td>
+                        <td>{{ $namaPengaju }}</td>
+                @endforeach
                 </tr>
-            </table>
+            </table></div>
+            <div class="item2">
+                <table border="1">
+                <tr>
+                    <th width="200px">NIM</th>
+                </tr>
+                @foreach ($idPengaju as $idPengaju )
+                <tr style="text-align: center">
+                    <td>{{ $idPengaju }}</td>
+                @endforeach
+                </tr>
+            </table></div>
+            <div class="item3">Ini 3</div>
         </div>
-
         <br>
-
         <div class="col-sm">
             <div style="font-size: 16px;">Untuk mengikuti {{$cetak->perihal}} yang dilaksanakan oleh Mitra {{$cetak->nama_mitra}},
             pada tanggal {{ \Carbon\Carbon::parse($cetak->tgl_pelaksanaan)->isoformat('dddd, D-MMMM-Y') }}</div>

@@ -21,6 +21,8 @@ class Surats extends Model
         'no_surat',
         'id_validasi',
         'pengaju',
+        'idPengaju',
+        'namaPengaju',
         'nama_jenis_surat',
         'tema',
         'prihal',
@@ -49,6 +51,8 @@ class Surats extends Model
 
     protected $casts = [
         'pengaju' => 'array',
+        'idPengaju' => 'array',
+        'namaPengaju' => 'array',
         'menimbang' => 'array',
         'mengingat' => 'array',
         'menetapkan' => 'array',

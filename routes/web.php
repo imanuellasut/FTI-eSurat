@@ -59,7 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     //Surat SK Dekan
     Route::get('/buat-surat/surat-sk-dekan', [AdminController::class, 'suratSKdekan'])->name('admin-sk-dekan');
     Route::post('/surat/surat-sk-dekan/simpan', [AdminController::class, 'simpanSKdekan'])->name('admin-simpan-sk-dekan');
-    Route::get('/surat/surat-sk-dekan/cetak-{id}', [AdminController::class, 'cetakSKdekan'])->name('cetak-surat-sk-dekan');
+    Route::get('/surat/surat-keputusan/cetak-{id}', [AdminController::class, 'cetakSKdekan'])->name('cetak-surat-sk-dekan');
     //End Surat Sk Dekan
 
     //Surat Undangan
