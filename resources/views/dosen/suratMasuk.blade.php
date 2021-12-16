@@ -116,9 +116,9 @@
                                                     <i class='bx bxs-download bx-xs'></i>
                                                 </a>
                                             </div>
-                                        @elseif($surat->id_jenis_surats == 'E' && $surat->status == 'diterima' )
+                                        @elseif($data->id_jenis_surats == 'E' && $data->status == 'diterima' )
                                             <div class="mt-1">
-                                                <a href="surat-masuk/berita-acara/cetak-{{ $surat->id}}" class="badge badge-success" title="Berita Acara">
+                                                <a href="surat-masuk/berita-acara/cetak-{{ $data->id}}" class="badge badge-success" title="Berita Acara">
                                                     <i class='bx bxs-download bx-xs' title="Berita Acara"></i>
                                                 </a>
                                             </div>

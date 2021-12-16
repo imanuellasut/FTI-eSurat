@@ -70,13 +70,13 @@
                     <div class="col-md-4">
                         <div class="position-relative form-group">
                             <label for="id_pengaju" class="">ID (NIK/NIK)</label>
-                            <input name="pengaju[][idPengaju]" onkeyup="isi_otomatis()" id="id_pengaju" placeholder="NIM/NIK" type="text" class="form-control" value="{{ old('id_user') }}">
+                            <input name="idPengaju[]" onkeyup="isi_otomatis()" id="id_pengaju" placeholder="NIM/NIK" type="text" class="form-control" value="{{ old('id_user') }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="position-relative form-group">
                             <label for="nama_pengaju" class="">Nama</label>
-                            <input name="pengaju[][namaPengaju]" id="name" placeholder="Nama" type="text" class="form-control" value="{{ old('name') }}">
+                            <input name="namaPengaju[]" id="name" placeholder="Nama" type="text" class="form-control" value="{{ old('name') }}">
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -130,14 +130,13 @@
                     });
 
                     function tambahPengaju(){
-                        var suratTugas = '<div><div class="form-row"><div class="col-md-4"><div class="position-relative form-group"><input name="pengaju[][idPengaju]" id="id_pengaju" placeholder="NIM/NIK" type="text" class="form-control" value="{{ old('pengaju[][idPengaju]') }}"></div></div><div class="col-md-6"><div class="position-relative form-group"><input name="pengaju[][namaPengaju]" id="nama_pengaju" placeholder="Nama" type="text" class="form-control" value="{{ old('pengaju[][namaPengaju]') }}"></div></div><div class="col-md2"><div class="position-relative form-group"><a href="#" class="hapus btn btn-danger form-control">Hapus</a></div></div></div></div>';
+                        var suratTugas = '<div><div class="form-row"><div class="col-md-4"><div class="position-relative form-group"><input name="idPengaju[]" id="id_pengaju" placeholder="NIM/NIK" type="text" class="form-control" value="{{ old('idPengaju[]') }}"></div></div><div class="col-md-6"><div class="position-relative form-group"><input name="namaPengaju[]" id="nama_pengaju" placeholder="Nama" type="text" class="form-control" value="{{ old('namaPengaju[]') }}"></div></div><div class="col-md2"><div class="position-relative form-group"><a href="#" class="hapus btn btn-danger form-control">Hapus</a></div></div></div></div>';
                         $(' .suratTugas').append(suratTugas);
                     };
 
                     $(' .hapus').live('click', function(){
                         $(this).parent().parent().parent().remove();
                     });
-
                 </script>
             <!--End JavaScript -->
         </div>

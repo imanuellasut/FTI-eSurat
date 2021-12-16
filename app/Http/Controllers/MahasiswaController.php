@@ -54,7 +54,8 @@ class MahasiswaController extends Controller
         $surat->id_user = $data['id_user'];
         $surat->id_jenis_surats = $data['id_jenis_surats'];
         $surat->nama_jenis_surat = $data['nama_jenis_surat'];
-        $surat->pengaju = $data['pengaju'];
+        $surat->idPengaju = $data['idPengaju'];
+        $surat->namaPengaju = $data['namaPengaju'];
         $surat->prihal = $data['prihal'];
         $surat->nama_mitra = $data['nama_mitra'];
         $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];

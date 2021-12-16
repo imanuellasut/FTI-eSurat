@@ -70,36 +70,77 @@
         <div style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Dengan ini {{ $cetak->validasi->jabatan}} Fakultas Teknologi Informasi Universitas Kristen Duta Wacana memberikan tugas kepada :
         </div><br>
-        <div class="grid-container">
-            <div class="item1">
-                <?php $no = 1; ?>
-            <table border="1" style="float: left;">
+        @if(is_null($cetak->idPengaju) && $cetak->user->role === '2')
+            <?php $no = 1; ?>
+            <table width="60%" align="center">
+            <tr>
+                <td width="25%">
+                    <font size="15px"><b>Nama</b></font>
+                </td>
+                <td width="5%"><b>:</b></td>
+                <td><b>{{ $cetak->user->name }}</b></td>
+            </tr>
+            <tr>
+                <td>
+                    <font size="15px"><b>Nomer Induk</b></font>
+                </td>
+                <td><b>:</b></td>
+                <td><b>{{ $cetak->user->id_user }}</b></td>
+            </tr>
+            </table>
+        @elseif (is_null($cetak->idPengaju) && $cetak->user->role === '3')
+            <?php $no = 1; ?>
+            @foreach ($cetak as $data )
+            <table align="center" style="border-collapse: collapse, border: 1px solid black">
                 <tr >
-                    <th width="30px" >NO</th>
-                    <th width="200px" >Nama</th>
+                    <th width="30px" style="border: 1px solid black">NO</th>
+                    <th width="200px" style="border: 1px solid black">Nama</th>
+                    <th width="150px" style="border: 1px solid black">NIM</th>
                 </tr>
-                @foreach ($namaPengaju as $namaPengaju )
                 <tr style="text-align: center">
-                        <td >{{$no++}}</td>
-                        <td>{{ $namaPengaju }}</td>
-                @endforeach
+                    <td style="border: 1px solid black">{{$no++}}</td>
+                        <td>{{ $data->user->name}}</td>
+                        <td>{{ $data->user->id_user}}</td>
                 </tr>
-            </table></div>
-            <div class="item2">
-                <table border="1">
-                <tr>
-                    <th width="200px">NIM</th>
-                </tr>
-                @foreach ($idPengaju as $idPengaju )
-                <tr style="text-align: center">
-                    <td>{{ $idPengaju }}</td>
-                @endforeach
-                </tr>
-            </table></div>
-            <div class="item3">Ini 3</div>
+            </table>
+            @endforeach
+        @else
+        <div>
+            <div style="float:center">
+                    <?php $no = 1; ?>
+                <table  style="float: left;" border="1">
+                    <tr >
+                        <th width="50px" >NO</th>
+                        <th width="250px" >Nama</th>
+                    </tr>
+                    @foreach ($namaPengaju as $namaPengaju )
+                    <tr style="text-align: center">
+                            <td >{{$no++}}</td>
+                            <td>{{ $namaPengaju }}</td>
+                    @endforeach
+                    </tr>
+                </table></div>
+                <table  style="float: left;" border="1">
+                <tr >
+                        <th width="100px" >Nim</th>
+                    </tr>
+                    @foreach ($idPengaju as $idPengaju )
+                    <tr style="text-align: center">
+                        <td>{{ $idPengaju }}</td>
+                    @endforeach
+                    </tr>
+                </table></div>
+            </div>
+            <div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        @endif
         </div>
-        <br>
-        <div class="col-sm">
             <div style="font-size: 16px;">Untuk mengikuti {{$cetak->perihal}} yang dilaksanakan oleh Mitra {{$cetak->nama_mitra}},
             pada tanggal {{ \Carbon\Carbon::parse($cetak->tgl_pelaksanaan)->isoformat('dddd, D-MMMM-Y') }}</div>
             <br>
@@ -107,7 +148,6 @@
                 Kepada penerima tugas setelah menyelesaikan tugas dimohon menyampaikan laporan kepada pemberi tugas.</div>
             <br>
             <br>
-        </div>
         <div align="left">
             <div style="font-size: 16px">{{ \Carbon\Carbon::parse($cetak->tgl_validasi)->isoformat('dddd, D-MMMM-Y') }}</div>
             <div style="font-size: 16px">{{ $cetak->validasi->jabatan}}</div>
@@ -121,4 +161,3 @@
 
 </body>
 </html>
-
