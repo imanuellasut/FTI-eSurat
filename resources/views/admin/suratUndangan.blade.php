@@ -87,8 +87,8 @@
                     <input name="tema" id="tema" placeholder="Tentang" type="text" class="form-control">
                 </div>
                 <div class="position-relative form-group">
-                    <label for="nama_mitra" class="">Mitra</label>
-                    <input name="nama_mitra" id="nama_mitra" placeholder="Nama Mitra" type="text" class="form-control">
+                    <label for="nama_mitra" class="">Ditujukan Kepada</label>
+                    <input name="nama_mitra" id="nama_mitra" placeholder="Ditujukan Kepada" type="text" class="form-control">
                 </div>
                 <div class="form-row">
                     <div class="col-md-2">

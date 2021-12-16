@@ -13,8 +13,14 @@ class MahasiswaController extends Controller
 {
     public function index()
     {
+        $validasiA = DB::table('surats')->where('id_jenis_surats', 'A')->get()->count();
+        $validasiB = DB::table('surats')->where('id_jenis_surats', 'B')->get()->count();
+        $validasiC = DB::table('surats')->where('id_jenis_surats', 'C')->get()->count();
+        $validasiD = DB::table('surats')->where('id_jenis_surats', 'D')->get()->count();
+        $validasiE = DB::table('surats')->where('id_jenis_surats', 'E')->get()->count();
+        $totalsurat = DB::table('surats')->get()->count();
         $surat = Surats::with('user')->orderBy('updated_at', 'desc')->Paginate(10);
-        return view('mahasiswa.dashboard', compact('surat'));
+        return view('mahasiswa.dashboard', compact('surat', 'validasiA', 'validasiB', 'validasiC', 'validasiD', 'validasiE', 'totalsurat'));
     }
 
     public function suratMasuk()

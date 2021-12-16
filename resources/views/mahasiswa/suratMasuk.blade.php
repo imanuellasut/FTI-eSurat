@@ -92,31 +92,29 @@
                                         @endif
                                     </td>
                                     <td>
-
-                                        <div class="mb-1">
-                                            <a href="" class="badge badge-secondary">
-                                                <i class='bx bxs-show bx-xs'></i>
-                                            </a>
-                                        </div>
-                                        @if($data->status == 'diterima')
-                                        <div class="mb-1">
-                                            <a href="" class="badge badge-success">
-                                            <i class='bx bxs-download bx-xs'></i>
-                                            </a>
-                                        </div>
+                                        @if($data->id_jenis_surats == 'B' && $data->status == 'diterima' )
+                                            <div class="mt-1">
+                                                <a href="surat-masuk/surat-keterangan/cetak-{{ $data->id}}" class="badge badge-success" title="Surat Keterangan">
+                                                    <i class='bx bxs-download bx-xs'></i>
+                                                </a>
+                                            </div>
+                                        @elseif($data->id_jenis_surats == 'D' && $data->status == 'diterima' )
+                                            <div class="mt-1">
+                                                <a href="surat-masuk/surat-tugas/cetak-{{ $data->id}}" class="badge badge-success" title="Surat Tugas">
+                                                    <i class='bx bxs-download bx-xs'></i>
+                                                </a>
+                                            </div>
                                         @endif
-                                        <div class="mb-2">
-                                            <a href="" class="badge badge-danger">
+                                        <div class="mt-1">
+                                            <button type="button" class="btn badge badge-danger border-0" data-toggle="modal" data-target="#exampleModal">
                                                 <i class='bx bxs-trash bx-xs'></i>
-                                            </a>
+                                            </button>
                                         </div>
-
                                     </td>
-                                    <td> - </td>
+                                    <td>{{ $data->pesan }}</td>
                                 </tr>
                             @endif
                             </tbody>
-
                             @endforeach
                         </table>
                     </div>
@@ -125,3 +123,29 @@
         </div>
     </div>
 @endsection
+
+<!-- Info Hapus Surat Masuk -->
+    @foreach ($suratMasuk as $data )
+    @if($data->user->id === Auth::user()->id)
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Hapus Surat</h5>
+                    </div>
+                    <div class="modal-bodys">
+                        <p class="mb-2 ml-2">
+                            Jenis Surat : {{ $data->nama_jenis_surat }}
+                            <br/>Prihal : {{ $data->prihal }}
+                            <br/>Apakah anda yakin akan menghapus surat?</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <a href="surat-keluar/hapus-surat/id-{{ $data->id }}" class="btn btn-primary">YA</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">TIDAK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+    @endforeach
+<!-- End Info Hapus Surat Keluar -->

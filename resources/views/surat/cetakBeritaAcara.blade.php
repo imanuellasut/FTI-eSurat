@@ -37,54 +37,29 @@
                 </td>
             </tr>
         </table>
-
-    <hr>
-
     <br>
     <div class="row" align="center">
-        <h2><u>{{ $cetak->nama_jenis_surat}}</u></h2>
-        <h3>No. : {{ $cetak->no_surat}} </h3>
+        <h2>{{ $cetak->nama_jenis_surat}}</h2>
+        <h4>{{ $cetak->prihal }} <br>
+            <i>{{ $cetak->tema }} <br></i>
+            No. : {{ $cetak->no_surat}}</h4>
     </div>
-    <br>
-
-    <div class="col-sm; ml-10; mr-10;" align="justify">
-        <div style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Dengan ini {{ $cetak->validasi->jabatan}} Fakultas Teknologi Informasi Universitas Kristen Duta Wacana memberikan tugas kepada :
-        </div><br>
-        <div class="col-sm">
-            <?php $no = 1; ?>
-            <table align="center" style="border-collapse: collapse, border: 1px solid black">
-                <tr >
-                    <th width="30px" style="border: 1px solid black">NO</th>
-                    <th width="200px" style="border: 1px solid black">Nama</th>
-                    <th width="150px" style="border: 1px solid black">NIM</th>
-                </tr>
-                <tr style="text-align: center">
-                    <td style="border: 1px solid black">{{$no++}}</td>
-                    @if(is_null($cetak->pengaju))
-                        <td>{{ $cetak->user->name}}</td>
-                        <td>{{ $cetak->user->id_user}}</td>
-                    @else
-                        @foreach ($collecttion as $data )
-                            <td>{{ $data->pengaju['idPengaju'] }}</td>
-                            <td></td>
-                        @endforeach
-                    @endif
-                </tr>
-            </table>
+    <div class="col-sm; ml-30; mr-30;" align="justify" style="margin-left: 75px; margin-right: 75px">
+        <div style="font-size: 16px">
+            Pada hari : {{ \Carbon\Carbon::parse($cetak->tgl_pelaksanaan)->isoformat('dddd, D MMMM Y') }} Jam :
+            {{ \Carbon\Carbon::parse($cetak->waktu_pelaksanaan)->format('H:i') }} WIB bertempat di {{ $cetak->lokasi }}
+            telah dilaksanakan {{ $cetak->prihal }} dengan tema: {{ $cetak->tema }} dengan mengundang:{{ $cetak->nama_mitra }}. {{ $cetak->isi_surat }}.
         </div>
-
         <br>
-
-        <div class="col-sm">
-            <div style="font-size: 16px;">Untuk mengikuti {{$cetak->perihal}} yang dilaksanakan oleh Mitra {{$cetak->nama_mitra}},
-            pada tanggal {{ \Carbon\Carbon::parse($cetak->tgl_pelaksanaan)->isoformat('dddd, D-MMMM-Y') }}</div>
-            <br>
-            <div style="font-size: 16px;">Demikian surat tugas ini dibuat untuk dapat dipergunakan sebagaimana perlunya.
-                Kepada penerima tugas setelah menyelesaikan tugas dimohon menyampaikan laporan kepada pemberi tugas.</div>
-            <br>
-            <br>
+        <div style="font-size: 16px">
+            {{ $cetak->keterangan }}.
         </div>
+        <br>
+        <div style="font-size: 16px">
+            Demikian {{ $cetak->nama_jenis_surat }} ini dibuat dengan sebenarnya, untuk dapat dipergunakan sebagaimana mestinya.
+        </div>
+        <br>
+        <br>
         <div align="left">
             <div style="font-size: 16px">{{ \Carbon\Carbon::parse($cetak->tgl_validasi)->isoformat('dddd, D-MMMM-Y') }}</div>
             <div style="font-size: 16px">{{ $cetak->validasi->jabatan}}</div>
@@ -94,6 +69,7 @@
             <div style="font-size: 16px">NIK : {{ $cetak->validasi->tanda_tangan}}"</div>
             <!--NIK Pengirim-->
         </div>
+    </div>
     </div>
 
 </body>

@@ -119,11 +119,11 @@ class AdminController extends Controller
         //     // $cetakData['cetakSurat'] =  $cetakSuratJson;
         //     $pengaju = json_decode($jsonData, true);
         //     // var_dump(json_decode($jsonData, true));
-        //     // dd($pengaju);
+        //     dd($pengaju);
 
         //     //$cetakData['jsonData'] = $jsonData;
 
-        //     return view('surat.cetakSuratTugas', compact('cetak', 'pengaju'));
+        //     //return view('surat.cetakSuratTugas', compact('cetak', 'pengaju'));
         // }
 
         public function cetakSuratTugas($id) {
@@ -135,11 +135,14 @@ class AdminController extends Controller
             $cetak = Surats::with('user', 'validasi')->findOrfail($id);
             $jsonData = DB::table('surats')
                     -> select('pengaju')
-                    -> where('id', $id)->get()->toJson();
-            $cetakPengaju = json_decode($jsonData);
+                    -> where('id', $id)->first();
+            $collecttion = json_decode(json_encode($jsonData),true);
+
+            //dd($collecttion);
+
             // $pdf = PDF::loadview('surat.cetakSuratTugas', ['cetak' => $cetak]);
 
-            $html = view('surat.cetakSuratTugas', compact('cetak', 'cetakPengaju'));
+            $html = view('surat.cetakSuratTugas', ["cetak"=>$cetak, "collecttion"=>$collecttion]);
 
             // $pdf = new Dompdf();
 
@@ -304,6 +307,61 @@ class AdminController extends Controller
 
             return redirect('admin/surat')->with('status', 'Berhasil Tambah Surat Tugas');
         }
+
+        // public function cetakSuratKeterangan($id) {
+
+        //     $cetak = Surats::with('user', 'validasi')->findOrFail($id);
+        //     //$cetakSuratJson = Surats::($id)->toArray();
+        //     // $jsonData = json_decode($cetakSuratJson, true);
+
+        //     // $cetakData = Surats::findOrFail($id);
+
+        //     // $cetakSuratJson = Surats::findOrFail($id);
+        //     // $jsonData = DB::table('surats')
+        //     //             -> select('pengaju')
+        //     //             -> where('id', $id)->get()->toJson();
+
+        //     // $cetakSuratJson = Surats::with('validasi', 'user')->where('id', $id)->orderBy('updated_at', 'desc')->get()->toJson();
+        //     // $cetakSuratJson = json_decode($jsonData);
+        //     // $cetak = Surats::with('user', 'validasi')->get($id);
+        //     // $cetakData['cetakSurat'] =  $cetakSuratJson;
+        //     // $pengaju = json_decode($jsonData, true);
+        //     // var_dump(json_decode($jsonData, true));
+        //     // dd($pengaju);
+
+        //     //$cetakData['jsonData'] = $jsonData;
+
+        //     return view('surat.cetakSuratKeterangan', compact('cetak'));
+        //}
+
+        public function cetakSuratUndangan($id) {
+            $options = new Options();
+            $dompdf = new Dompdf($options);
+            $options->setIsHtml5ParserEnabled(true);
+            $options->setDebugPng(true);
+
+            $cetak = Surats::with('user', 'validasi')->findOrfail($id);
+            // $pdf = PDF::loadview('surat.cetakSuratTugas', ['cetak' => $cetak]);
+
+            $html = view('surat.cetakSuratUndangan', compact('cetak'));
+
+            // $pdf = new Dompdf();
+
+            $dompdf->loadHtml($html);
+
+            // (Optional) Setup the paper size and orientation
+            // $dompdf->setPaper('A4', 'portrait');
+
+            // Render the HTML as PDF
+            $dompdf->render();
+
+            // Output the generated PDF to Browser
+            // return $dompdf->stream();
+
+            return $dompdf->stream('Surat Undangan.pdf', array('Attachment' => false));
+            //return view('surat.cetaksuratTugas', compact('cetak'));
+        }
+
     //End Surat Undangan
 
     //Berita Acara
@@ -333,6 +391,34 @@ class AdminController extends Controller
 
 
             return redirect('admin/surat')->with('status', 'Berhasil Tambah Surat Tugas');
+        }
+
+        public function cetakBeritaAcara($id) {
+            $options = new Options();
+            $dompdf = new Dompdf($options);
+            $options->setIsHtml5ParserEnabled(true);
+            $options->setDebugPng(true);
+
+            $cetak = Surats::with('user', 'validasi')->findOrfail($id);
+            // $pdf = PDF::loadview('surat.cetakSuratTugas', ['cetak' => $cetak]);
+
+            $html = view('surat.cetakBeritaAcara', compact('cetak'));
+
+            // $pdf = new Dompdf();
+
+            $dompdf->loadHtml($html);
+
+            // (Optional) Setup the paper size and orientation
+            // $dompdf->setPaper('A4', 'portrait');
+
+            // Render the HTML as PDF
+            $dompdf->render();
+
+            // Output the generated PDF to Browser
+            // return $dompdf->stream();
+
+            return $dompdf->stream('Surat Keterangan.pdf', array('Attachment' => false));
+            //return view('surat.cetaksuratTugas', compact('cetak'));
         }
 
     //Berita Acara

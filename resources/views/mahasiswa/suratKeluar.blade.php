@@ -132,7 +132,6 @@
                                             </div>
                                         </td>
                                     </tr>
-
                                 @endif
                                 @endforeach
                             </tbody>
@@ -158,7 +157,6 @@
                                             <!--INI MUNGKIN BISA DI PAKE -->
 
 <!-- Info Hapus Surat Keluar -->
-
     @foreach ($surat as $data )
     @if($data->user->id === Auth::user()->id)
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

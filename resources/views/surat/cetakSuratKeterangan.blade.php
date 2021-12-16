@@ -37,7 +37,6 @@
                 </td>
             </tr>
         </table>
-
     <hr>
     <table>
         <tr>
@@ -88,12 +87,12 @@
         </table>
         <br>
         <div style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {{ $cetak->isi_surat }}. Demikian surat ini dibuat untuk dapat dipergunakan sebagaimana perlunya. 
+            {{ $cetak->isi_surat }}. Demikian surat ini dibuat untuk dapat dipergunakan sebagaimana perlunya.
         </div>
         <br>
         <div align="left">
             <div style="font-size: 16px">{{ \Carbon\Carbon::parse($cetak->tgl_validasi)->isoformat('dddd, D-MMMM-Y') }}</div>
-            <div style="font-size: 16px">{{ $cetak->validasi->jabatan}}</div>   
+            <div style="font-size: 16px">{{ $cetak->validasi->jabatan}}</div>
             <div><img src="{{ public_path("/validasi/". $cetak->validasi->tanda_tangan. ".png")}}" alt="{{ $cetak->validasi->tanda_tangan}}.png"  width="100" height="100"/></div>
             <div style="font-size: 16px"><b><u>{{ $cetak->validasi->nama_pejabat}}</u></b></div>
             <!--Nama Pengirim-->

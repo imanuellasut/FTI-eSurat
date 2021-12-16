@@ -82,7 +82,7 @@
 @section('content')
     <div class="main-card mb-3 card">
         <div class="card-body"><h5 class="card-title">Form Berita Acara</h5>
-            <form class="" action="{{ route('simpan-berita-acara') }}" method="POST">
+            <form class="" action="{{ route('admin-simpan-berita-acara') }}" method="POST">
                 @csrf
                 <!--Hidden Inputan -->
                     <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">

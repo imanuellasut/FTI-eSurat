@@ -66,7 +66,7 @@
                     </div>
                     <div class="widget-content-right">
                         <div class="widget-numbers text-success">
-                            <span>1896</span>
+                            <span>{{ $validasiD }}</span>
                         </div>
                     </div>
                 </div>
@@ -78,12 +78,12 @@
                 <div class="widget-content-wrapper">
                     <i class="bx bxs-envelope bx-lg"></i>
                     <div class="widget-content-left ml-1">
-                        <div class="widget-heading">Surat Kegiatan</div>
-                        <div class="widget-subheading">Total Surat Kegiatan</div>
+                        <div class="widget-heading">Surat Keterangan</div>
+                        <div class="widget-subheading">Total Surat Keterangan</div>
                     </div>
                     <div class="widget-content-right">
                         <div class="widget-numbers text-info">
-                            <span>1896</span>
+                            <span>{{ $validasiB }}</span>
                         </div>
                     </div>
                 </div>
@@ -101,10 +101,8 @@
                                     <th>No. Surat</th>
                                     <th>Jenis Surat</th>
                                     <th>Tgl.Pelaksanaan</th>
-                                    <th>Jam</th>
                                     <th>Prihal</th>
                                     <th>Status</th>
-                                    <th>Pesan</th>
                                 </tr>
                             </thead>
 
@@ -114,11 +112,10 @@
 
                             <tbody>
                                 <tr>
-                                    <th scope="row">{{ $no++ }}</th>
+                                    <td scope="row">{{ $no++ }}</td>
                                     <td>{{ $data->no_surat }}</td>
                                     <td>{{ $data->nama_jenis_surat }}</td>
                                     <td>{{ $data->tgl_pelaksanaan }}</td>
-                                    <td>{{ $data->waktu_pelaksanaan }}</td>
                                     <td>{{ $data->prihal }}</td>
                                     <td>
                                         @if($data->status == 'diterima')
