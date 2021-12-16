@@ -126,9 +126,9 @@
                                 <li>
                                     @yield('pengajuanSurat')
                                 </li>
-                                <li >
+                                {{-- <li >
                                     @yield('arsipSurat')
-                                </li>
+                                </li> --}}
                                 <li >
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
@@ -148,7 +148,7 @@
                     <div class="app-main__inner">
                         <!-- Content -->
                         @yield('content')
-                        
+
                     </div>
                 </div>
                 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>

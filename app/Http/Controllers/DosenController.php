@@ -14,8 +14,15 @@ class DosenController extends Controller
 
     public function index()
     {
+        $validasiA = DB::table('surats')->where('id_jenis_surats', 'A')->get()->count();
+        $validasiB = DB::table('surats')->where('id_jenis_surats', 'B')->get()->count();
+        $validasiC = DB::table('surats')->where('id_jenis_surats', 'C')->get()->count();
+        $validasiD = DB::table('surats')->where('id_jenis_surats', 'D')->get()->count();
+        $validasiE = DB::table('surats')->where('id_jenis_surats', 'E')->get()->count();
+        $totalsurat = DB::table('surats')->get()->count();
+
         $surat = Surats::with('user')->orderBy('updated_at', 'desc')->Paginate(10);
-        return view('dosen.dashboard', compact('surat'));
+        return view('dosen.dashboard', compact('surat', 'validasiA', 'validasiB', 'validasiC', 'validasiD', 'validasiE', 'totalsurat'));
     }
 
     public function suratMasuk()
@@ -63,7 +70,15 @@ class DosenController extends Controller
     public function editSuratTugas($id)
     {
         $surat = Surats::findOrfail($id);
-        return view('dosen.editSurat_tugas', compact('surat'));
+        return view('dosen.editSuratTugas', compact('surat'));
+    }
+
+    public function updateSuratTugas($id, Request $request)
+    {
+        $surat = Surats::findOrfail($id);
+        $surat->update($request->all());
+
+        return redirect('mahasiswa/surat-keluar');
     }
 
     public function suratKeterangan() {
@@ -125,6 +140,12 @@ class DosenController extends Controller
 
         return redirect('dosen/surat-keluar')->with('status', 'Berhasil Tambah Berita Acara');
     }
+
+    public function editBeritaAcara($id) {
+        $surat = Surats::findOrfail($id);
+        return view('dosen.editSuratKeterangan', compact('surat'));
+    }
+
 
 
     public function arsipSurat()

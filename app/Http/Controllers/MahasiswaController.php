@@ -134,7 +134,9 @@ class MahasiswaController extends Controller
 
     public function arsipSurat()
     {
-        return view('mahasiswa.arsipSurat');
+        $surats = Surats::with('user')->orderBy('created_at', 'desc');
+        $surat = Surats::onlyTrashed()->get();
+    	return view('mahasiswa.arsipSurat', ['surat' => $surat, 'surats'=> $surats]);
     }
 
     public function getSuratKeluar()

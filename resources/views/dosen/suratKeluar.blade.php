@@ -109,13 +109,6 @@
                                                 </button>
                                             </div>
 
-                                            <!--INI MUNGKIN BISA DI PAKE -->
-                                                {{-- <div class="mb-1">
-                                                    <a href="surat-keluar/lihat-surat/id-{{ $data->id }}" class="badge badge-secondary">
-                                                        <i class='bx bxs-show bx-xs'></i>
-                                                    </a>
-                                                </div> --}}
-
                                                 <!-- Button Edit -->
                                                     @if ($data->id_jenis_surats == 'A' && $data->tipe_surat == 'keluar')
                                                         <div class="">
@@ -137,13 +130,13 @@
                                                         </div>
                                                     @elseif($data->id_jenis_surats == 'D' && $data->tipe_surat == 'keluar')
                                                         <div class="">
-                                                            <a href="surat/edit-surat-tugas/id-{{ $data->id }}" class="badge badge-info">
+                                                            <a href="surat-keluar/edit-surat-tugas/id-{{ $data->id }}" class="badge badge-info">
                                                                 <i class='bx bxs-edit bx-xs' title="Surat Tugas"></i>
                                                             </a>
                                                         </div>
                                                     @elseif($data->id_jenis_surats == 'E' && $data->tipe_surat == 'keluar')
                                                         <div class="">
-                                                            <a href="surat/edit-surat/id-{{ $data->id }}" class="badge badge-info">
+                                                            <a href="surat-keluar/edit-surat/id-{{ $data->id }}" class="badge badge-info">
                                                                 <i class='bx bxs-edit bx-xs' title="Berita Acara"></i>
                                                             </a>
                                                         </div>

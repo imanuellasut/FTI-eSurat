@@ -74,6 +74,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::get('/surat/berita-acara/cetak-{id}', [AdminController::class, 'cetakBeritaAcara'])->name('cetak-berita-acara');
     //End Berita Acara
 
+    Route::get('/arsip-surat', [AdminController::class, 'arsipSurat']);
+
 });
 
 Route::group(['prefix' => 'dosen', 'middleware' => ['isDosen', 'auth', 'PreventBackHistory']], function () {
@@ -85,14 +87,23 @@ Route::group(['prefix' => 'dosen', 'middleware' => ['isDosen', 'auth', 'PreventB
     //Surat Tugas
     Route::get('/pengajuan-surat/surat-tugas', [DosenController::class, 'suratTugas'])->name('dosen.suratTugas');
     Route::post('/pengajuan-surat/surat-tugas/simpan', [DosenController::class, 'simpanSuratTugasDosen'])->name('simpan-surat-tugasDosen');
+    Route::get('/surat-keluar/edit-surat-tugas/id-{id}', [DosenController::class, 'editSuratTugas'])->name('edit-surat-tugasDosen');
+    Route::post('/surat-keluar/update-surat-tugas/{id}', [DosenController::class, 'updateSuratTugas'])->name('update-surat-tugasDosen');
+    Route::get('/surat-masuk/surat-tugas/cetak-{id}', [AdminController::class, 'cetakSuratTugas'])->name('cetak-surat-tugas');
 
     //Surat Keterangan
     Route::get('/pengajuan-surat/surat-keterangan', [DosenController::class, 'suratKeterangan'])->name('surat-keterangan');
     Route::post('/pengajuan-surat/surat-keterangan/simpan', [DosenController::class, 'simpanSuratKeterangan'])->name('dosen-simpan-surat-keterangan');
+    Route::get('/surat-keluar/edit-surat-kegiatan/id-{id}', [AdminController::class, 'editSuratKeterangan'])->name('edit-surat-kegiatan');
+    Route::post('/surat-keluar/update-surat-kegiatan/{id}', [AdminController::class, 'updateSuratKeterangan'])->name('update-surat-kegiatan');
+    Route::get('/surat-masuk/surat-keterangan/cetak-{id}', [AdminController::class, 'cetakSuratKeterangan'])->name('cetak-surat-keterangan');
 
     //Berita Acara
     Route::get('/pengajuan-surat/berita-acara', [DosenController::class, 'beritaAcara'])->name('berita-acara');
     Route::post('/pengajuan-surat/berita-acara/simpan', [DosenController::class, 'simpanBeritaAcara'])->name('simpan-berita-acara');
+    Route::get('/surat-keluar/edit-berita-acara/id-{id}', [AdminController::class, 'editBeritaAcara'])->name('edit-berita-acara');
+    Route::post('/surat-keluar/update-berita-acara/{id}', [AdminController::class, 'updateBeritaAcara'])->name('update-berita-acara');
+    Route::get('/surat-masuk/berita-acara/cetak-{id}', [AdminController::class, 'cetakBeritaAcara'])->name('cetak-berita-acara');
 
     Route::get('/arsipSurat', [DosenController::class, 'arsipSurat'])->name('dosen.arsipSurat');
 });
@@ -102,7 +113,6 @@ Route::group(['prefix' => 'mahasiswa', 'middleware' => ['isMahasiswa', 'auth', '
     Route::get('/surat-masuk', [MahasiswaController::class, 'suratMasuk'])->name('mahasiswa.suratMasuk');
     Route::get('/surat-keluar', [MahasiswaController::class, 'suratKeluar'])->name('mahasiswa.suratKeluar');
     Route::get('/surat-keluar/hapus-surat/id-{id}', [MahasiswaController::class, 'hapusSurat']);
-
 
     //Surat Tugas
     Route::get('/pengajuan-surat/surat-tugas', [MahasiswaController::class, 'suratTugas'])->name('mahasiswa.suratTugas');

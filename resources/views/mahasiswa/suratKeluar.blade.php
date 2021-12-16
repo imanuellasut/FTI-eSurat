@@ -112,13 +112,13 @@
                                                         </div>
                                                     @elseif($data->id_jenis_surats == 'D' && $data->tipe_surat == 'keluar')
                                                         <div class="">
-                                                            <a href="surat-keluar/edit-surat-tugas/id-{{ $data->id }}" class="badge badge-info">
+                                                            <a href="surat-keluar/edit-surat-tugas/id-{{ $data->id }}" class="badge badge-info" title="Surat Tugas">
                                                                 <i class='bx bxs-edit bx-xs' title="Surat Tugas"></i>
                                                             </a>
                                                         </div>
                                                     @elseif($data->id_jenis_surats == 'E' && $data->tipe_surat == 'keluar')
                                                         <div class="">
-                                                            <a href="surat-keluar/edit-surat/id-{{ $data->id }}" class="badge badge-info">
+                                                            <a href="surat-keluar/edit-berita-acara/id-{{ $data->id }}" class="badge badge-info">
                                                                 <i class='bx bxs-edit bx-xs' title="Berita Acara"></i>
                                                             </a>
                                                         </div>
@@ -142,19 +142,6 @@
         </div>
     </div>
 @endsection
-
-<!--INI MUNGKIN BISA DI PAKE -->
-                                                {{-- <div class="mb-1">
-                                                    <a href="surat-keluar/lihat-surat/id-{{ $data->id }}" class="badge badge-secondary">
-                                                        <i class='bx bxs-show bx-xs'></i>
-                                                    </a>
-                                                </div> --}}
-                                                {{-- <div class="mb-2">
-                                                    <a href="surat-keluar/edit/{{ $data->id }}" class="badge badge-info">
-                                                        <i class='bx bxs-edit bx-xs'></i>
-                                                    </a>
-                                                </div> --}}
-                                            <!--INI MUNGKIN BISA DI PAKE -->
 
 <!-- Info Hapus Surat Keluar -->
     @foreach ($surat as $data )
@@ -181,7 +168,6 @@
     @endif
     @endforeach
 <!-- End Info Hapus Surat Keluar -->
-
 
 <!-- Info Lihat Surat Keluar -->
     @foreach ($surat as $data )

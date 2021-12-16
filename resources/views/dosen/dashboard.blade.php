@@ -72,7 +72,7 @@
                     </div>
                     <div class="widget-content-right">
                         <div class="widget-numbers text-success">
-                            <span>1896</span>
+                            <span>{{ $validasiD }}</span>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                     </div>
                     <div class="widget-content-right">
                         <div class="widget-numbers text-info">
-                            <span>1896</span>
+                            <span>{{ $validasiB }}</span>
                         </div>
                     </div>
                 </div>

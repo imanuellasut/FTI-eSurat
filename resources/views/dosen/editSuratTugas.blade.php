@@ -1,4 +1,4 @@
-@extends('mahasiswa.main')
+@extends('dosen.main')
 
 <!-- Menu SideBar -->
     @section('dashboard')
@@ -62,7 +62,7 @@
 @section('content')
     <div class="main-card mb-3 card">
         <div class="card-body"><h5 class="card-title">Form Surat Tugas</h5>
-            <form class="" action="{{ route('update-surat-tugas') }}" method="POST">
+            <form class="" action="{{ route('update-surat-tugasDosen', $surat->id) }}" method="POST">
                 @csrf
                 <!--Hidden Inputan -->
                     <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
@@ -74,22 +74,22 @@
 
                 <div class="position-relative form-group">
                     <label for="prihal" class="">Prihal Surat</label>
-                    <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control" value="{{ $editSuratTugas->prihal }}">
+                    <input name="prihal" id="prihal" placeholder="Prihal Surat" type="text" class="form-control" value="{{ $surat->prihal }}">
                 <div class="position-relative form-group">
                     <label for="nama_mitra" class="">Pelaksana Tugas</label>
-                    <input name="nama_mitra" id="nama_mitra" placeholder="Pelaksana Tugas" type="text" class="form-control">
+                    <input name="nama_mitra" id="nama_mitra" placeholder="Pelaksana Tugas" type="text" class="form-control" value="{{ $surat->nama_mitra }}">
                 </div>
                 <div class="form-row">
                     <div class="col-md-6">
                         <div class="position-relative form-group">
                             <label for="lokasi" class="">Tempat</label>
-                            <input name="lokasi" id="lokasi" placeholder="Tempat" type="text" class="form-control">
+                            <input name="lokasi" id="lokasi" placeholder="Tempat" type="text" class="form-control" value="{{ $surat->lokasi }}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="position-relative form-group">
                             <label for="tgl_pelaksanaan" class="">Tanggal Pelaksanaan</label>
-                            <input name="tgl_pelaksanaan" id="tgl_pelaksanaan" placeholder="Tanggal Pelaksanaan" type="date" class="form-control">
+                            <input name="tgl_pelaksanaan" id="tgl_pelaksanaan" placeholder="Tanggal Pelaksanaan" type="date" class="form-control" value="{{ $surat->tgl_pelaksanaan }}">
                         </div>
                     </div>
                 </div>

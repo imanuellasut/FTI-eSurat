@@ -425,7 +425,8 @@ class AdminController extends Controller
 
     public function arsipSurat()
     {
-        return view('admin.arsipSurat');
+        $surat = Surats::onlyTrashed()->get();
+    	return view('admin.arsipSurat', ['surat' => $surat]);
     }
 }
 

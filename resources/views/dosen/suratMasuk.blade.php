@@ -98,27 +98,38 @@
                                         @endif
                                     </td>
                                     <td>
-
                                         <div class="mb-1">
                                             <button type="button" class="btn badge badge-secondary border-0" data-toggle="modal" data-target="#lihatSurat">
                                                 <i class='bx bxs-show bx-xs'></i>
                                             </button>
                                         </div>
-                                        @if($data->status == 'diterima')
-                                        <div class="mb-1">
-                                            <a href="" class="badge badge-success">
-                                            <i class='bx bxs-download bx-xs'></i>
-                                            </a>
-                                        </div>
-                                        @endif
-                                        <div class="mb-2">
-                                            <a href="" class="badge badge-danger">
-                                                <i class='bx bxs-trash bx-xs'></i>
-                                            </a>
-                                        </div>
 
+                                        @if($data->id_jenis_surats == 'B' && $data->status == 'diterima' )
+                                            <div class="mt-1">
+                                                <a href="surat-masuk/surat-keterangan/cetak-{{ $data->id}}" class="badge badge-success" title="Surat Keterangan">
+                                                    <i class='bx bxs-download bx-xs'></i>
+                                                </a>
+                                            </div>
+                                        @elseif($data->id_jenis_surats == 'D' && $data->status == 'diterima' )
+                                            <div class="mt-1">
+                                                <a href="surat-masuk/surat-tugas/cetak-{{ $data->id}}" class="badge badge-success" title="Surat Tugas">
+                                                    <i class='bx bxs-download bx-xs'></i>
+                                                </a>
+                                            </div>
+                                        @elseif($surat->id_jenis_surats == 'E' && $surat->status == 'diterima' )
+                                            <div class="mt-1">
+                                                <a href="surat-masuk/berita-acara/cetak-{{ $surat->id}}" class="badge badge-success" title="Berita Acara">
+                                                    <i class='bx bxs-download bx-xs' title="Berita Acara"></i>
+                                                </a>
+                                            </div>
+                                        @endif
+                                        <div class="mt-1">
+                                            <button type="button" class="btn badge badge-danger border-0" data-toggle="modal" data-target="#exampleModal">
+                                                <i class='bx bxs-trash bx-xs'></i>
+                                            </button>
+                                        </div>
                                     </td>
-                                    <td> - </td>
+                                    <td>{{ $data->pesan }}</td>
                                 </tr>
                             @endif
                             </tbody>

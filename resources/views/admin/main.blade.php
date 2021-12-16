@@ -127,9 +127,9 @@
                                 <li>
                                     @yield('buatSurat')
                                 </li>
-                                <li >
+                                {{-- <li >
                                     @yield('arsipSurat')
-                                </li>
+                                </li> --}}
                                 <li >
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
