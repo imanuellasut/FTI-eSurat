@@ -75,7 +75,7 @@ class AdminController extends Controller
             $surat->id_jenis_surats = $data['id_jenis_surats'];
             $surat->nama_jenis_surat = $data['nama_jenis_surat'];
             $surat->idPengaju = $data['idPengaju'];
-            $surat->namaPengaju = $data['idPengaju'];
+            $surat->namaPengaju = $data['namaPengaju'];
             $surat->nama_jenis_surat = $data['nama_jenis_surat'];
             $surat->prihal = $data['prihal'];
             $surat->nama_mitra = $data['nama_mitra'];
@@ -141,9 +141,9 @@ class AdminController extends Controller
             $idPengaju = $cetakJson->idPengaju;
             $namaPengaju = $cetakJson->namaPengaju;
 
-            // $jsonData = DB::table('surats')
-            //         -> select('pengaju')
-            //         -> where('id', $id)->first();
+            // $jsonData = DB::table('surats')-> where('id', $id)->first();
+            //
+            //
             // // $collecttion = utf8_decode($jsonData);
 
             // $collecttion = json_decode(json_encode($jsonData),true);
