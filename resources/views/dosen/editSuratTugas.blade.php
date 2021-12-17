@@ -95,7 +95,7 @@
                 </div>
                 <div class="position-relative form-group">
                     <label for="keterangan" class="">Keterangan</label>
-                    <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
+                    <textarea name="keterangan" id="keterangan" class="form-control">value="{{ $surat->keterangan }}"</textarea>
                 </div>
                 <button type="submit" class="mt-2 btn btn-primary">Buat</button>
                 <a href="/mahasiswa/surat-keluar" class="mt-2 btn btn-secondary">Batal</a>

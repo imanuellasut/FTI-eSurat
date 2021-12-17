@@ -109,8 +109,8 @@ class MahasiswaController extends Controller
         return redirect('mahasiswa/surat-keluar');
     }
 
-    public function editSuratKeterangan($id)
-    {
+
+    public function editSuratKeterangan($id) {
         $surat = Surats::findOrfail($id);
         return view('mahasiswa.editSuratKegiatan', compact('surat'));
     }

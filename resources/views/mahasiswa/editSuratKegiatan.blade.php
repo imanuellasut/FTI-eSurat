@@ -55,14 +55,13 @@
 
 @section('content')
     <div class="main-card mb-3 card">
-        <div class="card-body"><h5 class="card-title">Edit Surat Keterangan</h5>
-            <form method="post" action="{{ url('mahasiswa/surat-keluar/update-surat-kegiatan', $surat->id) }}">
+        <div class="card-body"><h5 class="card-title">Edit Surat Keterangan Mahasiswa</h5>
+            <form method="post" action="{{ url('mahasiswa/surat-keluar/update-surat-kegiatan-mahasiswa', $surat->id) }}">
                 @csrf
-
                 <!--Hidden Inputan -->
                     <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
                     <input type="hidden" name="id_jenis_surats" value="B">
-                    <input type="hidden" name="nama_jenis_surat" value="Surat kegiatan Mahasiswa">
+                    <input type="hidden" name="nama_jenis_surat" value="Surat Keterangan">
                     <input type="hidden" name="tipe_surat" value="keluar">
                     <input type="hidden" name="status" value="diproses">
                 <!--End Hidden Inputan -->

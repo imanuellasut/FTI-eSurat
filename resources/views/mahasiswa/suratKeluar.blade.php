@@ -100,14 +100,8 @@
                                                         </div>
                                                     @elseif($data->id_jenis_surats == 'B' && $data->tipe_surat == 'keluar')
                                                         <div class="">
-                                                            <a href="surat-keluar/edit-surat-kegiatan/id-{{ $data->id }}" class="badge badge-info">
+                                                            <a href="surat-keluar/edit-surat-kegiatan-mahasiswa/id-{{ $data->id }}" class="badge badge-info">
                                                                 <i class='bx bxs-edit bx-xs' title="Surat Kegiatan Mahasiswa"></i>
-                                                            </a>
-                                                        </div>
-                                                    @elseif($data->id_jenis_surats == 'C' && $data->tipe_surat == 'keluar')
-                                                        <div class="">
-                                                            <a href="surat-keluar/edit-surat-undangan/id-{{ $data->id }}" class="badge badge-info">
-                                                                <i class='bx bxs-edit bx-xs' title="Surat Undangan"></i>
                                                             </a>
                                                         </div>
                                                     @elseif($data->id_jenis_surats == 'D' && $data->tipe_surat == 'keluar')
