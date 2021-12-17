@@ -62,7 +62,7 @@
                 <!--Hidden Inputan -->
                     <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
                     <input type="hidden" name="id_jenis_surats" value="B">
-                    <input type="hidden" name="nama_jenis_surat" value="Surat kegiatan Mahasiswa">
+                    <input type="hidden" name="nama_jenis_surat" value="Surat Keterangan">
                     <input type="hidden" name="tipe_surat" value="keluar">
                     <input type="hidden" name="status" value="diproses">
                 <!--End Hidden Inputan -->
@@ -72,7 +72,7 @@
                     <input name="prihal" id="prihal" placeholder="Prihal" type="text" class="form-control"
                     value="{{ $surat->prihal }}">
                 </div>
-                 <div class="position-relative form-group">
+                <div class="position-relative form-group">
                     <label for="tema" class="">Tema</label>
                     <input name="tema" id="tema" placeholder="Tema Surat" type="text" class="form-control"
                     value="{{ $surat->tema }}">

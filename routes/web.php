@@ -46,6 +46,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::post('/surat/update-surat-tugas/{id}', [AdminController::class, 'updateSuratTugas'])->name('update-surat-tugas');
     Route::get('/surat/hapus-surat/id-{id}', [AdminController::class, 'hapusSurat'])->name('hapus-surat');
     Route::get('/surat/surat-tugas/cetak-{id}', [AdminController::class, 'cetakSuratTugas'])->name('cetak-surat-tugas');
+    Route::get('/surat/surat-tugas-dosen/cetak-{id}', [AdminController::class, 'cetakSuratTugasDosen'])->name('cetak-surat-tugas');
     //End Surat Tugas
 
     //Surat Keterangan
@@ -94,15 +95,15 @@ Route::group(['prefix' => 'dosen', 'middleware' => ['isDosen', 'auth', 'PreventB
     //Surat Keterangan
     Route::get('/pengajuan-surat/surat-keterangan', [DosenController::class, 'suratKeterangan'])->name('surat-keterangan');
     Route::post('/pengajuan-surat/surat-keterangan/simpan', [DosenController::class, 'simpanSuratKeterangan'])->name('dosen-simpan-surat-keterangan');
-    Route::get('/surat-keluar/edit-surat-kegiatan/id-{id}', [AdminController::class, 'editSuratKeterangan'])->name('edit-surat-kegiatan');
-    Route::post('/surat-keluar/update-surat-kegiatan/{id}', [AdminController::class, 'updateSuratKeterangan'])->name('update-surat-kegiatan');
+    Route::get('/surat-keluar/edit-surat-kegiatan/id-{id}', [DosenController::class, 'editSuratKeterangan'])->name('edit-surat-kegiatan');
+    Route::post('/surat-keluar/update-surat-kegiatan/{id}', [DosenController::class, 'updateSuratKeterangan'])->name('update-surat-kegiatan');
     Route::get('/surat-masuk/surat-keterangan/cetak-{id}', [AdminController::class, 'cetakSuratKeterangan'])->name('cetak-surat-keterangan');
 
     //Berita Acara
     Route::get('/pengajuan-surat/berita-acara', [DosenController::class, 'beritaAcara'])->name('berita-acara');
     Route::post('/pengajuan-surat/berita-acara/simpan', [DosenController::class, 'simpanBeritaAcara'])->name('simpan-berita-acara');
-    Route::get('/surat-keluar/edit-berita-acara/id-{id}', [AdminController::class, 'editBeritaAcara'])->name('edit-berita-acara');
-    Route::post('/surat-keluar/update-berita-acara/{id}', [AdminController::class, 'updateBeritaAcara'])->name('update-berita-acara');
+    Route::get('/surat-keluar/edit-berita-acara/id-{id}', [DosenController::class, 'editBeritaAcara'])->name('edit-berita-acara');
+    Route::post('/surat-keluar/update-berita-acara/{id}', [DosenController::class, 'updateBeritaAcara'])->name('update-berita-acara');
     Route::get('/surat-masuk/berita-acara/cetak-{id}', [AdminController::class, 'cetakBeritaAcara'])->name('cetak-berita-acara');
 
     Route::get('/arsipSurat', [DosenController::class, 'arsipSurat'])->name('dosen.arsipSurat');

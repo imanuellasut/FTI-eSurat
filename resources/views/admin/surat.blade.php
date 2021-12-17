@@ -179,12 +179,18 @@
                                                     <i class='bx bxs-download bx-xs'></i>
                                                 </a>
                                             </div>
-                                        @elseif($surat->id_jenis_surats == 'D' && $surat->status == 'diterima' )
+                                        @elseif($surat->id_jenis_surats == 'D' && $surat->status == 'diterima'&& $surat->user->role == '2' )
                                             <div class="mt-1">
-                                                <a href="surat/surat-tugas/cetak-{{ $surat->id}}" class="badge badge-success" title="Surat Tugas">
+                                                <a href="surat/surat-tugas-dosen/cetak-{{ $surat->id}}" class="badge badge-success" title="Surat Tugas Dosen">
                                                     <i class='bx bxs-download bx-xs'></i>
                                                 </a>
                                             </div>
+                                        @elseif($surat->id_jenis_surats == 'D' && $surat->status == 'diterima' )
+                                        <div class="mt-1">
+                                            <a href="surat/surat-tugas/cetak-{{ $surat->id}}" class="badge badge-success" title="Surat Tugas">
+                                                <i class='bx bxs-download bx-xs'></i>
+                                            </a>
+                                        </div>
                                         @elseif($surat->id_jenis_surats == 'E' && $surat->status == 'diterima' )
                                             <div class="mt-1">
                                                 <a href="surat/berita-acara/cetak-{{ $surat->id}}" class="badge badge-success" title="Berita Acara">

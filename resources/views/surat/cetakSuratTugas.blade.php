@@ -104,7 +104,7 @@
                 </tr>
             </table>
             @endforeach
-        @elseif ($cetak->idPengaju !== null)
+        @else
         <div>
             <div style="float:center">
                     <?php $no = 1; ?>

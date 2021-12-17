@@ -133,7 +133,6 @@
                                 </tr>
                             @endif
                             </tbody>
-
                             @endforeach
                         </table>
                     </div>
@@ -142,6 +141,32 @@
         </div>
     </div>
 @endsection
+
+<!-- Info Hapus Surat Masuk -->
+    @foreach ($suratMasuk as $data )
+    @if($data->user->id === Auth::user()->id)
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Hapus Surat</h5>
+                    </div>
+                    <div class="modal-bodys">
+                        <p class="mb-2 ml-2">
+                            Jenis Surat : {{ $data->nama_jenis_surat }}
+                            <br/>Prihal : {{ $data->prihal }}
+                            <br/>Apakah anda yakin akan menghapus surat?</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <a href="surat-keluar/hapus-surat/id-{{ $data->id }}" class="btn btn-primary">YA</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">TIDAK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+    @endforeach
+<!-- End Info Hapus Surat masuk -->
 
 <!-- Info Lihat Surat Keluar -->
     @foreach ($suratMasuk as $data )

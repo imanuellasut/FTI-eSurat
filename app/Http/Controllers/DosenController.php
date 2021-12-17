@@ -78,7 +78,7 @@ class DosenController extends Controller
         $surat = Surats::findOrfail($id);
         $surat->update($request->all());
 
-        return redirect('mahasiswa/surat-keluar');
+        return redirect('dosen/surat-keluar');
     }
 
     public function suratKeterangan() {
@@ -110,7 +110,15 @@ class DosenController extends Controller
 
     public function editSuratKeterangan($id) {
         $surat = Surats::findOrfail($id);
-        return view('dosen.editSuratKeterangan', compact('surat'));
+        return view('dosen.editSuratKegiatan', compact('surat'));
+    }
+
+    public function updateSuratKeterangan($id, Request $request)
+    {
+        $surat = Surats::findOrfail($id);
+        $surat->update($request->all());
+
+        return redirect('dosen/surat-keluar');
     }
 
     public function beritaAcara() {
@@ -143,10 +151,16 @@ class DosenController extends Controller
 
     public function editBeritaAcara($id) {
         $surat = Surats::findOrfail($id);
-        return view('dosen.editSuratKeterangan', compact('surat'));
+        return view('dosen.editBeritaAcara', compact('surat'));
     }
 
+     public function updateBeritaAcara($id, Request $request)
+    {
+        $surat = Surats::findOrfail($id);
+        $surat->update($request->all());
 
+        return redirect('dosen/surat-keluar');
+    }
 
     public function arsipSurat()
     {

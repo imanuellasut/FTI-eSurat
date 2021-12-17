@@ -136,19 +136,12 @@
                                                         </div>
                                                     @elseif($data->id_jenis_surats == 'E' && $data->tipe_surat == 'keluar')
                                                         <div class="">
-                                                            <a href="surat-keluar/edit-surat/id-{{ $data->id }}" class="badge badge-info">
+                                                            <a href="surat-keluar/edit-berita-acara/id-{{ $data->id }}" class="badge badge-info">
                                                                 <i class='bx bxs-edit bx-xs' title="Berita Acara"></i>
                                                             </a>
                                                         </div>
                                                     @endif
                                                 <!-- End Button Edit -->
-
-                                                {{-- <div class="mb-2">
-                                                    <a href="surat-keluar/edit/{{ $data->id }}" class="badge badge-info">
-                                                        <i class='bx bxs-edit bx-xs'></i>
-                                                    </a>
-                                                </div> --}}
-                                            <!--INI MUNGKIN BISA DI PAKE -->
 
                                             <div class="mt-1">
                                                 <button type="button" class="btn badge badge-danger border-0" data-toggle="modal" data-target="#exampleModal">

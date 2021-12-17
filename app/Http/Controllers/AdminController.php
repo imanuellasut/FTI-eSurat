@@ -76,7 +76,6 @@ class AdminController extends Controller
             $surat->nama_jenis_surat = $data['nama_jenis_surat'];
             $surat->idPengaju = $data['idPengaju'];
             $surat->namaPengaju = $data['namaPengaju'];
-            $surat->nama_jenis_surat = $data['nama_jenis_surat'];
             $surat->prihal = $data['prihal'];
             $surat->nama_mitra = $data['nama_mitra'];
             $surat->tgl_pelaksanaan = $data['tgl_pelaksanaan'];
